@@ -218,17 +218,17 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
     
     try{
       //  console.log(newMember.activities[0])
-     var newActivity = newMember.activities
-     var oldActivity = oldMember.activities
-     for(i=0;i < oldActivity.length || i < newActivity.length;i++){
-
-        console.log(oldActivity[i]?.type + '----' + newActivity[i]?.type)
+     var newActivity = newMember?.activities?.find(x=> x?.type === 'PLAYING')
+     var oldActivity = oldMember?.activities?.find(x=> x?.type === 'PLAYING')
+     //for(i=0;i < oldActivity.length || i < newActivity.length;i++){
+        //console.log(newActivity)
+        console.log(newActivity?.type + '-' + newActivity?.name+ '----' +oldActivity?.type + '-' + oldActivity?.name)
 
            // console.log(oldActivity?.type + " " + newActivity?.type)
-        if (newActivity[i]?.type == "PLAYING" || oldActivity[i]?.type == "PLAYING"){
-            console.log(oldActivity[i]?.name + " " + newActivity[i]?.name)
+        //if (newActivity[i]?.type == "PLAYING" || oldActivity[i]?.type == "PLAYING"){
+       // console.log(oldActivity[i]?.name + " " + newActivity[i]?.name)
      // If the game has changed...
-      if(oldActivity[i]?.name !== newActivity[i]?.name){
+       // if(oldActivity.name !== newActivity.name){
         botsRole = newMember.guild.roles.cache.find(x => x.name == 'bot')
         hasBotsRole = false; 
          //If found the bot role on the member (indicating they are a bot)
@@ -237,9 +237,10 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
         }
         // If the presence is nothing, return. Or if the member has the bot role.
         //console.log(newActivity.type)
-        if(newActivity[i]?.type !== "PLAYING" || newActivity[i]?.type == null){
+        if(oldActivity?.type == 'PLAYING'){
+        if(newActivity?.type == null ){
             console.log('not playing')
-            var roleName="PLAYING " + oldActivity[i]?.name
+            var roleName="PLAYING " + oldActivity?.name
             //console.log(roleName)
             var roleToDelete = newMember.guild.roles.cache.find(x => x.name == roleName);
             
@@ -247,11 +248,22 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
             //console.log(roleToDelete.id)
             newMember.member.roles?.remove(roleToDelete.id)
         }
-        var memberGameString = newActivity[i]?.name.toString();
+        if(newActivity?.type == "PLAYING" && newActivity?.name !== oldActivity?.name){
+            console.log('change game')
+            var roleName="PLAYING " + oldActivity?.name
+            //console.log(roleName)
+            var roleToDelete = newMember.guild.roles.cache.find(x => x.name == roleName);
+            
+            //console.log(roleToDelete) 
+            //console.log(roleToDelete.id)
+            newMember.member.roles?.remove(roleToDelete.id)
+        }
+    }
+        var memberGameString = newActivity?.name.toString();
         //console.log(newMember.displayName+" : "+ memberGameString)
        
           
-            
+        
         // See if the application the user is running is whitelisted.
         if(memberGameString in whiteListedApps){
             console.log("exist")
@@ -275,14 +287,15 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
                 // If they dont have the role...
                 //console.log(roleToAdd.id)
                 newMember.member.roles?.add(roleToAdd.id);
-                console.log("Gave "+newMember.displayName+" the "+roleToAdd.name+" role.")
+                //console.log(newMember)
+                console.log("Gave "+ bot.users.cache.find(x=> x.id == newMember.userId).username +" the "+roleToAdd.name+" role.")
             }
         }
-    }
-};
+    //}
+//};
 
 
-;}
+//;}
 ;
 }catch(error){
         console.error(error);

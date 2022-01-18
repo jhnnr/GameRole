@@ -43,9 +43,9 @@
   "Battlefield 4": "battlefield",
   "Battlefield 1": "battlefield",
   "Battlefield V": "battlefield",
-  "PLAYERUNKNOWN'S BATTLEGROUNDS": "pubg",
+  "PLAYERUNKNOWN'S BATTLEGROUNDS": "PLAYERUNKNOWN'S BATTLEGROUNDS",
   "Fortnite": "Fortnite",
-  "Destiny 2": "destiny",
+  "Destiny 2": "Destiny 2",
   "Counter-Strike: Global Offensive": "Counter-Strike: Global Offensive",
   "Runescape": "runescape",
   "Old School Runescape": "runescape",
@@ -54,7 +54,7 @@
   "Rainbow Six Siege": "siege",
   "Jurassic World Evolution": "jwe",
   "Overwatch": "Overwatch",
-  "Unturned": "unturned",
+  "Unturned": "Unturned",
   "The Elder Scrolls Online": "eso",
   "Rocket League": "Rocket League",
   "Garry's Mod": "Garry's Mod",
@@ -71,6 +71,6 @@
   "ROBLOX": "ROBLOX",
   "Dota 2": "Dota 2",
   "Genshin Impact": "Genshin Impact",
-  "Grand Theft Auto Sam Andreas": "Grand Theft Auto Sam Andreas"
+  "Grand Theft Auto San Andreas": "Grand Theft Auto San Andreas"
   
 }

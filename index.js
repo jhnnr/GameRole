@@ -117,7 +117,7 @@ bot.on('message', message=>{
             break;
 
         case 'delete':
-            var hasPerms = message.member.roles.has(moveRole.id)
+            var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (hasPerms){
                 var roleToDelete = args.pop()
                 var gameNameDelete = args.slice(1,args.length).join(" ")
@@ -133,7 +133,7 @@ bot.on('message', message=>{
             break;
 
         case 'undo':
-            var hasPerms = message.member.roles.has(moveRole.id)
+            var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (hasPerms){
                 // If the file is saved...
                 if (saved){

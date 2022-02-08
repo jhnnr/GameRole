@@ -51,7 +51,7 @@ bot.on('ready',function(){
 
 bot.on('message', message=>{
     let args = message.content.substring(prefix.length).split(" ");
-    //let moveRole = message.guild.roles.find(x => x.name == 'move')
+    let moveRole = message.guild.roles.cache.find(x => x.name == 'sugoi')
 
     // 0 is base command -- !ping help -- (ping in this case)
     switch(args[0]){
@@ -65,7 +65,7 @@ bot.on('message', message=>{
             break;
 
         case 'add':
-            var hasPerms = message.member.roles?.has(moveRole.id)
+            var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (hasPerms){
                 var roleToAdd = args.pop()
                 var gameNameAdd = args.slice(1,args.length).join(" ")
@@ -88,7 +88,7 @@ bot.on('message', message=>{
             break;
 
         case 'addmygame':
-            var hasPerms = message.member.roles.has(moveRole.id)
+            var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (!args[1]){
                 message.reply("Please provide a role name after the command.")
                 break;

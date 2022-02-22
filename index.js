@@ -50,7 +50,7 @@ bot.on('ready',function(){
 })
 
 bot.on('message', message=>{
-    let args = message.content.substring(prefix.length).split(" ");
+    let args = message.content.substring(prefix).split(" ");
     let moveRole = message.guild.roles.cache.find(x => x.name == 'sugoi')
 
     // 0 is base command -- !ping help -- (ping in this case)

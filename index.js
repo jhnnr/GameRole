@@ -1,3 +1,5 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const {Discord,Intents,Client, Activity} = require('discord.js');
 const jsonfile = require('jsonfile');
 
@@ -37,6 +39,33 @@ function save(){
     console.log("Whitelist file saved.")
     saved = true;
 }
+//valorant skin peek
+import {startBot} from "./discord/bot.js";
+import {loadUserData} from "./valorant/auth.js";
+import {loadAlerts} from "./discord/alerts.js";
+import {loadConfig} from "./misc/config.js";
+
+/* TODO list:
+ * (done) Balance
+ * (done) Auto fetch skins on startup
+ * (done) Skin notifier/reminder
+ * (done) Auto check for new valorant version every 15 minutes
+ * (done) See current bundles
+ * Password encryptor
+ * Inspect weapon skin (all 4 levels + videos + radianite upgrade price)
+ * Option to send shop automatically every day
+ * More options in config.json
+ * Simple analytics to see how many servers the bot is in
+ * Admin commands (delete user, see/edit everyone's alerts, etc.)
+ */
+
+const config = loadConfig();
+if(config) {
+    loadUserData();
+    loadAlerts();
+    startBot();
+}
+
 
 //Calls when the bot first comes online
 bot.on('ready',function(){
@@ -229,8 +258,8 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
        // console.log(oldActivity[i]?.name + " " + newActivity[i]?.name)
      // If the game has changed...
        // if(oldActivity.name !== newActivity.name){
-        botsRole = newMember.guild.roles.cache.find(x => x.name == 'bot')
-        hasBotsRole = false; 
+        var botsRole = newMember.guild.roles.cache.find(x => x.name == 'bot')
+        var hasBotsRole = false; 
          //If found the bot role on the member (indicating they are a bot)
          if (botsRole){
             hasBotsRole = newMember.roles?.cache.has(botsRole.id)
@@ -282,7 +311,7 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
             var roleToAdd = newMember.guild.roles.cache.find(x => x.name == roleName);
 
             // Does the person have the role already?
-            hasRole = newMember.roles?.cache.has(roleToAdd.id)
+            var hasRole = newMember.roles?.cache.has(roleToAdd.id)
             if(!hasRole){
                 // If they dont have the role...
                 //console.log(roleToAdd.id)

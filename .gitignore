@@ -1,3 +1,6 @@
 
 node_modules
+TokenFile.json
+data/*
+config.json
 .DS_Store

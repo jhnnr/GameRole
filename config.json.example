@@ -1,0 +1,14 @@
+{
+  "token": "token goes here",
+  "fetchSkinPrices": true,
+  "fetchSkinRarities": true,
+  "linkItemImage": true,
+  "refreshSkins": "10 0 0 * * *",
+  "checkGameVersion": "*/15 * * * *",
+  "cleanupAccounts": "0 * * * *",
+  "delayBetweenAlerts": 5000,
+  "useLoginQueue": false,
+  "loginQueue": "*/3 * * * * *",
+  "storePasswords": false,
+  "ownerId": ""
+}

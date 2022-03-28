@@ -35,15 +35,21 @@ export const loadConfig = (filename="config.json") => {
     applyConfig(loadedConfig, "refreshSkins", "10 0 0 * * *");
     applyConfig(loadedConfig, "checkGameVersion", "*/15 * * * *");
     applyConfig(loadedConfig, "cleanupAccounts", "0 * * * *");
+    applyConfig(loadedConfig, "delayBetweenAlerts", 5000);
+    applyConfig(loadedConfig, "useLoginQueue", false);
+    applyConfig(loadedConfig, "loginQueue", "*/3 * * * * *");
     applyConfig(loadedConfig, "storePasswords", false);
+    applyConfig(loadedConfig, "ownerId", "");
+    applyConfig(loadedConfig, "ownerName", "");
+    applyConfig(loadedConfig, "status", "Up and running!");
 
     saveConfig(filename, config);
 
     return config;
 }
 
-const saveConfig = (filename, config) => {
-    fs.writeFileSync(filename, JSON.stringify(config, null, 2));
+export const saveConfig = (filename="config.json", configToSave) => {
+    fs.writeFileSync(filename, JSON.stringify(configToSave || config, null, 2));
 }
 
 const applyConfig = (loadedConfig, name, defaultValue) => {

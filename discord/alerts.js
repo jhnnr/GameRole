@@ -1,9 +1,10 @@
-import {removeAlertActionRow, skinNameAndEmoji} from "../misc/util.js";
+import {removeAlertActionRow, skinNameAndEmoji, wait} from "../misc/util.js";
 import {getUserList} from "../valorant/auth.js";
 import {getOffers} from "../valorant/shop.js";
 import {getSkin} from "../valorant/cache.js";
 import fs from "fs";
 import {VAL_COLOR_1} from "./embed.js";
+import config from "../misc/config.js";
 
 let alerts = [];
 
@@ -42,6 +43,19 @@ export const alertsForUser = (id) => {
     return alerts.filter(alert => alert.id === id);
 }
 
+export const alertsForGuild = async (id) => {
+    const alertsInGuild = [];
+
+    const guild = await client.guilds.fetch(id);
+    for(const alert of alerts) {
+        const channel = await client.channels.fetch(alert.channel_id)
+        if(channel.guildId === guild.id)
+            alertsInGuild.push(alert);
+    }
+
+    return alertsInGuild;
+}
+
 export const removeAlert = (id, uuid) => {
     const alertCount = alerts.length;
     alerts = alerts.filter(alert => alert.id !== id || alert.uuid !== uuid);
@@ -59,7 +73,7 @@ export const removeAlertsInChannel = (channel_id) => {
     saveAlerts();
 }
 
-export const checkAlerts = () => {
+export const checkAlerts = async () => {
     if(!alerts) return;
     console.debug("Checking new shop skins for alerts...");
 
@@ -68,22 +82,23 @@ export const checkAlerts = () => {
             const userAlerts = alerts.filter(alert => alert.id === id);
             if(!userAlerts.length) continue;
 
-            getOffers(id).then(resp => {
-                if(!resp.success) {
-                    if(resp.maintenance) return; // retry in a few hours?
-                    const channelsSent = [];
-                    for(const alert of alerts) {
-                        if(!channelsSent.includes(alert.channel_id)) {
-                            sendCredentialsExpired(alert);
-                            channelsSent.push(alert.channel_id);
-                        }
+            const offers = await getOffers(id);
+            if(!offers.success) {
+                if(offers.maintenance) return; // retry in a few hours?
+                const channelsSent = [];
+                for(const alert of alerts) {
+                    if(!channelsSent.includes(alert.channel_id)) {
+                        await sendCredentialsExpired(alert);
+                        channelsSent.push(alert.channel_id);
                     }
-                    return;
                 }
+                return;
+            }
 
-                const positiveAlerts = userAlerts.filter(alert => resp.offers.includes(alert.uuid));
-                if(positiveAlerts.length) sendAlert(positiveAlerts, resp.expires);
-            });
+            const positiveAlerts = userAlerts.filter(alert => offers.offers.includes(alert.uuid));
+            if(positiveAlerts.length) await sendAlert(positiveAlerts, offers.expires);
+
+            await wait(config.delayBetweenAlerts); // to prevent being ratelimited
         }
     } catch(e) {
         // should I send messages in the discord channels?

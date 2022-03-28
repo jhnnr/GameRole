@@ -9,7 +9,7 @@ import config from "../misc/config.js";
 
 
 export const VAL_COLOR_1 = 0xFD4553;
-export const VAL_COLOR_2 = 0x0F1923;
+export const VAL_COLOR_2 = 0x202225;
 export const VAL_COLOR_3 = 0xEAEEB2;
 
 const thumbnails = [
@@ -38,7 +38,12 @@ export const authFailureMessage = (interaction, authResponse, message, hideEmail
             else embed = basicEmbed(`**Riot sent a code to ${escapeMarkdown(authResponse.email)}!** Use \`/2fa\` to complete your login.`);
         }
         else embed = basicEmbed("**You have 2FA enabled!** use `/2fa` to enter your code.");
-    } else embed = basicEmbed(message);
+    }
+    else if(authResponse.rateLimit) {
+        console.log(`${interaction.user.tag} got rate-limited`);
+        embed = basicEmbed("**Too many people are logging in at the same time**, and Riot is not happy!\nPlease try again later.");
+    }
+    else embed = basicEmbed(message);
 
     return {
         embeds: [embed],
@@ -48,7 +53,7 @@ export const authFailureMessage = (interaction, authResponse, message, hideEmail
 
 export const skinChosenEmbed = async (skin, channel) => {
     let  description = `Successfully set an alert for the **${await skinNameAndEmoji(skin, channel)}**!`;
-    if(!skin.rarity) description += "\n***Note:** This is a battle pass skin!*";
+    if(!skin.rarity) description += "\n***Note:** This is a battlepass skin, it's not gonna appear in your shop!*";
     return {
         description: description,
         color: VAL_COLOR_1,
@@ -121,7 +126,7 @@ export const renderBundle = async (bundle, interaction, emoji, includeExpires=tr
     const slantedDescription = bundle.description ? "*" + bundle.description + "*\n" : "";
 
     if(!bundle.data) return {embeds: [{
-        title: `${bundle.name} collection`,
+        title: `${bundle.name} Collection`,
         description: `${subName}${slantedDescription}`,
         color: VAL_COLOR_1,
         image: {
@@ -151,9 +156,9 @@ export const renderBundle = async (bundle, interaction, emoji, includeExpires=tr
 }
 
 export const renderNightMarket = async (market, interaction, valorantUser, emoji) => {
-    if(!market.success) return authFailureMessage(interaction, market, "**Could not fetch your night market**, most likely you got logged out. Try logging in again.");
+    if(!market.success) return authFailureMessage(interaction, market, "**Could not fetch your Night Market**, most likely you got logged out. Try logging in again.");
 
-    if(!market.offers) return {embeds: [basicEmbed("**There is no night market currently!**")]};
+    if(!market.offers) return {embeds: [basicEmbed("**There is no Night Market currently! Look out for April 7th!**")]};
 
     const embeds = [{
         description: `Night.Market for **${valorantUser.username}** (ends <t:${market.expires}:R>)`,
@@ -179,7 +184,7 @@ export const renderBattlepass = async (battlepass, targetlevel, interaction, val
     if(!battlepass.success) return authFailureMessage(interaction, battlepass, "**Could not fetch your battlepass progression**, most likely you got logged out. Try logging in again.");
 
     const embeds = [{
-        title: `📈 Battlepass calculation`,
+        title: `📈 Battlepass Calculation`,
         thumbnail: {url: thumbnails[Math.floor(Math.random()*thumbnails.length)]},
         description: `**${valorantUser.username}**'s battlepass tier:\n${createProgressBar(battlepass.xpneeded, battlepass.bpdata.progressionTowardsNextLevel, battlepass.bpdata.progressionLevelReached)}`,
         color: VAL_COLOR_1,
@@ -196,7 +201,7 @@ export const renderBattlepass = async (battlepass, targetlevel, interaction, val
             }
         ],
         footer: {
-            text: (battlepass.battlepassPurchased) ? valorantUser.username + " purchased the battlepass" : ""
+            text: (battlepass.battlepassPurchased) ? valorantUser.username + " purchased the battlepass!" : ""
         }
     },
     {
@@ -347,6 +352,64 @@ const titleEmbed = async (title, price, VPemojiString) => {
         title: title.name,
         description: "`" + title.text + "`\n\n" + (priceDescription(VPemojiString, price) || ""),
         color: VAL_COLOR_2,
+    }
+}
+
+export const botInfoEmbed = (client, guildCount, userCount, registeredUserCount, ownerString, status) => {
+    const fields = [
+        {
+            name: "Servers",
+            value: guildCount.toString(),
+            inline: true
+        },
+        {
+            name: "Members",
+            value: userCount.toString(),
+            inline: true
+        },
+        {
+            name: "Registered",
+            value: registeredUserCount.toString(),
+            inline: true
+        },
+        {
+            name: ":dog:",
+            value: "woof",
+            inline: true
+        }
+    ];
+    if(ownerString) fields.push({
+        name: "Owner",
+        value: ownerString,
+        inline: true
+    });
+    if(status) fields.push({
+        name: "Status",
+        value: status,
+        inline: true
+    });
+
+    const readyTimestamp = Math.round(client.readyTimestamp / 1000);
+
+    return {
+        embeds: [{
+            title: ":pencil: Stats",
+            description: `Started running on <t:${readyTimestamp}:f> (<t:${readyTimestamp}:R>)`,
+            color: VAL_COLOR_3,
+            fields: fields
+        }]
+    }
+}
+
+export const ownerMessageEmbed = (messageContent, author) => {
+    return {
+        title: "Message from bot owner:",
+        description: messageContent,
+        color: VAL_COLOR_3,
+        footer: {
+            text: "By " + author.username,
+            icon_url: author.displayAvatarURL()
+        }
     }
 }
 

@@ -21,7 +21,7 @@ const tlsCiphers = [
 
 // all my homies hate node-fetch
 export const fetch = (url, options={}) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const req = https.request(url, {
             method: options.method || "GET",
             headers: options.headers || {},
@@ -36,6 +36,10 @@ export const fetch = (url, options={}) => {
             resp.on('end', () => {
                 res.body = Buffer.concat(chunks).toString(options.encoding || "utf8");
                 resolve(res);
+            });
+            resp.on('error', err => {
+                console.error(err);
+                reject(err);
             });
         });
         req.write(options.body || "");
@@ -100,6 +104,11 @@ export const tokenExpiry = (token) => {
     return decodeToken(token).exp * 1000;
 }
 
+export const userRegion = ({region}) => {
+    if(!region || region === "latam" || region === "br") return "na";
+    return region;
+}
+
 export const MAINTENANCE = "MAINTENANCE";
 
 export const isMaintenance = (json) => {
@@ -157,7 +166,7 @@ export const skinNameAndEmoji = async (skin, channel) => {
     return rarityIcon ? `${rarityIcon} ${skin.name}` : skin.name;
 }
 
-export const removeAlertButton = (id, uuid) => new MessageButton().setCustomId(`removealert/${uuid}/${id}/${Math.round(Math.random() * 10000)}`).setStyle("DANGER").setLabel("Remove Alert").setEmoji("✖");
+export const removeAlertButton = (id, uuid) => new MessageButton().setCustomId(`removealert/${uuid}/${id}/${Math.round(Math.random() * 100000)}`).setStyle("DANGER").setLabel("Remove Alert").setEmoji("✖");
 export const removeAlertActionRow = (id, uuid) => new MessageActionRow().addComponents(removeAlertButton(id, uuid));
 
 // apparently the external emojis in an embed only work if @everyone can use external emojis... probably a bug
@@ -165,3 +174,5 @@ export const externalEmojisAllowed = (channel) => channel.permissionsFor(channel
 export const emojiToString = (emoji) => emoji && `<:${emoji.name}:${emoji.id}>`;
 
 export const escapeMarkdown = Util.escapeMarkdown;
+
+export const wait = ms => new Promise(r => setTimeout(r, ms));

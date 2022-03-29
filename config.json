@@ -10,5 +10,7 @@
   "useLoginQueue": false,
   "loginQueue": "*/3 * * * * *",
   "storePasswords": false,
-  "ownerId": "517108999527727126"
+  "ownerId": "517108999527727126",
+  "ownerName": "",
+  "status": "Up and running!"
 }

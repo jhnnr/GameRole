@@ -13,13 +13,14 @@
   "author": "sugoides",
   "license": "ISC",
   "dependencies": {
+    "@vercel/node": "^1.14.0",
     "discord.js": "^13.6.0",
     "dotenv": "^8.2.0",
-    "jsonfile": "^5.0.0",
-    "nodemon": "^2.0.7",
-    "package.json": "^2.0.1",
     "fuse.js": "^6.5.3",
-    "node-cron": "^3.0.0"
+    "jsonfile": "^5.0.0",
+    "node-cron": "^3.0.0",
+    "nodemon": "^2.0.7",
+    "package.json": "^2.0.1"
   },
   "type": "module"
 }

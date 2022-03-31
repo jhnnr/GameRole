@@ -6,6 +6,9 @@ import fs from "fs";
 import {VAL_COLOR_1} from "./embed.js";
 import config from "../misc/config.js";
 
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+import fetch from "node-fetch";
 let alerts = [];
 
 let client;
@@ -19,15 +22,33 @@ export const setClient = (theClient) => client = theClient;
  * There should only be one alert per ID/UUID pair, aka each user can have one alert per skin.
  */
 
-export const loadAlerts = (filename="data/alerts.json") => {
+export const loadAlerts = async (filename="data/alerts.json") => {
     try {
+        const alertStore = await fetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/alerts.json')
+        var alertjson = await alertStore.json();
+        if (alertjson === null){
+            var alertjson = [];
+        };
+        fs.writeFileSync(filename, JSON.stringify(alertjson, null, 2));
+
+        console.log("Loaded Alerts")
         alerts = JSON.parse(fs.readFileSync(filename).toString());
-        saveAlerts(filename);
+        //saveAlerts(filename);
     } catch(e) {}
 }
 
 const saveAlerts = (filename="data/alerts.json") => {
     fs.writeFileSync(filename, JSON.stringify(alerts, null, 2));
+    
+
+    fetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/alerts.json', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(alerts, null, 2)
+    
+    });
 }
 
 export const addAlert = (alert) => {

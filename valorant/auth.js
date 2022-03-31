@@ -1,15 +1,23 @@
 import config from "../misc/config.js";
 import fs from "fs";
-
+import nfetch from "node-fetch";
 import {fetch, parseSetCookie, stringifyCookies, extractTokensFromUri, tokenExpiry} from "../misc/util.js";
 
 let users;
 
-export const loadUserData = () => {
+export const loadUserData = async (filename="data/users.json") => {
     if(!users) try {
         if (!fs.existsSync("data")) fs.mkdirSync("data");
-        users = JSON.parse(fs.readFileSync("data/users.json", 'utf-8'));
-        saveUserData();
+        const userStore = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json')
+        var userjson = await userStore.json();
+        if (userjson === null){
+            var userjson = [];
+        };
+        fs.writeFileSync(filename, JSON.stringify(userjson, null, 2));
+        console.log("Loaded Users")
+        users = JSON.parse(fs.readFileSync(filename, 'utf-8'));
+        
+        //saveUserData();
     } catch(e) {
         users = {};
     }
@@ -17,6 +25,14 @@ export const loadUserData = () => {
 
 const saveUserData = () => {
     fs.writeFileSync("data/users.json", JSON.stringify(users, null, 2));
+    nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(users, null, 2)
+    
+    });
 }
 
 export const getUser = (id) => {

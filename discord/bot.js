@@ -4,7 +4,7 @@ import {
     addAlert,
     alertExists, alertsForGuild,
     alertsForUser,
-    checkAlerts, removeAlert,
+    checkAlerts, loadAlerts, removeAlert,
     removeAlertsFromUser,
     removeAlertsInChannel,
     setClient
@@ -14,6 +14,7 @@ import {
     authUser,
     cleanupAccounts, deleteUser,
     getUser, getUserList,
+    loadUserData,
     redeemCookies,
 } from "../valorant/auth.js";
 import {
@@ -53,9 +54,9 @@ client.on("ready", async () => {
 
     console.log("Loading skins...");
     fetchData().then(() => console.log("Skins loaded!"));
-
+    
     setClient(client);
-
+    loadUserData();
     scheduleTasks();
 });
 

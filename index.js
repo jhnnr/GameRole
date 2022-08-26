@@ -31,6 +31,17 @@ const prefix = '<';
 
 var whiteListedApps = require("./whitelist.json");
 
+var express = require('express');
+	var app = express();
+	const PORT = process.env.PORT || 80;
+	var server = app.listen(PORT, function() {
+		var host = server.address().address;
+		var port = server.address().port;
+		console.log("server is listening at http://%s:%s", host, port);
+		app.get('/', function (req, res) {
+			res.send('Bot is live');
+		  });
+	});
 /**
  * Limits how often saves can happen to avoid abuse
  */

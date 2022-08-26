@@ -97,7 +97,7 @@ bot.on('message', message=>{
     switch(args[0]){
         // --- DO COMMANDS ---
         case 'ping':
-            message.channel.send("pong!");
+            message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`);
             break;
 
         case 'website':

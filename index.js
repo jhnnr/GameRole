@@ -118,7 +118,7 @@ bot.on('message', message=>{
         case 'add':
             var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (hasPerms){
-                var roleToAdd = args.pop()
+                var roleToAdd = args.slice(1,args.length).join(" ")
                 var gameNameAdd = args.slice(1,args.length).join(" ")
                 if ((!gameNameAdd) && (!roleToAdd)){
                     message.reply("Please enter the correct command (/add [gameName] [role name]")
@@ -127,9 +127,9 @@ bot.on('message', message=>{
                     whiteListedApps[gameNameAdd] = roleToAdd;
                     //var gameJustAdded = gameName
                     console.log("Added game: "+gameNameAdd+" with role name: "+roleToAdd)
-                    message.reply("Added game: "+gameNameAdd+" with role name: "+roleToAdd)
-                    objectAdded = {'Game' : gameNameAdd, 'Role' :roleToAdd}
-                    previousAction = 'add'
+                    message.reply("Added game: `"+gameNameAdd+"` with role name: `"+roleToAdd + "`")
+                    var objectAdded = {'Game' : gameNameAdd, 'Role' :roleToAdd}
+                    var previousAction = 'add'
                     // Save
                     scheduleSave();
                 }

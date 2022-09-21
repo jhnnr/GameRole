@@ -97,7 +97,7 @@ bot.on('ready',function(){
     var previousAction = ''
     var objectAdded = {}
     
-    bot.user.setActivity('with your server.', {type:'messing'})
+    bot.user.setActivity('with your server.', {type:'MESSING'})
 })
 
 bot.on('message', message=>{

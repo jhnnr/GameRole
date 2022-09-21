@@ -1,8 +1,8 @@
 {
   "formatVersion": 3,
-  "gameVersion": "091B3A5E121BF01E",
+  "gameVersion": "56592F01486158C4",
   "skins": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "89baf0f4-4648-69fc-f0af-2fbc69b97b80": {
       "uuid": "89baf0f4-4648-69fc-f0af-2fbc69b97b80",
       "name": "Xenohunter Odin",
@@ -23,7 +23,7 @@
     },
     "49292f21-4f5e-0a1a-3671-54b7ca8fe65a": {
       "uuid": "49292f21-4f5e-0a1a-3671-54b7ca8fe65a",
-      "name": "dot EXE Odin",
+      "name": ".EXE Odin",
       "icon": "https://media.valorant-api.com/weaponskinlevels/49292f21-4f5e-0a1a-3671-54b7ca8fe65a/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
@@ -315,6 +315,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/7e44fc1b-44fa-cdda-8491-f8a5bca1cfa3/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
+    "59d61899-4573-65ea-0e42-2ea6d324d32b": {
+      "uuid": "59d61899-4573-65ea-0e42-2ea6d324d32b",
+      "name": "ChronoVoid Vandal",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/59d61899-4573-65ea-0e42-2ea6d324d32b/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
     "1010fb40-4344-6ec8-2a8a-33bf076339b6": {
       "uuid": "1010fb40-4344-6ec8-2a8a-33bf076339b6",
       "name": "Prelude to Chaos Vandal",
@@ -365,7 +371,7 @@
     },
     "c9ee9a00-453d-a358-8501-3ebb7ca3765e": {
       "uuid": "c9ee9a00-453d-a358-8501-3ebb7ca3765e",
-      "name": "dot EXE Vandal",
+      "name": ".EXE Vandal",
       "icon": "https://media.valorant-api.com/weaponskinlevels/c9ee9a00-453d-a358-8501-3ebb7ca3765e/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
@@ -711,6 +717,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/9f6e4612-433b-aea9-1683-3db7aee90848/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
+    "aeb0ea2e-4f50-6b34-27b0-f2a755d27f6a": {
+      "uuid": "aeb0ea2e-4f50-6b34-27b0-f2a755d27f6a",
+      "name": "ChronoVoid Phantom",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/aeb0ea2e-4f50-6b34-27b0-f2a755d27f6a/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
     "f9d54c11-4c6f-575b-5bed-3cb693f6f2ba": {
       "uuid": "f9d54c11-4c6f-575b-5bed-3cb693f6f2ba",
       "name": "Doodle Buds Phantom",
@@ -781,6 +793,12 @@
       "uuid": "a7229cba-4691-62b0-9c40-f59a29817ddc",
       "name": "Kingdom Phantom",
       "icon": "https://media.valorant-api.com/weaponskinlevels/a7229cba-4691-62b0-9c40-f59a29817ddc/displayicon.png",
+      "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
+    },
+    "dd5154b6-434a-9db7-0583-3e9ef8f63319": {
+      "uuid": "dd5154b6-434a-9db7-0583-3e9ef8f63319",
+      "name": "Kohaku & Matsuba Phantom",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/dd5154b6-434a-9db7-0583-3e9ef8f63319/displayicon.png",
       "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
     },
     "19b20b51-472b-e837-e5da-f8a348110dbf": {
@@ -927,6 +945,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/712c7a37-4524-0b27-dfdd-4e95181dd36e/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
+    "b0d5c4da-4d81-4386-e841-759818ce9b6c": {
+      "uuid": "b0d5c4da-4d81-4386-e841-759818ce9b6c",
+      "name": "ChronoVoid Judge",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/b0d5c4da-4d81-4386-e841-759818ce9b6c/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
     "d8c9fee3-4e02-bc92-a235-608a556905ae": {
       "uuid": "d8c9fee3-4e02-bc92-a235-608a556905ae",
       "name": "Elderflame Judge",
@@ -953,7 +977,7 @@
     },
     "f8cd4279-4530-db62-1e4e-aa82c129b045": {
       "uuid": "f8cd4279-4530-db62-1e4e-aa82c129b045",
-      "name": "dot EXE Judge",
+      "name": ".EXE Judge",
       "icon": "https://media.valorant-api.com/weaponskinlevels/f8cd4279-4530-db62-1e4e-aa82c129b045/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
@@ -986,6 +1010,12 @@
       "name": "Serenity Judge",
       "icon": "https://media.valorant-api.com/weaponskinlevels/4afdc818-4665-1582-6319-8081aa64e550/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "ccf16a23-4222-1abe-d8f0-93a782b5b449": {
+      "uuid": "ccf16a23-4222-1abe-d8f0-93a782b5b449",
+      "name": "Kohaku & Matsuba Judge",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/ccf16a23-4222-1abe-d8f0-93a782b5b449/displayicon.png",
+      "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
     },
     "1b94d997-4db6-014f-4cb8-c1b4df7d7ebc": {
       "uuid": "1b94d997-4db6-014f-4cb8-c1b4df7d7ebc",
@@ -1497,6 +1527,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/6ab90b28-49f1-9e1b-5083-2da2de61e109/displayicon.png",
       "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
     },
+    "066f6d01-4940-606a-70f6-e78fb20f5d2d": {
+      "uuid": "066f6d01-4940-606a-70f6-e78fb20f5d2d",
+      "name": "Kohaku & Matsuba Classic",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/066f6d01-4940-606a-70f6-e78fb20f5d2d/displayicon.png",
+      "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
+    },
     "eb35e4e1-4138-9ece-08e2-69bd414cf598": {
       "uuid": "eb35e4e1-4138-9ece-08e2-69bd414cf598",
       "name": "Smite Classic",
@@ -1589,7 +1625,7 @@
     },
     "9466088a-4ad8-cb08-ec9a-45aaba3a6acd": {
       "uuid": "9466088a-4ad8-cb08-ec9a-45aaba3a6acd",
-      "name": "dot EXE Ghost",
+      "name": ".EXE Ghost",
       "icon": "https://media.valorant-api.com/weaponskinlevels/9466088a-4ad8-cb08-ec9a-45aaba3a6acd/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
@@ -1754,6 +1790,12 @@
       "name": "Nebula Sheriff",
       "icon": "https://media.valorant-api.com/weaponskinlevels/353c1e5f-4258-c49a-c0d6-319ad33bffea/displayicon.png",
       "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+    },
+    "ade427fc-4b24-f290-c91a-b1904b787f42": {
+      "uuid": "ade427fc-4b24-f290-c91a-b1904b787f42",
+      "name": "ChronoVoid Sheriff",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/ade427fc-4b24-f290-c91a-b1904b787f42/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
     "4276d2b5-4b1c-b636-aff0-4ea579d875d7": {
       "uuid": "4276d2b5-4b1c-b636-aff0-4ea579d875d7",
@@ -1921,7 +1963,7 @@
       "uuid": "f1f9cde8-4810-86a0-1c95-4ab214d4f6b8",
       "name": "Karabasan Shorty",
       "icon": "https://media.valorant-api.com/weaponskinlevels/f1f9cde8-4810-86a0-1c95-4ab214d4f6b8/displayicon.png",
-      "rarity": null
+      "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
     "09fded5d-4add-00e7-d3c4-32b8f21c7944": {
       "uuid": "09fded5d-4add-00e7-d3c4-32b8f21c7944",
@@ -2119,6 +2161,12 @@
       "uuid": "e045334d-4b19-26df-739c-f89fd561714f",
       "name": "K/TAC Operator",
       "icon": "https://media.valorant-api.com/weaponskinlevels/e045334d-4b19-26df-739c-f89fd561714f/displayicon.png",
+      "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
+    },
+    "1fe051aa-40e9-3ff6-585a-e384f0197224": {
+      "uuid": "1fe051aa-40e9-3ff6-585a-e384f0197224",
+      "name": "Kohaku & Matsuba Operator",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/1fe051aa-40e9-3ff6-585a-e384f0197224/displayicon.png",
       "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
     },
     "e5a2e04a-4805-1244-5376-06b40d7c6cbb": {
@@ -2961,6 +3009,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/f27623a6-40de-20b9-17b5-c5bed27453a7/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
+    "96fe45cd-448d-890f-f3f6-86b25516c1a0": {
+      "uuid": "96fe45cd-448d-890f-f3f6-86b25516c1a0",
+      "name": "Terminus A Quo",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/96fe45cd-448d-890f-f3f6-86b25516c1a0/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
     "d6b75f1b-409b-bae9-d378-d3adf04a3ca9": {
       "uuid": "d6b75f1b-409b-bae9-d378-d3adf04a3ca9",
       "name": "Blade of Chaos",
@@ -3067,6 +3121,12 @@
       "uuid": "a17e9fcc-4081-9b5a-cf63-fca395e652df",
       "name": "K/TAC Blade",
       "icon": "https://media.valorant-api.com/weaponskinlevels/a17e9fcc-4081-9b5a-cf63-fca395e652df/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
+    "ef67d6cb-4f7f-28ce-2973-cf90a97ae54d": {
+      "uuid": "ef67d6cb-4f7f-28ce-2973-cf90a97ae54d",
+      "name": "Equilibrium",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/ef67d6cb-4f7f-28ce-2973-cf90a97ae54d/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
     "b6768f01-4d72-f0f1-65b5-71b751536490": {
@@ -3227,7 +3287,7 @@
     }
   },
   "prices": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "4845a7ab-4120-ae1c-aec1-9e915a7424b1": 1275,
     "61f62d77-4f80-7664-2ea9-538f6fc4b241": 875,
     "c59442a5-4b74-792c-d996-71a5fb340625": 875,
@@ -3697,13 +3757,30 @@
     "cd785f82-41a2-f7b4-0f17-e69b0fe5beb3": 325,
     "524b0c42-47da-e7ca-dc04-85ba285b2e71": 2675,
     "ba0abff4-41e4-4036-980d-90a55837b692": 5350,
+    "98442884-4d6e-65d8-3295-69bde3315d92": 475,
+    "38defae8-4b79-f5cc-09c1-ceb5e109c4c9": 375,
+    "1e7cdd34-476c-00ee-4169-87a643709e3d": 325,
+    "dd5154b6-434a-9db7-0583-3e9ef8f63319": 1275,
+    "ccf16a23-4222-1abe-d8f0-93a782b5b449": 1275,
+    "066f6d01-4940-606a-70f6-e78fb20f5d2d": 1275,
+    "1fe051aa-40e9-3ff6-585a-e384f0197224": 1275,
+    "ef67d6cb-4f7f-28ce-2973-cf90a97ae54d": 2550,
+    "96f0973a-43fd-db33-2c17-a7a4e1cf3461": 325,
+    "fdfc3887-4522-02d5-ae1e-be9170758667": 475,
+    "49288113-4c45-8c18-3862-1f8cee403408": 375,
+    "ee9aebf4-4cc7-8fe8-022b-1c8f50500e7b": 325,
+    "59d61899-4573-65ea-0e42-2ea6d324d32b": 2175,
+    "aeb0ea2e-4f50-6b34-27b0-f2a755d27f6a": 2175,
+    "b0d5c4da-4d81-4386-e841-759818ce9b6c": 2175,
+    "ade427fc-4b24-f290-c91a-b1904b787f42": 2175,
+    "96fe45cd-448d-890f-f3f6-86b25516c1a0": 4350,
     "f9cfa034-c7e1-4995-904c-1a296e7b1760": 1600,
     "da0edbc8-31fb-468e-95a8-27ac25cd76ed": 2800,
     "a61e8526-bb1f-4135-b7df-95e67b416efe": 4800,
-    "timestamp": 1661481220220
+    "timestamp": 1663730314970
   },
   "bundles": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "ed453815-44aa-4c4d-f3aa-77b4bcf048d7": {
       "uuid": "ed453815-44aa-4c4d-f3aa-77b4bcf048d7",
       "name": "RGX 11z Pro",
@@ -3830,6 +3907,13 @@
       "description": null,
       "icon": "https://media.valorant-api.com/bundles/05e8add9-404d-5d37-8973-9f93f8880e2d/displayicon2.png"
     },
+    "a5da7b5a-49a4-8fa9-a1c6-01a9aced0f9f": {
+      "uuid": "a5da7b5a-49a4-8fa9-a1c6-01a9aced0f9f",
+      "name": "ChronoVoid",
+      "subName": null,
+      "description": null,
+      "icon": "https://media.valorant-api.com/bundles/a5da7b5a-49a4-8fa9-a1c6-01a9aced0f9f/displayicon2.png"
+    },
     "526f7d0c-414b-24bb-bcd0-10aed1f3e824": {
       "uuid": "526f7d0c-414b-24bb-bcd0-10aed1f3e824",
       "name": "Prelude to Chaos",
@@ -3934,6 +4018,13 @@
       "subName": null,
       "description": null,
       "icon": "https://media.valorant-api.com/bundles/ae0c9cc4-4c03-f8d6-745c-84953db684fc/displayicon2.png"
+    },
+    "31827d9c-4ccb-8687-a5c1-69991ad1ec98": {
+      "uuid": "31827d9c-4ccb-8687-a5c1-69991ad1ec98",
+      "name": "Kohaku & Matsuba",
+      "subName": null,
+      "description": null,
+      "icon": "https://media.valorant-api.com/bundles/31827d9c-4ccb-8687-a5c1-69991ad1ec98/displayicon2.png"
     },
     "adec612c-4c82-a4b2-a5f2-b7909e638a67": {
       "uuid": "adec612c-4c82-a4b2-a5f2-b7909e638a67",
@@ -4168,7 +4259,7 @@
     }
   },
   "rarities": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "0cebb8be-46d7-c12a-d306-e9907bfc5a25": {
       "uuid": "0cebb8be-46d7-c12a-d306-e9907bfc5a25",
       "name": "Deluxe",
@@ -4196,7 +4287,7 @@
     }
   },
   "buddies": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "6c3b1a9e-4067-7ed6-fc6c-fea61e0a057c": {
       "uuid": "6c3b1a9e-4067-7ed6-fc6c-fea61e0a057c",
       "name": "Task Force 809 Buddy",
@@ -4552,6 +4643,11 @@
       "name": "Champions 2022 Dad Hat Buddy",
       "icon": "https://media.valorant-api.com/buddylevels/68dab3e8-4bd0-f504-f1c6-a0a307634264/displayicon.png"
     },
+    "fdfc3887-4522-02d5-ae1e-be9170758667": {
+      "uuid": "fdfc3887-4522-02d5-ae1e-be9170758667",
+      "name": "ChronoVoid Buddy",
+      "icon": "https://media.valorant-api.com/buddylevels/fdfc3887-4522-02d5-ae1e-be9170758667/displayicon.png"
+    },
     "35608d62-4f08-dc80-7211-ce94ec8b7508": {
       "uuid": "35608d62-4f08-dc80-7211-ce94ec8b7508",
       "name": "Dalgona Coffee Buddy",
@@ -4777,6 +4873,11 @@
       "name": "White Hat Buddy",
       "icon": "https://media.valorant-api.com/buddylevels/abd3d1c7-42b6-46fc-35d2-ac9cf1f33607/displayicon.png"
     },
+    "699b5264-46c0-d474-3f44-7fa3e62bde94": {
+      "uuid": "699b5264-46c0-d474-3f44-7fa3e62bde94",
+      "name": "Ready to Roll Buddy",
+      "icon": "https://media.valorant-api.com/buddylevels/699b5264-46c0-d474-3f44-7fa3e62bde94/displayicon.png"
+    },
     "d606df6a-4f8a-1273-083a-5b925a178e36": {
       "uuid": "d606df6a-4f8a-1273-083a-5b925a178e36",
       "name": "Safe Haven Buddy",
@@ -4871,6 +4972,11 @@
       "uuid": "abd1acb2-45ca-67a2-328e-b9afc833240a",
       "name": "Perfect Pattern Buddy",
       "icon": "https://media.valorant-api.com/buddylevels/abd1acb2-45ca-67a2-328e-b9afc833240a/displayicon.png"
+    },
+    "98442884-4d6e-65d8-3295-69bde3315d92": {
+      "uuid": "98442884-4d6e-65d8-3295-69bde3315d92",
+      "name": "Kohaku & Matsuba Buddy",
+      "icon": "https://media.valorant-api.com/buddylevels/98442884-4d6e-65d8-3295-69bde3315d92/displayicon.png"
     },
     "fdc908cf-493d-4b1d-bdbd-0da7e7525520": {
       "uuid": "fdc908cf-493d-4b1d-bdbd-0da7e7525520",
@@ -5524,7 +5630,7 @@
     }
   },
   "sprays": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "3d2bcfc5-442b-812e-3c08-9180d6b36077": {
       "uuid": "3d2bcfc5-442b-812e-3c08-9180d6b36077",
       "name": "Caught on Camera Spray",
@@ -5739,6 +5845,11 @@
       "uuid": "25d82d17-4739-e206-e8aa-d1bd4fd4dae6",
       "name": "Explorgi Spray",
       "icon": "https://media.valorant-api.com/sprays/25d82d17-4739-e206-e8aa-d1bd4fd4dae6/fulltransparenticon.png"
+    },
+    "ee9aebf4-4cc7-8fe8-022b-1c8f50500e7b": {
+      "uuid": "ee9aebf4-4cc7-8fe8-022b-1c8f50500e7b",
+      "name": "ChronoVoid Spray",
+      "icon": "https://media.valorant-api.com/sprays/ee9aebf4-4cc7-8fe8-022b-1c8f50500e7b/fulltransparenticon.png"
     },
     "32570250-4795-981d-bda7-34963aa042f9": {
       "uuid": "32570250-4795-981d-bda7-34963aa042f9",
@@ -6785,6 +6896,16 @@
       "name": "Don't Cross Me Spray",
       "icon": "https://media.valorant-api.com/sprays/0a20236d-47d4-e9e6-adb1-a69ed3fdb1cd/fulltransparenticon.png"
     },
+    "96f0973a-43fd-db33-2c17-a7a4e1cf3461": {
+      "uuid": "96f0973a-43fd-db33-2c17-a7a4e1cf3461",
+      "name": "Matsuba Spray",
+      "icon": "https://media.valorant-api.com/sprays/96f0973a-43fd-db33-2c17-a7a4e1cf3461/fulltransparenticon.png"
+    },
+    "1e7cdd34-476c-00ee-4169-87a643709e3d": {
+      "uuid": "1e7cdd34-476c-00ee-4169-87a643709e3d",
+      "name": "Kohaku Spray",
+      "icon": "https://media.valorant-api.com/sprays/1e7cdd34-476c-00ee-4169-87a643709e3d/fulltransparenticon.png"
+    },
     "9c65bbe6-41da-c50c-be81-839214eede7c": {
       "uuid": "9c65bbe6-41da-c50c-be81-839214eede7c",
       "name": "Lights Out Spray",
@@ -7217,7 +7338,7 @@
     }
   },
   "cards": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "33c1f011-4eca-068c-9751-f68c788b2eee": {
       "uuid": "33c1f011-4eca-068c-9751-f68c788b2eee",
       "name": "The Way Forward Card",
@@ -9324,6 +9445,15 @@
         "large": "https://media.valorant-api.com/playercards/f904b709-44d1-71d6-8288-fc9c968979d9/largeart.png"
       }
     },
+    "49288113-4c45-8c18-3862-1f8cee403408": {
+      "uuid": "49288113-4c45-8c18-3862-1f8cee403408",
+      "name": "ChronoVoid Card",
+      "icons": {
+        "small": "https://media.valorant-api.com/playercards/49288113-4c45-8c18-3862-1f8cee403408/smallart.png",
+        "wide": "https://media.valorant-api.com/playercards/49288113-4c45-8c18-3862-1f8cee403408/wideart.png",
+        "large": "https://media.valorant-api.com/playercards/49288113-4c45-8c18-3862-1f8cee403408/largeart.png"
+      }
+    },
     "c87737f8-44bc-1b71-8424-c18d9cd6336a": {
       "uuid": "c87737f8-44bc-1b71-8424-c18d9cd6336a",
       "name": "Champions 2022 Hero Card",
@@ -9801,6 +9931,15 @@
         "large": "https://media.valorant-api.com/playercards/d1f2aae0-4819-2e0e-8b15-61990259a9e3/largeart.png"
       }
     },
+    "38defae8-4b79-f5cc-09c1-ceb5e109c4c9": {
+      "uuid": "38defae8-4b79-f5cc-09c1-ceb5e109c4c9",
+      "name": "Kohaku & Matsuba Card",
+      "icons": {
+        "small": "https://media.valorant-api.com/playercards/38defae8-4b79-f5cc-09c1-ceb5e109c4c9/smallart.png",
+        "wide": "https://media.valorant-api.com/playercards/38defae8-4b79-f5cc-09c1-ceb5e109c4c9/wideart.png",
+        "large": "https://media.valorant-api.com/playercards/38defae8-4b79-f5cc-09c1-ceb5e109c4c9/largeart.png"
+      }
+    },
     "d33681d4-4168-0107-2b07-a19c57b96e96": {
       "uuid": "d33681d4-4168-0107-2b07-a19c57b96e96",
       "name": "Nunca Olvidados Card",
@@ -10010,7 +10149,7 @@
     }
   },
   "titles": {
-    "version": "091B3A5E121BF01E",
+    "version": "56592F01486158C4",
     "48d870a2-4493-ebf8-7d6f-979be914dc43": {
       "uuid": "48d870a2-4493-ebf8-7d6f-979be914dc43",
       "name": "Fortune Title",

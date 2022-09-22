@@ -26,7 +26,7 @@ const minumumSaveInterval = 10000;
 // Whether or not the whitelist is saved
 var saved = true;
 
-var tokenFile = require('./TokenFile.json');
+var tokenFile = require('./config.json');
 const prefix = '<';
 
 var whiteListedApps = require("./whitelist.json");

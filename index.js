@@ -1,15 +1,6 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-//const express = require('express');
-//const app = express();
-//const port = 3000;
-//app.get('/', (req, res) => res.send('Hello World!'));
-
-//app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
-
-
-
 
 const {Discord,Intents,Client, Activity} = require('discord.js');
 const jsonfile = require('jsonfile');

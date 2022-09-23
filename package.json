@@ -8,7 +8,8 @@
     "npm": "7.21.1"
   },
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "build": ""
   },
   "author": "sugoides",
   "license": "ISC",

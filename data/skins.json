@@ -1,8 +1,8 @@
 {
   "formatVersion": 3,
-  "gameVersion": "56592F01486158C4",
+  "gameVersion": "34E8544257E203A0",
   "skins": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "89baf0f4-4648-69fc-f0af-2fbc69b97b80": {
       "uuid": "89baf0f4-4648-69fc-f0af-2fbc69b97b80",
       "name": "Xenohunter Odin",
@@ -56,6 +56,12 @@
       "name": "Sensation Odin",
       "icon": "https://media.valorant-api.com/weaponskinlevels/1bfea917-4262-37ba-3a76-04b937f2d0be/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "a89584fb-451d-fcce-0176-3bbaa6764a2e": {
+      "uuid": "a89584fb-451d-fcce-0176-3bbaa6764a2e",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/a89584fb-451d-fcce-0176-3bbaa6764a2e/displayicon.png",
+      "rarity": null
     },
     "162beb92-4ab7-4383-da51-4b94ba90bd5d": {
       "uuid": "162beb92-4ab7-4383-da51-4b94ba90bd5d",
@@ -224,6 +230,12 @@
       "name": "Premiere Collision Ares",
       "icon": "https://media.valorant-api.com/weaponskinlevels/7090c9c1-454e-6f83-1b4d-7b961b55cf01/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "e507b35c-4a86-0663-0259-8da5f286d41c": {
+      "uuid": "e507b35c-4a86-0663-0259-8da5f286d41c",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/e507b35c-4a86-0663-0259-8da5f286d41c/displayicon.png",
+      "rarity": null
     },
     "9fbe39c6-42d7-b1db-9048-f0951ce2ff94": {
       "uuid": "9fbe39c6-42d7-b1db-9048-f0951ce2ff94",
@@ -429,11 +441,23 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/9d501eec-4084-5d44-32ef-6e8ed5b0ed49/displayicon.png",
       "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
     },
+    "aae492eb-4d6d-097d-1d47-4fa31ced9751": {
+      "uuid": "aae492eb-4d6d-097d-1d47-4fa31ced9751",
+      "name": "Crimsonbeast Vandal",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/aae492eb-4d6d-097d-1d47-4fa31ced9751/displayicon.png",
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+    },
     "f4bfff96-487a-cf9e-08cc-d590d962c4e6": {
       "uuid": "f4bfff96-487a-cf9e-08cc-d590d962c4e6",
       "name": "Sensation Vandal",
       "icon": "https://media.valorant-api.com/weaponskinlevels/f4bfff96-487a-cf9e-08cc-d590d962c4e6/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "b5f4ed55-4e7f-f561-b365-5397f9e5890b": {
+      "uuid": "b5f4ed55-4e7f-f561-b365-5397f9e5890b",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/b5f4ed55-4e7f-f561-b365-5397f9e5890b/displayicon.png",
+      "rarity": null
     },
     "3aeef60b-48fb-02aa-31b1-068aeb351213": {
       "uuid": "3aeef60b-48fb-02aa-31b1-068aeb351213",
@@ -620,6 +644,12 @@
       "name": "Premiere Collision Bulldog",
       "icon": "https://media.valorant-api.com/weaponskinlevels/94eda9e6-47cf-a0dc-a1f9-03a41f50e5d3/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "fb79c688-4a07-6f3f-7c1a-948b5b399a3f": {
+      "uuid": "fb79c688-4a07-6f3f-7c1a-948b5b399a3f",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/fb79c688-4a07-6f3f-7c1a-948b5b399a3f/displayicon.png",
+      "rarity": null
     },
     "5fc3c5e8-470e-7683-b594-6580d5e3d624": {
       "uuid": "5fc3c5e8-470e-7683-b594-6580d5e3d624",
@@ -873,6 +903,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/a7cf8684-41a0-3dd4-e30c-6f9b4b34e635/displayicon.png",
       "rarity": "411e4a55-4e59-7757-41f0-86a53f101bb5"
     },
+    "4728dfee-4879-381c-1db1-89b839cbd3d4": {
+      "uuid": "4728dfee-4879-381c-1db1-89b839cbd3d4",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/4728dfee-4879-381c-1db1-89b839cbd3d4/displayicon.png",
+      "rarity": null
+    },
     "1452386a-47ab-bd8a-775d-9194020ca52d": {
       "uuid": "1452386a-47ab-bd8a-775d-9194020ca52d",
       "name": "Lightwave Phantom",
@@ -1041,6 +1077,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/fe644484-4d07-5472-9e4a-d3992f2f2ecb/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
+    "8c02ea4f-45ce-76ba-9ea6-198156deb9eb": {
+      "uuid": "8c02ea4f-45ce-76ba-9ea6-198156deb9eb",
+      "name": "Crimsonbeast Judge",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/8c02ea4f-45ce-76ba-9ea6-198156deb9eb/displayicon.png",
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+    },
     "3c23fdc3-4300-ec78-5123-bcb0dc456473": {
       "uuid": "3c23fdc3-4300-ec78-5123-bcb0dc456473",
       "name": "POLYfox Judge",
@@ -1064,6 +1106,12 @@
       "name": "Sensation Judge",
       "icon": "https://media.valorant-api.com/weaponskinlevels/65ed014b-4279-8ba5-01d3-f48d4e7f115c/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "69dd1d46-422b-ec24-6dc1-fb848d445ef4": {
+      "uuid": "69dd1d46-422b-ec24-6dc1-fb848d445ef4",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/69dd1d46-422b-ec24-6dc1-fb848d445ef4/displayicon.png",
+      "rarity": null
     },
     "e1b5cdca-4df5-5c4e-f34a-3cbdd3fd8735": {
       "uuid": "e1b5cdca-4df5-5c4e-f34a-3cbdd3fd8735",
@@ -1202,6 +1250,12 @@
       "name": "Artisan Bucky",
       "icon": "https://media.valorant-api.com/weaponskinlevels/5466bacf-446b-52a1-611d-339f6f376d40/displayicon.png",
       "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
+    },
+    "e5c6d130-4226-cdac-8d03-1b97e907b8f9": {
+      "uuid": "e5c6d130-4226-cdac-8d03-1b97e907b8f9",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/e5c6d130-4226-cdac-8d03-1b97e907b8f9/displayicon.png",
+      "rarity": null
     },
     "22c0aaa3-4919-5a7b-90c0-2dacafdc32fe": {
       "uuid": "22c0aaa3-4919-5a7b-90c0-2dacafdc32fe",
@@ -1376,6 +1430,12 @@
       "name": "Sensation Frenzy",
       "icon": "https://media.valorant-api.com/weaponskinlevels/5a773352-456e-ef0b-35ab-c99ead159264/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "dbf01b61-4639-696a-d17b-0b85c4e3feec": {
+      "uuid": "dbf01b61-4639-696a-d17b-0b85c4e3feec",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/dbf01b61-4639-696a-d17b-0b85c4e3feec/displayicon.png",
+      "rarity": null
     },
     "fe7ac291-4516-02d4-9101-0a990615a585": {
       "uuid": "fe7ac291-4516-02d4-9101-0a990615a585",
@@ -1557,6 +1617,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/8bd8c44c-4c30-947a-5531-a0b823d574ea/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
+    "1b9b82e2-4352-e339-f0f8-7d96d16b48e0": {
+      "uuid": "1b9b82e2-4352-e339-f0f8-7d96d16b48e0",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/1b9b82e2-4352-e339-f0f8-7d96d16b48e0/displayicon.png",
+      "rarity": null
+    },
     "f35f6e13-4b7b-da38-c0de-5c91fffd584b": {
       "uuid": "f35f6e13-4b7b-da38-c0de-5c91fffd584b",
       "name": "Gravitational Uranium Neuroblaster Classic",
@@ -1694,6 +1760,12 @@
       "name": "Jigsaw Ghost",
       "icon": "https://media.valorant-api.com/weaponskinlevels/d0793c86-471d-c60c-b0da-bcbadcd8bf12/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "7afbe865-4832-941b-049b-1397bd90d4d8": {
+      "uuid": "7afbe865-4832-941b-049b-1397bd90d4d8",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/7afbe865-4832-941b-049b-1397bd90d4d8/displayicon.png",
+      "rarity": null
     },
     "55aaa4ee-4d64-51c7-3c09-fd9bcbe1d122": {
       "uuid": "55aaa4ee-4d64-51c7-3c09-fd9bcbe1d122",
@@ -1851,6 +1923,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/9dbc52e2-4889-cbe5-b874-4f8f0f8f3781/displayicon.png",
       "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
     },
+    "72586d88-46c4-1532-7507-d6bb5c2d201c": {
+      "uuid": "72586d88-46c4-1532-7507-d6bb5c2d201c",
+      "name": "Crimsonbeast Sheriff",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/72586d88-46c4-1532-7507-d6bb5c2d201c/displayicon.png",
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+    },
     "2b555f97-46bb-5949-3531-979f5bc817f0": {
       "uuid": "2b555f97-46bb-5949-3531-979f5bc817f0",
       "name": "Ion Sheriff",
@@ -1874,6 +1952,12 @@
       "name": "Protocol 781-A Sheriff",
       "icon": "https://media.valorant-api.com/weaponskinlevels/12831559-44ee-c708-b97c-29a43938e3cd/displayicon.png",
       "rarity": "411e4a55-4e59-7757-41f0-86a53f101bb5"
+    },
+    "94d0ca9c-444b-f762-17a5-908ef1418bc3": {
+      "uuid": "94d0ca9c-444b-f762-17a5-908ef1418bc3",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/94d0ca9c-444b-f762-17a5-908ef1418bc3/displayicon.png",
+      "rarity": null
     },
     "dd024421-4c2a-7126-b58e-fea865a45aa9": {
       "uuid": "dd024421-4c2a-7126-b58e-fea865a45aa9",
@@ -2036,6 +2120,12 @@
       "name": "Hue Shift Shorty",
       "icon": "https://media.valorant-api.com/weaponskinlevels/31629ef7-47ac-908e-369b-16beabc02c5b/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "6afa5e36-4a90-7a2c-30b7-23be5ba2588b": {
+      "uuid": "6afa5e36-4a90-7a2c-30b7-23be5ba2588b",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/6afa5e36-4a90-7a2c-30b7-23be5ba2588b/displayicon.png",
+      "rarity": null
     },
     "a7f92a1c-4465-5ea3-7745-bd876117f4a7": {
       "uuid": "a7f92a1c-4465-5ea3-7745-bd876117f4a7",
@@ -2210,6 +2300,12 @@
       "name": "Ion Operator",
       "icon": "https://media.valorant-api.com/weaponskinlevels/24c73c29-443c-2440-d6db-838086f2451a/displayicon.png",
       "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+    },
+    "d0ef50dc-4a62-1ac1-a276-1f8d1b47a7b0": {
+      "uuid": "d0ef50dc-4a62-1ac1-a276-1f8d1b47a7b0",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/d0ef50dc-4a62-1ac1-a276-1f8d1b47a7b0/displayicon.png",
+      "rarity": null
     },
     "4aa31563-44e1-0d9f-f95a-a1b9965ad762": {
       "uuid": "4aa31563-44e1-0d9f-f95a-a1b9965ad762",
@@ -2391,6 +2487,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/cf06c0d6-4c0c-1e8a-0553-999a45a53ae1/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
+    "76587a8a-4622-2e70-aafd-ea960b06a98d": {
+      "uuid": "76587a8a-4622-2e70-aafd-ea960b06a98d",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/76587a8a-4622-2e70-aafd-ea960b06a98d/displayicon.png",
+      "rarity": null
+    },
     "c9f0ea7f-4bed-b10e-62d2-0394444feed1": {
       "uuid": "c9f0ea7f-4bed-b10e-62d2-0394444feed1",
       "name": "Reaver Guardian",
@@ -2499,6 +2601,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/50265ad5-4f14-2b32-924e-02bbed2bea6f/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
     },
+    "57a31c23-4742-9bef-740e-c998061d720b": {
+      "uuid": "57a31c23-4742-9bef-740e-c998061d720b",
+      "name": "Crimsonbeast Marshal",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/57a31c23-4742-9bef-740e-c998061d720b/displayicon.png",
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+    },
     "f1b4577e-4dd3-6573-472c-a68cfe695d60": {
       "uuid": "f1b4577e-4dd3-6573-472c-a68cfe695d60",
       "name": "POLYfrog Marshal",
@@ -2522,6 +2630,12 @@
       "name": "Premiere Collision Marshal",
       "icon": "https://media.valorant-api.com/weaponskinlevels/c7d5f553-4239-7124-3932-6a83a019d527/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "04b64c56-4a51-88d1-419e-9c91fcdff626": {
+      "uuid": "04b64c56-4a51-88d1-419e-9c91fcdff626",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/04b64c56-4a51-88d1-419e-9c91fcdff626/displayicon.png",
+      "rarity": null
     },
     "c5dd6298-4928-5d64-5cd0-7fa41ea89d81": {
       "uuid": "c5dd6298-4928-5d64-5cd0-7fa41ea89d81",
@@ -2709,6 +2823,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/5eb7515f-40a1-2f15-de03-c9a024664737/displayicon.png",
       "rarity": "411e4a55-4e59-7757-41f0-86a53f101bb5"
     },
+    "3f14aff8-480e-335a-974f-2ba1817de303": {
+      "uuid": "3f14aff8-480e-335a-974f-2ba1817de303",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/3f14aff8-480e-335a-974f-2ba1817de303/displayicon.png",
+      "rarity": null
+    },
     "8a1b2c5b-4692-78ae-9d5c-cdac6a61e4f4": {
       "uuid": "8a1b2c5b-4692-78ae-9d5c-cdac6a61e4f4",
       "name": "Gravitational Uranium Neuroblaster Spectre",
@@ -2840,6 +2960,12 @@
       "name": "Sensation Stinger",
       "icon": "https://media.valorant-api.com/weaponskinlevels/fed9c3f3-40a5-da67-4ac9-4683cc5a0eba/displayicon.png",
       "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+    },
+    "caea8844-4603-951f-c458-25a04a778bf8": {
+      "uuid": "caea8844-4603-951f-c458-25a04a778bf8",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/caea8844-4603-951f-c458-25a04a778bf8/displayicon.png",
+      "rarity": null
     },
     "e2c84381-4fa6-29b4-37b9-21bba8ae24bf": {
       "uuid": "e2c84381-4fa6-29b4-37b9-21bba8ae24bf",
@@ -3171,6 +3297,12 @@
       "icon": "https://media.valorant-api.com/weaponskinlevels/d6e93360-46a2-0103-afa0-8b91e78b6fe8/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
     },
+    "5a27fbea-4f1d-62f9-8e5f-f494b4f0d322": {
+      "uuid": "5a27fbea-4f1d-62f9-8e5f-f494b4f0d322",
+      "name": "Crimsonbeast Hammer",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/5a27fbea-4f1d-62f9-8e5f-f494b4f0d322/displayicon.png",
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
     "a080b538-4593-b092-d29c-04b80e6e983f": {
       "uuid": "a080b538-4593-b092-d29c-04b80e6e983f",
       "name": "Genesis Arc",
@@ -3200,6 +3332,12 @@
       "name": "Personal Administrative Melee Unit",
       "icon": "https://media.valorant-api.com/weaponskinlevels/47897cd1-49e2-da3f-4a8f-b6a1e84b0dd0/displayicon.png",
       "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+    },
+    "059c9307-4d19-00f3-c0e5-49b8bc66bd40": {
+      "uuid": "059c9307-4d19-00f3-c0e5-49b8bc66bd40",
+      "name": "Random Favorite Skin",
+      "icon": "https://media.valorant-api.com/weaponskinlevels/059c9307-4d19-00f3-c0e5-49b8bc66bd40/displayicon.png",
+      "rarity": null
     },
     "3710f62c-4e0c-65fd-848d-8da25d2fb833": {
       "uuid": "3710f62c-4e0c-65fd-848d-8da25d2fb833",
@@ -3287,7 +3425,7 @@
     }
   },
   "prices": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "4845a7ab-4120-ae1c-aec1-9e915a7424b1": 1275,
     "61f62d77-4f80-7664-2ea9-538f6fc4b241": 875,
     "c59442a5-4b74-792c-d996-71a5fb340625": 875,
@@ -3752,11 +3890,6 @@
     "a6fe7710-4edc-5e23-223d-aeaef3d17866": 1775,
     "0a0237d3-4d57-0ed2-ab65-c898a7bc755b": 1775,
     "5ac106cd-45ef-a26f-2058-f382f20c64db": 4350,
-    "4d5b9a70-4d4b-1295-4195-dcab8cc1de81": 475,
-    "8d3a3c3b-44fc-0257-4f3e-e894340eb40a": 375,
-    "cd785f82-41a2-f7b4-0f17-e69b0fe5beb3": 325,
-    "524b0c42-47da-e7ca-dc04-85ba285b2e71": 2675,
-    "ba0abff4-41e4-4036-980d-90a55837b692": 5350,
     "98442884-4d6e-65d8-3295-69bde3315d92": 475,
     "38defae8-4b79-f5cc-09c1-ceb5e109c4c9": 375,
     "1e7cdd34-476c-00ee-4169-87a643709e3d": 325,
@@ -3774,13 +3907,20 @@
     "b0d5c4da-4d81-4386-e841-759818ce9b6c": 2175,
     "ade427fc-4b24-f290-c91a-b1904b787f42": 2175,
     "96fe45cd-448d-890f-f3f6-86b25516c1a0": 4350,
+    "5bf1e174-49b0-8cb9-69d8-59979ba919ce": 375,
+    "13aa2012-4149-e57a-b21d-a8a795cdb131": 325,
+    "aae492eb-4d6d-097d-1d47-4fa31ced9751": 1775,
+    "8c02ea4f-45ce-76ba-9ea6-198156deb9eb": 1775,
+    "72586d88-46c4-1532-7507-d6bb5c2d201c": 1775,
+    "57a31c23-4742-9bef-740e-c998061d720b": 1775,
+    "5a27fbea-4f1d-62f9-8e5f-f494b4f0d322": 3550,
     "f9cfa034-c7e1-4995-904c-1a296e7b1760": 1600,
     "da0edbc8-31fb-468e-95a8-27ac25cd76ed": 2800,
     "a61e8526-bb1f-4135-b7df-95e67b416efe": 4800,
-    "timestamp": 1663823917879
+    "timestamp": 1665477409843
   },
   "bundles": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "ed453815-44aa-4c4d-f3aa-77b4bcf048d7": {
       "uuid": "ed453815-44aa-4c4d-f3aa-77b4bcf048d7",
       "name": "RGX 11z Pro",
@@ -4089,6 +4229,13 @@
       "description": null,
       "icon": "https://media.valorant-api.com/bundles/3aaeac8c-469f-bf29-7802-a09cc8729a3e/displayicon2.png"
     },
+    "bd4f586d-469c-731d-5018-19835db2b086": {
+      "uuid": "bd4f586d-469c-731d-5018-19835db2b086",
+      "name": "Crimsonbeast",
+      "subName": null,
+      "description": null,
+      "icon": "https://media.valorant-api.com/bundles/bd4f586d-469c-731d-5018-19835db2b086/displayicon2.png"
+    },
     "693d675e-4ed2-c00a-5e38-6b859b275565": {
       "uuid": "693d675e-4ed2-c00a-5e38-6b859b275565",
       "name": "Ion",
@@ -4259,7 +4406,7 @@
     }
   },
   "rarities": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "0cebb8be-46d7-c12a-d306-e9907bfc5a25": {
       "uuid": "0cebb8be-46d7-c12a-d306-e9907bfc5a25",
       "name": "Deluxe",
@@ -4287,7 +4434,7 @@
     }
   },
   "buddies": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "6c3b1a9e-4067-7ed6-fc6c-fea61e0a057c": {
       "uuid": "6c3b1a9e-4067-7ed6-fc6c-fea61e0a057c",
       "name": "Task Force 809 Buddy",
@@ -5493,6 +5640,11 @@
       "name": "Sock of Cheer Buddy",
       "icon": "https://media.valorant-api.com/buddylevels/0da068f3-4742-b0b6-5c63-aeac0fcf983f/displayicon.png"
     },
+    "8648a41f-4ce8-92af-c6ce-3fbe4a93fba1": {
+      "uuid": "8648a41f-4ce8-92af-c6ce-3fbe4a93fba1",
+      "name": "Riptide Buddy",
+      "icon": "https://media.valorant-api.com/buddylevels/8648a41f-4ce8-92af-c6ce-3fbe4a93fba1/displayicon.png"
+    },
     "e88f43b7-4b9a-1050-c1e7-d883a8f706f2": {
       "uuid": "e88f43b7-4b9a-1050-c1e7-d883a8f706f2",
       "name": "Cheesed Buddy",
@@ -5630,7 +5782,7 @@
     }
   },
   "sprays": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "3d2bcfc5-442b-812e-3c08-9180d6b36077": {
       "uuid": "3d2bcfc5-442b-812e-3c08-9180d6b36077",
       "name": "Caught on Camera Spray",
@@ -6946,6 +7098,11 @@
       "name": "Just Business Spray",
       "icon": "https://media.valorant-api.com/sprays/40cc1645-43f4-4db3-ebb2-fdb46f8e9bf3/fulltransparenticon.png"
     },
+    "166a3fb6-492c-9437-417d-b8852128f73c": {
+      "uuid": "166a3fb6-492c-9437-417d-b8852128f73c",
+      "name": "Sic' Em Spray",
+      "icon": "https://media.valorant-api.com/sprays/166a3fb6-492c-9437-417d-b8852128f73c/fulltransparenticon.png"
+    },
     "8f7ef66d-49f2-867f-2ff8-1391a23c89d0": {
       "uuid": "8f7ef66d-49f2-867f-2ff8-1391a23c89d0",
       "name": "Give Back Spray",
@@ -6956,6 +7113,11 @@
       "name": "Ego or Eco Spray",
       "icon": "https://media.valorant-api.com/sprays/5a328cd4-4cb5-4e64-60c2-6487281390ff/displayicon.png"
     },
+    "6aff01b3-443c-d98c-820e-05852efc075f": {
+      "uuid": "6aff01b3-443c-d98c-820e-05852efc075f",
+      "name": "Shreddy Teddy Spray",
+      "icon": "https://media.valorant-api.com/sprays/6aff01b3-443c-d98c-820e-05852efc075f/fulltransparenticon.png"
+    },
     "2d9be381-4686-b392-310e-8bb2a6707f7e": {
       "uuid": "2d9be381-4686-b392-310e-8bb2a6707f7e",
       "name": "Pity Party Spray",
@@ -6965,6 +7127,11 @@
       "uuid": "7c3771b2-4ea7-9188-bfd4-c08feeca3984",
       "name": "Tag! You're Dead! Spray",
       "icon": "https://media.valorant-api.com/sprays/7c3771b2-4ea7-9188-bfd4-c08feeca3984/fulltransparenticon.png"
+    },
+    "13aa2012-4149-e57a-b21d-a8a795cdb131": {
+      "uuid": "13aa2012-4149-e57a-b21d-a8a795cdb131",
+      "name": "Crimsonbeast Spray",
+      "icon": "https://media.valorant-api.com/sprays/13aa2012-4149-e57a-b21d-a8a795cdb131/fulltransparenticon.png"
     },
     "63ce8a2b-40c9-f8c7-e15d-77b6e310dfbe": {
       "uuid": "63ce8a2b-40c9-f8c7-e15d-77b6e310dfbe",
@@ -7338,7 +7505,7 @@
     }
   },
   "cards": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "33c1f011-4eca-068c-9751-f68c788b2eee": {
       "uuid": "33c1f011-4eca-068c-9751-f68c788b2eee",
       "name": "The Way Forward Card",
@@ -9445,6 +9612,15 @@
         "large": "https://media.valorant-api.com/playercards/f904b709-44d1-71d6-8288-fc9c968979d9/largeart.png"
       }
     },
+    "bcf9cff4-4163-a536-458d-22b8904876ad": {
+      "uuid": "bcf9cff4-4163-a536-458d-22b8904876ad",
+      "name": "The Calm Card",
+      "icons": {
+        "small": "https://media.valorant-api.com/playercards/bcf9cff4-4163-a536-458d-22b8904876ad/smallart.png",
+        "wide": "https://media.valorant-api.com/playercards/bcf9cff4-4163-a536-458d-22b8904876ad/wideart.png",
+        "large": "https://media.valorant-api.com/playercards/bcf9cff4-4163-a536-458d-22b8904876ad/largeart.png"
+      }
+    },
     "49288113-4c45-8c18-3862-1f8cee403408": {
       "uuid": "49288113-4c45-8c18-3862-1f8cee403408",
       "name": "ChronoVoid Card",
@@ -9985,6 +10161,15 @@
         "large": "https://media.valorant-api.com/playercards/1d0fe8d7-42dd-6f77-50b0-798d1ff90bef/largeart.png"
       }
     },
+    "5bf1e174-49b0-8cb9-69d8-59979ba919ce": {
+      "uuid": "5bf1e174-49b0-8cb9-69d8-59979ba919ce",
+      "name": "Crimsonbeast Card",
+      "icons": {
+        "small": "https://media.valorant-api.com/playercards/5bf1e174-49b0-8cb9-69d8-59979ba919ce/smallart.png",
+        "wide": "https://media.valorant-api.com/playercards/5bf1e174-49b0-8cb9-69d8-59979ba919ce/wideart.png",
+        "large": "https://media.valorant-api.com/playercards/5bf1e174-49b0-8cb9-69d8-59979ba919ce/largeart.png"
+      }
+    },
     "5ff3a862-4e89-84dd-6e47-bda2cd2a5cec": {
       "uuid": "5ff3a862-4e89-84dd-6e47-bda2cd2a5cec",
       "name": "Ion Card",
@@ -10149,7 +10334,7 @@
     }
   },
   "titles": {
-    "version": "56592F01486158C4",
+    "version": "34E8544257E203A0",
     "48d870a2-4493-ebf8-7d6f-979be914dc43": {
       "uuid": "48d870a2-4493-ebf8-7d6f-979be914dc43",
       "name": "Fortune Title",

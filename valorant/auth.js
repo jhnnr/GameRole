@@ -8,7 +8,7 @@ let users;
 export const loadUserData = async (filename="data/users.json") => {
     if(!users) try {
         if (!fs.existsSync("data")) fs.mkdirSync("data");
-        const userStore = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json')
+        const userStore = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW')
         var userjson = await userStore.json();
         if (userjson === null){
             var userjson = [];
@@ -25,7 +25,7 @@ export const loadUserData = async (filename="data/users.json") => {
 
 const saveUserData = () => {
     fs.writeFileSync("data/users.json", JSON.stringify(users, null, 2));
-    nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json', {
+    nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
@@ -56,7 +56,7 @@ export const authUser = async (id) => {
     return await refreshToken(id);
 }
 
-const userAgent = "RiotClient/43.0.1.4195386.4190634 rso-auth (Windows;10;;Professional, x64)";
+const userAgent = "RiotClient/51.0.0.4429735.4381201 rso-auth (Windows;10;;Professional, x64)";
 
 export const redeemUsernamePassword = async (id, login, password) => {
     const user = getUser(id) || {};

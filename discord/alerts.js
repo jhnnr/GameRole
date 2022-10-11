@@ -24,7 +24,7 @@ export const setClient = (theClient) => client = theClient;
 
 export const loadAlerts = async (filename="data/alerts.json") => {
     try {
-        const alertStore = await fetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/alerts.json')
+        const alertStore = await fetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/alerts.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW')
         var alertjson = await alertStore.json();
         if (alertjson === null){
             var alertjson = [];
@@ -41,7 +41,7 @@ const saveAlerts = (filename="data/alerts.json") => {
     fs.writeFileSync(filename, JSON.stringify(alerts, null, 2));
     
 
-    fetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/alerts.json', {
+    fetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/alerts.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'

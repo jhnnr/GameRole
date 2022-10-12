@@ -1,0 +1,19 @@
+{
+  "offers": {
+    "offers": [
+      "e63eab09-47e4-25be-6c9f-57995385429d",
+      "93266c2b-400f-da62-24a0-739f51d33cc1",
+      "23de6607-4647-bccd-8863-3da2720e4152",
+      "82db01d1-4192-167b-9f53-78ba374c39ac"
+    ],
+    "expires": 1665619199
+  },
+  "bundles": [
+    {
+      "uuid": "bd4f586d-469c-731d-5018-19835db2b086",
+      "expires": 1666097999
+    }
+  ],
+  "night_market": null,
+  "timestamp": 1665540048560
+}

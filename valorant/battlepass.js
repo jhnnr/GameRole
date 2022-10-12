@@ -1,15 +1,17 @@
-import { authUser, deleteUser, getUser } from "./auth.js";
-import {fetch, isMaintenance, userRegion} from "../misc/util.js";
-import { getValorantVersion } from "./cache.js";
 
-const CONTRACT_UUID = "d80f3ef5-44f5-8d70-6935-f2840b2d3882";
+import {authUser, deleteUserAuth, getUser} from "./auth.js";
+import {fetch, isMaintenance, userRegion} from "../misc/util.js";
+import {getBattlepassInfo, getBuddy, getCard, getSkin, getSpray, getValorantVersion} from "./cache.js";
+import {renderBattlepass} from "../discord/embed.js";
+import {getEntitlements} from "./inventory.js";
+import {l, s} from "../misc/languages.js";
+
 const AVERAGE_UNRATED_XP_CONSTANT = 4200;
 const SPIKERUSH_XP_CONSTANT = 1000;
 const LEVEL_MULTIPLIER = 750;
-const SEASON_END = 'June 22, 2022'; // TODO fetch season end from API, maybe store that date to reduce calls?
 
 const getWeeklies = async () => {
-    console.debug("Fetching mission data...");
+    console.log("Fetching mission data...");
 
     const req = await fetch("https://valorant-api.com/v1/missions");
     console.assert(req.statusCode === 200, `Valorant mission status code is ${req.statusCode}!`, req);
@@ -45,19 +47,88 @@ const calculate_level_xp = async (level) => {
     }
 }
 
-export const getBattlepassProgress = async (id, maxlevel) => {
+const getNextReward = async (interaction, CurrentTier) => {
+    if(CurrentTier === 55) return {
+        tier: 56,
+        rewardName: s(interaction).battlepass.FINISHED
+    };
+
+    const battlepassInfo = await getBattlepassInfo();
+    const chapters = battlepassInfo.chapters.flatMap(chapter => chapter.levels) // only premium items
+    const nextTier = chapters[CurrentTier];
+
+    const rewardType = nextTier.reward.type;
+    const rewardUUID = nextTier.reward.uuid;
+    const xpAmount = nextTier.xp;
+
+    switch(rewardType) {
+        case "EquippableSkinLevel": {
+            const skin = await getSkin(rewardUUID);
+            return {
+                tier: CurrentTier + 1,
+                rewardName: l(skin.names, interaction),
+                rewardIcon: skin.icon,
+                rewardType: rewardType,
+                XP: xpAmount
+            };
+        }
+        case "EquippableCharmLevel": {
+            const buddy = await getBuddy(rewardUUID)
+            return {
+                tier: CurrentTier + 1,
+                rewardName: l(buddy.names, interaction),
+                rewardIcon: buddy.icon,
+                rewardType: rewardType,
+                XP: xpAmount
+            };
+        }
+        case "Currency":
+            // Always 10 Radianite, no UUID and req needed, return Image Link and "Radianite"
+            return {
+                tier: CurrentTier + 1,
+                rewardName: s(interaction).info.RADIANITE,
+                rewardIcon: 'https://media.valorant-api.com/currencies/e59aa87c-4cbf-517a-5983-6e81511be9b7/displayicon.png',
+                rewardType: rewardType,
+                XP: xpAmount
+            };
+        case "PlayerCard": {
+            const card = await getCard(rewardUUID);
+            return {
+                tier: CurrentTier + 1,
+                rewardName: l(card.names, interaction),
+                rewardIcon: card.icons.small,
+                rewardType: rewardType,
+                XP: xpAmount
+            };
+        }
+        case "Spray": {
+            const spray = await getSpray(rewardUUID);
+            return {
+                tier: CurrentTier + 1,
+                rewardName: l(spray.names, interaction),
+                rewardIcon: spray.icon,
+                rewardType: rewardType,
+                XP: xpAmount
+            };
+        }
+    }
+}
+
+
+export const getBattlepassProgress = async (interaction, maxlevel) => {
+    const id = interaction.user.id;
     const authSuccess = await authUser(id);
     if (!authSuccess.success)
         return authSuccess;
 
     const user = getUser(id);
-    console.debug(`Fetching battlepass progress for ${user.username}...`);
+    console.log(`Fetching battlepass progress for ${user.username}...`);
 
     // https://github.com/techchrism/valorant-api-docs/blob/trunk/docs/Contracts/GET%20Contracts_Fetch.md
     const req = await fetch(`https://pd.${userRegion(user)}.a.pvp.net/contracts/v1/contracts/${user.puuid}`, {
         headers: {
-            "Authorization": "Bearer " + user.rso,
-            "X-Riot-Entitlements-JWT": user.ent,
+            "Authorization": "Bearer " + user.auth.rso,
+            "X-Riot-Entitlements-JWT": user.auth.ent,
             "X-Riot-ClientVersion": (await getValorantVersion()).riotClientVersion
         }
     });
@@ -66,27 +137,23 @@ export const getBattlepassProgress = async (id, maxlevel) => {
 
     const json = JSON.parse(req.body);
     if (json.httpStatus === 400 && json.errorCode === "BAD_CLAIMS") {
-        deleteUser(id);
+        deleteUserAuth(user);
         return { success: false };
     } else if (isMaintenance(json))
         return { success: false, maintenance: true };
 
+    const battlepassInfo = await getBattlepassInfo();
+    const contract = json.Contracts.find(contract => contract.ContractDefinitionID === battlepassInfo.uuid);
 
-    let contractData = {};
-    json["Contracts"].forEach(contract => {
-        if (contract.ContractDefinitionID === CONTRACT_UUID) {
-            contractData = {
-                progressionLevelReached: contract.ProgressionLevelReached,
-                progressionTowardsNextLevel: contract.ProgressionTowardsNextLevel,
-                totalProgressionEarned: contract.ContractProgression.TotalProgressionEarned
-            };
+    const contractData = {
+        progressionLevelReached: contract.ProgressionLevelReached,
+        progressionTowardsNextLevel: contract.ProgressionTowardsNextLevel,
+        totalProgressionEarned: contract.ContractProgression.TotalProgressionEarned,
+        missions: {
+            missionArray: json.Missions,
+            weeklyCheckpoint: json.MissionMetadata.WeeklyCheckpoint
         }
-
-    contractData["missions"] = {
-        missionArray: json.Missions,
-        weeklyCheckpoint: json.MissionMetadata.WeeklyCheckpoint
     }
-    });
 
     const weeklyxp = await getWeeklyXP(contractData.missions);
     const battlepassPurchased = await getBattlepassPurchase(id);
@@ -95,7 +162,7 @@ export const getBattlepassProgress = async (id, maxlevel) => {
         return battlepassPurchased;
 
     // Calculate
-    const season_end = new Date(SEASON_END);
+    const season_end = new Date(battlepassInfo.end);
     const season_now = Date.now();
     const season_left = Math.abs(season_end - season_now);
     const season_days_left = Math.floor(season_left / (1000 * 60 * 60 * 24)); // 1000 * 60 * 60 * 24 is one day in milliseconds
@@ -120,6 +187,7 @@ export const getBattlepassProgress = async (id, maxlevel) => {
         success: true,
         bpdata: contractData,
         battlepassPurchased: battlepassPurchased,
+        nextReward: await getNextReward(interaction, contractData.progressionLevelReached),
         season_days_left: season_days_left,
         totalxp: totalxp.toLocaleString(),
         xpneeded: (await calculate_level_xp(contractData.progressionLevelReached + 1) - contractData.progressionTowardsNextLevel).toLocaleString(),
@@ -174,31 +242,25 @@ const getBattlepassPurchase = async (id) => {
         return authSuccess;
 
     const user = getUser(id);
-    console.debug(`Fetching battlepass purchases for ${user.username}...`);
+    console.log(`Fetching battlepass purchases for ${user.username}...`);
 
-    // https://github.com/techchrism/valorant-api-docs/blob/trunk/docs/Store/GET%20Store_GetEntitlements.md
-    const req = await fetch(`https://pd.${userRegion(user)}.a.pvp.net/store/v1/entitlements/${user.puuid}/f85cb6f7-33e5-4dc8-b609-ec7212301948`, {
-        headers: {
-            "Authorization": "Bearer " + user.rso,
-            "X-Riot-Entitlements-JWT": user.ent
-        }
-    });
+    const data = await getEntitlements(user, "f85cb6f7-33e5-4dc8-b609-ec7212301948", "battlepass");
+    if(!data.success) return false;
 
-    console.assert(req.statusCode === 200, `Valorant battlepass purchases code is ${req.statusCode}!`, req);
+    const battlepassInfo = await getBattlepassInfo();
 
-    const json = JSON.parse(req.body);
-    if (json.httpStatus === 400 && json.errorCode === "BAD_CLAIMS") {
-        deleteUser(id);
-        return { success: false };
-    } else if (isMaintenance(json))
-        return { success: false, maintenance: true };
-
-
-    for (let entitlement of json.Entitlements) {
-        if (entitlement.ItemID === CONTRACT_UUID) {
+    for (let entitlement of data.entitlements.Entitlements) {
+        if (entitlement.ItemID === battlepassInfo.uuid) {
             return true;
         }
     }
 
     return false;
+}
+
+export const renderBattlepassProgress = async (interaction) => {
+    const maxlevel = interaction.options && interaction.options.getInteger("maxlevel") || 50;
+    const battlepassProgress = await getBattlepassProgress(interaction, maxlevel);
+
+    return await renderBattlepass(battlepassProgress, maxlevel, interaction);
 }

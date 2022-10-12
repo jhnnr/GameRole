@@ -1,7 +1,10 @@
-import {startBot} from "./discord/bot.js";
-import {loadUserData} from "./valorant/auth.js";
-import {loadAlerts} from "./discord/alerts.js";
 import {loadConfig} from "./misc/config.js";
+import {startBot} from "./discord/bot.js";
+import {loadLogger} from "./misc/logger.js";
+import {transferUserDataFromOldUsersJson} from "./valorant/auth.js";
+import { loadUserData } from "./valorant/accountSwitcher.js";
+
+
 
 /* TODO list:
  * (done) Balance
@@ -19,7 +22,10 @@ import {loadConfig} from "./misc/config.js";
 
 const config = loadConfig();
 if(config) {
-    loadUserData();
-    loadAlerts();
+    loadLogger();
+    transferUserDataFromOldUsersJson();
     startBot();
+    loadUserData();
+
+
 }

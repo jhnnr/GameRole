@@ -1,5 +1,5 @@
 {
-  "name": "discord-bot",
+  "name": "GameRole",
   "version": "1.0.0",
   "description": "Learning to make a discord bot.",
   "main": "index.js",

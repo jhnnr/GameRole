@@ -1,5 +1,5 @@
 {
-  "name": "GameRole",
+  "name": "discord-bot",
   "version": "1.0.0",
   "description": "Learning to make a discord bot.",
   "main": "index.js",
@@ -16,10 +16,11 @@
   "dependencies": {
     "@vercel/node": "^1.14.0",
     "delete-github-environment": "^1.0.2",
-    "discord.js": "^13.6.0",
+    "discord.js": "^13.12.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.3",
     "fuse.js": "^6.5.3",
+    "fuzzysort": "^2.0.1",
     "jsonfile": "^5.0.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.2.3",

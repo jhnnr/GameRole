@@ -144,7 +144,7 @@ export const deleteUser = (id, accountNumber) => {
 
 export const deleteWholeUser = (id) => {
     if(!fs.existsSync("data/users")) return;
-    const userJson = []
+    const userJson = null;
     fs.unlinkSync("data/users/" + id + ".json");
     saveUserJson(id, userJson);
 }

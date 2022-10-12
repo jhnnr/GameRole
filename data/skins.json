@@ -6860,7 +6860,8 @@
         "zh-TW": "光炫聲譜 制式手槍"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/fe32e4bd-420f-b4cc-de37-febb78df9e16/displayicon.png",
-      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc",
+      "price": 2675
     },
     "c2e41149-4f8b-e191-a0ae-5a94b80044f5": {
       "uuid": "c2e41149-4f8b-e191-a0ae-5a94b80044f5",
@@ -8812,7 +8813,8 @@
         "zh-TW": "離子聖芒 神射"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/2b555f97-46bb-5949-3531-979f5bc817f0/displayicon.png",
-      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369",
+      "price": 1775
     },
     "02f45c84-427c-d575-945f-ba913a732b72": {
       "uuid": "02f45c84-427c-d575-945f-ba913a732b72",
@@ -19494,7 +19496,7 @@
       ],
       "price": 7100,
       "basePrice": 11350,
-      "expires": 1666097999
+      "expires": 1666126799
     },
     "693d675e-4ed2-c00a-5e38-6b859b275565": {
       "uuid": "693d675e-4ed2-c00a-5e38-6b859b275565",

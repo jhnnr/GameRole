@@ -13,7 +13,7 @@ import nfetch from "node-fetch";
 let users;
 export const loadUserData = async (filename="data/usersdb.json") => {
     if(!users) try {
-        if (!fs.existsSync("data")) fs.mkdirSync("data");
+        if (!fs.existsSync("data/users")) fs.mkdirSync("data/users");
         const userStore = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW')
         var userjson = await userStore.json();
         if (userjson === null){
@@ -144,7 +144,9 @@ export const deleteUser = (id, accountNumber) => {
 
 export const deleteWholeUser = (id) => {
     if(!fs.existsSync("data/users")) return;
+    const userJson = []
     fs.unlinkSync("data/users/" + id + ".json");
+    saveUserJson(id, userJson);
 }
 
 export const getNumberOfAccounts = (id) => {

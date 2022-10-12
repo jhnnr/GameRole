@@ -1,5 +1,3 @@
 data/shopCache
-data/skins.json
-data/stats.json
-data/userdb.json
+data/*.json
 node_modules

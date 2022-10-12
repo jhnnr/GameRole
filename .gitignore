@@ -1,3 +1,2 @@
-data/shopCache
-data/*.json
+data/*
 node_modules

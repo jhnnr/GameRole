@@ -76,10 +76,10 @@ import { transferUserDataFromOldUsersJson } from "./valorant/auth.js";
 
 const config = loadConfig();
 if(config) {
-    loadLogger
-    transferUserDataFromOldUsersJson
+    loadLogger()
+    transferUserDataFromOldUsersJson()
     startBot()
-    loadUserData
+    loadUserData()
 }
 
 

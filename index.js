@@ -267,7 +267,7 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
      var oldActivity = oldMember?.activities?.find(x=> x?.type === 'PLAYING')
      //for(i=0;i < oldActivity.length || i < newActivity.length;i++){
         //console.log(newActivity)
-        console.log(newActivity?.type + '-' + newActivity?.name+ '----' +oldActivity?.type + '-' + oldActivity?.name)
+        //console.log(newActivity?.type + '-' + newActivity?.name+ '----' +oldActivity?.type + '-' + oldActivity?.name)
 
            // console.log(oldActivity?.type + " " + newActivity?.type)
         //if (newActivity[i]?.type == "PLAYING" || oldActivity[i]?.type == "PLAYING"){

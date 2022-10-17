@@ -2359,7 +2359,8 @@
         "zh-TW": "紅蓮猛獸 暴徒"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/aae492eb-4d6d-097d-1d47-4fa31ced9751/displayicon.png",
-      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369",
+      "price": 1775
     },
     "f4bfff96-487a-cf9e-08cc-d590d962c4e6": {
       "uuid": "f4bfff96-487a-cf9e-08cc-d590d962c4e6",
@@ -5115,7 +5116,8 @@
         "zh-TW": "紅蓮猛獸 判官"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/8c02ea4f-45ce-76ba-9ea6-198156deb9eb/displayicon.png",
-      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369",
+      "price": 1775
     },
     "3c23fdc3-4300-ec78-5123-bcb0dc456473": {
       "uuid": "3c23fdc3-4300-ec78-5123-bcb0dc456473",
@@ -6259,7 +6261,8 @@
         "zh-TW": "突襲 狂弒"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/3e32c58e-4347-e4b1-4502-6dab0dc516a8/displayicon.png",
-      "rarity": "12683d76-48d7-84a3-4e09-6985794f0445"
+      "rarity": "12683d76-48d7-84a3-4e09-6985794f0445",
+      "price": 875
     },
     "8a3d3cb5-4c8f-0604-b931-9388de1eabad": {
       "uuid": "8a3d3cb5-4c8f-0604-b931-9388de1eabad",
@@ -6467,7 +6470,8 @@
         "zh-TW": "永垂不朽 狂弒"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/55869fb8-4a79-e684-2000-028fa9f54060/displayicon.png",
-      "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25"
+      "rarity": "0cebb8be-46d7-c12a-d306-e9907bfc5a25",
+      "price": 1275
     },
     "4efc0af7-4623-cb2e-997c-6cbf2e5ddfb4": {
       "uuid": "4efc0af7-4623-cb2e-997c-6cbf2e5ddfb4",
@@ -8781,7 +8785,8 @@
         "zh-TW": "紅蓮猛獸 神射"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/72586d88-46c4-1532-7507-d6bb5c2d201c/displayicon.png",
-      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369",
+      "price": 1775
     },
     "2b555f97-46bb-5949-3531-979f5bc817f0": {
       "uuid": "2b555f97-46bb-5949-3531-979f5bc817f0",
@@ -11719,7 +11724,8 @@
         "zh-TW": "紅蓮猛獸 警長"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/57a31c23-4742-9bef-740e-c998061d720b/displayicon.png",
-      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369"
+      "rarity": "60bca009-4182-7998-dee7-b8a2558dc369",
+      "price": 1775
     },
     "f1b4577e-4dd3-6573-472c-a68cfe695d60": {
       "uuid": "f1b4577e-4dd3-6573-472c-a68cfe695d60",
@@ -14735,7 +14741,8 @@
         "zh-TW": "紅蓮猛獸 戰鎚"
       },
       "icon": "https://media.valorant-api.com/weaponskinlevels/5a27fbea-4f1d-62f9-8e5f-f494b4f0d322/displayicon.png",
-      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc"
+      "rarity": "e046854e-406c-37f4-6607-19a9ba8426fc",
+      "price": 3550
     },
     "a080b538-4593-b092-d29c-04b80e6e983f": {
       "uuid": "a080b538-4593-b092-d29c-04b80e6e983f",
@@ -15751,7 +15758,7 @@
     "f9cfa034-c7e1-4995-904c-1a296e7b1760": 1600,
     "da0edbc8-31fb-468e-95a8-27ac25cd76ed": 2800,
     "a61e8526-bb1f-4135-b7df-95e67b416efe": 4800,
-    "timestamp": 1665549012407
+    "timestamp": 1666001819923
   },
   "bundles": {
     "version": "34E8544257E203A0",
@@ -19427,58 +19434,65 @@
       "icon": "https://media.valorant-api.com/bundles/bd4f586d-469c-731d-5018-19835db2b086/displayicon2.png",
       "items": [
         {
+          "uuid": "5bf1e174-49b0-8cb9-69d8-59979ba919ce",
+          "type": "3f296c07-64c3-494c-923b-fe692a4fa1bd",
+          "price": 0,
+          "basePrice": 375,
+          "discount": 1,
+          "amount": 1
+        },
+        {
+          "uuid": "13aa2012-4149-e57a-b21d-a8a795cdb131",
+          "type": "d5f120f8-ff8c-4aac-92ea-f2b5acbe9475",
+          "price": 0,
+          "basePrice": 325,
+          "discount": 1,
+          "amount": 1
+        },
+        {
           "uuid": "aae492eb-4d6d-097d-1d47-4fa31ced9751",
           "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
           "price": 1775,
-          "amount": 1,
-          "discount": 0
+          "basePrice": 1775,
+          "discount": 0,
+          "amount": 1
         },
         {
           "uuid": "8c02ea4f-45ce-76ba-9ea6-198156deb9eb",
           "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
           "price": 1775,
-          "amount": 1,
-          "discount": 0
+          "basePrice": 1775,
+          "discount": 0,
+          "amount": 1
         },
         {
           "uuid": "72586d88-46c4-1532-7507-d6bb5c2d201c",
           "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
           "price": 1775,
-          "amount": 1,
-          "discount": 0
+          "basePrice": 1775,
+          "discount": 0,
+          "amount": 1
         },
         {
           "uuid": "57a31c23-4742-9bef-740e-c998061d720b",
           "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
           "price": 1775,
-          "amount": 1,
-          "discount": 0
+          "basePrice": 1775,
+          "discount": 0,
+          "amount": 1
         },
         {
           "uuid": "5a27fbea-4f1d-62f9-8e5f-f494b4f0d322",
           "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
-          "price": 3550,
-          "amount": 1,
-          "discount": 0
-        },
-        {
-          "uuid": "5bf1e174-49b0-8cb9-69d8-59979ba919ce",
-          "type": "3f296c07-64c3-494c-923b-fe692a4fa1bd",
-          "price": 375,
-          "amount": 1,
-          "discount": 0
-        },
-        {
-          "uuid": "13aa2012-4149-e57a-b21d-a8a795cdb131",
-          "type": "d5f120f8-ff8c-4aac-92ea-f2b5acbe9475",
-          "price": 325,
-          "amount": 1,
-          "discount": 0
+          "price": 0,
+          "basePrice": 3550,
+          "discount": 1,
+          "amount": 1
         }
       ],
       "price": 7100,
-      "basePrice": null,
-      "expires": null
+      "basePrice": 11350,
+      "expires": 1666126799
     },
     "693d675e-4ed2-c00a-5e38-6b859b275565": {
       "uuid": "693d675e-4ed2-c00a-5e38-6b859b275565",

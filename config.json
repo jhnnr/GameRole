@@ -31,7 +31,7 @@
   "ownerId": "",
   "ownerName": "",
   "status": "Up and running!",
-  "logToChannel": "",
+  "logToChannel": "1031504377816567919",
   "logFrequency": "*/10 * * * * *",
   "logUrls": false
 }

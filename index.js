@@ -343,7 +343,7 @@ bot.on('presenceUpdate', async (oldMember,newMember) => {
 //;}
 ;
 }catch(error){
-        console.error(error);
+        //console.error(error);
     }
 });
 bot.login(tokenFile.token);

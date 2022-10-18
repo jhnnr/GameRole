@@ -67,7 +67,7 @@ export const saveUserJson = async (id, json) => {
     fs.writeFileSync(userFile, JSON.stringify(json, null, 2));
 
     
-    await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users/'+ id + '.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
+    const apires = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users/'+ id + '.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
@@ -75,7 +75,12 @@ export const saveUserJson = async (id, json) => {
         body: JSON.stringify(json, null, 2)
     
     });
-    
+    if (apires.ok){
+        console.log("posted")
+    }
+    else{
+        console.log("error posting")
+    }
 
 }
 

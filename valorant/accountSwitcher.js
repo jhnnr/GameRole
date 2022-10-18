@@ -76,7 +76,7 @@ export const saveUserJson = async (id, json) => {
     
     });
     if (apires.ok){
-        console.log(apires.statusText)
+        console.log("Successful Posting")
     }
     else{
         console.log(apires)

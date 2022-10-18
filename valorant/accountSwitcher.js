@@ -60,12 +60,14 @@ export const getUserJson = (id, account=null) => {
     return user.accounts[account - 1];
 }
 
-export const saveUserJson = (id, json) => {
+export const saveUserJson = async (id, json) => {
+    var userFile = "data/users/" + id + ".json";
+    
     ensureUsersFolder();
-    fs.writeFileSync("data/users/" + id + ".json", JSON.stringify(json, null, 2));
+    fs.writeFileSync(userFile, JSON.stringify(json, null, 2));
 
     
-    nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users/'+ id + '.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
+    await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users/'+ id + '.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
@@ -73,6 +75,7 @@ export const saveUserJson = (id, json) => {
         body: JSON.stringify(json, null, 2)
     
     });
+    
 
 }
 
@@ -85,6 +88,7 @@ export const saveUser = (user, account=null) => {
             accounts: [user],
             currentAccount: 1,
             settings: defaultSettings
+            
         }
         saveUserJson(user.id, objectToWrite);
     } else {

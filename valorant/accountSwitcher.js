@@ -76,10 +76,10 @@ export const saveUserJson = async (id, json) => {
     
     });
     if (apires.ok){
-        console.log("posted")
+        console.log(apires.statusText)
     }
     else{
-        console.log("error posting")
+        console.log(apires)
     }
 
 }

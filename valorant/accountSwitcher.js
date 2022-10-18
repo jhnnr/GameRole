@@ -75,6 +75,7 @@ export const saveUserJson = async (id, json) => {
         body: userJson
     
     });
+    apires.status(200).send('Done!');
     if (apires.ok){
         console.log("Successful Posting")
     }

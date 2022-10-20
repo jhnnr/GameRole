@@ -2,6 +2,7 @@ import fs from "fs";
 import {ensureUsersFolder, removeDupeAlerts} from "../misc/util.js";
 import {defaultSettings} from "../misc/settings.js";
 import nfetch from "node-fetch";
+import { error } from "console";
 
 /** JSON format:
  * {9
@@ -79,7 +80,7 @@ export const saveUserJson = async (id, json) => {
         console.log("Successful Posting")
     }
     else{
-        console.log(apires)
+        console.log("error posting")
     }
 
 }

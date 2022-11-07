@@ -12,9 +12,12 @@ import fs from "fs";
 import {client} from "../discord/bot.js";
 import {addUser, deleteUser, getAccountWithPuuid, getUserJson, saveUser} from "./accountSwitcher.js";
 import {checkRateLimit, isRateLimited} from "../misc/rateLimit.js";
+import {getSetting} from "../misc/settings.js";
+import {queueCookiesLogin, queueUsernamePasswordLogin} from "./authQueue.js";
+import {waitForAuthQueueResponse} from "../discord/authManager.js";
 
-class User {
-    constructor({id, puuid, auth, alerts=[], username, region, locale, authFailures}) {
+export class User {
+    constructor({id, puuid, auth, alerts=[], username, region, locale, localeIsManual, authFailures}) {
         this.id = id;
         this.puuid = puuid;
         this.auth = auth;
@@ -22,8 +25,16 @@ class User {
         this.username = username;
         this.region = region;
         this.locale = locale;
+        this.localeIsManual = localeIsManual || false;
         this.authFailures = authFailures || 0;
+
+        const localeSetting = getSetting(this.id, "locale");
+        if(localeSetting !== "Automatic") {
+            this.locale = localeSetting;
+            this.localeIsManual = true;
+        }
     }
+
 }
 
 export const transferUserDataFromOldUsersJson = () => {
@@ -72,12 +83,6 @@ const userFilenameRegex = /\d+\.json/
 export const getUserList = () => {
     ensureUsersFolder();
     return fs.readdirSync("data/users").filter(filename => userFilenameRegex.test(filename)).map(filename => filename.replace(".json", ""));
-}
-
-export const setUserLocale = (user, locale) => {
-    if(user.locale === locale) return;
-    user.locale = locale;
-    saveUser(user);
 }
 
 export const authUser = async (id, account=null) => {
@@ -346,8 +351,14 @@ export const refreshToken = async (id, account=null) => {
     const user = getUser(id, account);
     if(!user) return response;
 
-    if(user.auth.cookies) response = await redeemCookies(id, stringifyCookies(user.auth.cookies));
-    if(!response.success && user.auth.login && user.auth.password) response = await redeemUsernamePassword(id, user.auth.login, atob(user.auth.password));
+    if(user.auth.cookies) {
+        response = await queueCookiesLogin(id, stringifyCookies(user.auth.cookies));
+        if(response.inQueue) response = await waitForAuthQueueResponse(response);
+    }
+    if(!response.success && user.auth.login && user.auth.password) {
+        response = await queueUsernamePasswordLogin(id, user.auth.login, atob(user.auth.password));
+        if(response.inQueue) response = await waitForAuthQueueResponse(response);
+    }
 
     if(!response.success && !response.mfa && !response.rateLimit) deleteUserAuth(user);
     return response;

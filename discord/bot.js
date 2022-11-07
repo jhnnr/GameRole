@@ -17,7 +17,7 @@ import {
     accountsListEmbed,
     switchAccountButtons, skinCollectionPageEmbed, skinCollectionSingleEmbed, valMaintenancesEmbeds
 } from "./embed.js";
-import {authUser, fetchRiotClientVersion, getUser, getUserList, setUserLocale,} from "../valorant/auth.js";
+import {authUser, fetchRiotClientVersion, getUser, getUserList} from "../valorant/auth.js";
 import {getBalance} from "../valorant/shop.js";
 import {getSkin, fetchData, searchSkin, searchBundle, getBundle} from "../valorant/cache.js";
 import {

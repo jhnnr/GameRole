@@ -4,8 +4,8 @@
   "description": "Learning to make a discord bot.",
   "main": "index.js",
   "engines": {
-    "node": "16.9.1",
-    "npm": "7.21.1"
+    "node": "18.12.1",
+    "npm": "8.19.2"
   },
   "scripts": {
     "start": "node .",

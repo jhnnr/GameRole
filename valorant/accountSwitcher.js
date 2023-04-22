@@ -66,7 +66,7 @@ export const saveUserJson = async (id, json) => {
     
     ensureUsersFolder();
     fs.writeFileSync(userFile, JSON.stringify(json, null, 2));
-    const userJson = JSON.stringify(json, null, 2)
+    const userJson = JSON.stringify(json,null, 2)
     
     const apires = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users/'+ id + '.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
         method: 'PUT',
@@ -80,7 +80,7 @@ export const saveUserJson = async (id, json) => {
         console.log("Successful Posting")
     }
     else{
-        console.log("error posting")
+        console.log("error posting",)
     }
 
 }

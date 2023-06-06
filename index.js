@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 const {Discord,Intents,Client, Activity} = require('discord.js');
 const jsonfile = require('jsonfile');
 
+
 const bot = new Client({
      intents: [
          Intents.FLAGS.GUILDS,
@@ -22,15 +23,32 @@ const prefix = '<';
 
 var whiteListedApps = require("./whitelist.json");
 
+let front = 'BOT IS LIVE';
+// const fs = require('fs');
+// fs.readFile('front.html', 'utf8', (err, data) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+
+//   // Process the HTML file content here
+//   front = data;
+// });
+// const emitLogMessage = (message) => {
+//     io.emit('log', message);
+//     console.log(message);
+// }
+// console.log = emitLogMessage;
+
 var express = require('express');
 	var app = express();
 	const PORT = process.env.PORT || 80;
 	var server = app.listen(PORT, function() {
 		var host = server.address().address;
 		var port = server.address().port;
-		console.log("server is listening at http://%s:%s", host, port);
+		console.log("server is listening at ", host, port);
 		app.get('/', function (req, res) {
-			res.send('Bot is live');
+			res.send(front);
 		  });
 	});
 /**

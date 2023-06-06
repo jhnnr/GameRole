@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frontend Console</title>
+</head>
+<body>
+  <ul id="log-list"></ul>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Receive log messages from the server and append them to the log list
+    socket.on('log', (message) => {
+      const logList = document.getElementById('log-list');
+      const logItem = document.createElement('li');
+      logItem.textContent = message;
+      logList.appendChild(logItem);
+    });
+  </script>
+</body>
+</html>

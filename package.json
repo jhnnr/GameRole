@@ -23,6 +23,7 @@
     "fuzzysort": "^2.0.1",
     "jsonfile": "^5.0.0",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.2.3",
     "node-libcurl": "^3.0.0",

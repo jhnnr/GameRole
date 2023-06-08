@@ -3,7 +3,7 @@ import { escapeMarkdown } from "./util.js";
 import { client } from "../discord/bot.js";
 import { sendShardMessage } from "./shardMessage.js";
 import fs from 'fs';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const messagesToLog = [];
 const logFilePath = 'logs.txt'; // Specify the path to the log file
@@ -83,8 +83,7 @@ export const sendConsoleOutput = () => {
 };
 
 function logToFile(message) {
-  moment.tz.setDefault("Asia/Singapore");
-  const timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
+  const timestamp = moment().tz('Asia/Singapore').format('YYYY-MM-DD HH:mm:ss');
   const logMessage = `[${timestamp}] ${message}\n`;
 
   fs.appendFile(logFilePath, logMessage, (err) => {

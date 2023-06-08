@@ -75,6 +75,7 @@ export const client = new Client({
 const cronTasks = [];
 
 client.on("ready", async () => {
+    try{
     console.log(`Logged in as ${client.user.tag}!`);
 
     console.log("Loading skins...");
@@ -83,7 +84,10 @@ client.on("ready", async () => {
 
     scheduleTasks();
 
-    await client.user.setActivity("your store!", {type: "WATCHING"});
+    client.user.setActivity("your store!", {type: "WATCHING"});
+    } catch (error){
+        console.log(error)
+    }
 });
 
 export const scheduleTasks = () => {

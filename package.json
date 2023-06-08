@@ -22,11 +22,13 @@
     "fuse.js": "^6.5.3",
     "fuzzysort": "^2.0.1",
     "jsonfile": "^5.0.0",
+    "moment": "^2.29.4",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.2.3",
     "node-libcurl": "^3.0.0",
     "nodemon": "^2.0.7",
-    "package.json": "^0.0.0"
+    "package.json": "^0.0.0",
+    "socket.io": "^4.6.2"
   },
   "type": "module"
 }

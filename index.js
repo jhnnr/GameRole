@@ -23,34 +23,6 @@ const prefix = '<';
 
 var whiteListedApps = require("./whitelist.json");
 
-let front = 'BOT IS LIVE';
-// const fs = require('fs');
-// fs.readFile('front.html', 'utf8', (err, data) => {
-//   if (err) {
-//     console.error(err);
-//     return;
-//   }
-
-//   // Process the HTML file content here
-//   front = data;
-// });
-// const emitLogMessage = (message) => {
-//     io.emit('log', message);
-//     console.log(message);
-// }
-// console.log = emitLogMessage;
-
-var express = require('express');
-	var app = express();
-	const PORT = process.env.PORT || 80;
-	var server = app.listen(PORT, function() {
-		var host = server.address().address;
-		var port = server.address().port;
-		console.log("server is listening at ", host, port);
-		app.get('/', function (req, res) {
-			res.send(front);
-		  });
-	});
 /**
  * Limits how often saves can happen to avoid abuse
  */
@@ -72,11 +44,11 @@ function save(){
 }
 //valorant skin peek
 import {startBot} from "./discord/bot.js";
-
 import {loadConfig} from "./misc/config.js";
 import { loadLogger } from "./misc/logger.js";
 import { loadUserData } from "./valorant/accountSwitcher.js";
 import { transferUserDataFromOldUsersJson } from "./valorant/auth.js";
+import {logs} from "./logs.js";
 
 /* TODO list:
  * (done) Balance
@@ -98,6 +70,7 @@ if(config) {
     transferUserDataFromOldUsersJson()
     startBot()
     loadUserData()
+    logs()
 }
 
 

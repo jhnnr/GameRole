@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logs</title>
+  <style>
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <pre id="logOutput"></pre>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const logOutput = document.getElementById('logOutput');
+    const socket = io();
+    scrollToBottom();
+    socket.on('logUpdate', (data) => {
+      logOutput.innerHTML += data;
+      scrollToBottom();
+    });
+
+    function checkForLogUpdates() {
+      fetch('/logs')
+        .then(response => response.text())
+        .then(data => {
+          logOutput.innerHTML = data;
+          scrollToBottom();
+        })
+        .catch(error => console.error('Error fetching log data:', error));
+    }
+
+    function scrollToBottom() {
+      logOutput.scrollTop = logOutput.scrollHeight;
+    }
+
+    checkForLogUpdates();
+    setInterval(checkForLogUpdates, 5000);
+  </script>
+</body>
+</html>

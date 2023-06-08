@@ -83,6 +83,7 @@ export const sendConsoleOutput = () => {
 };
 
 function logToFile(message) {
+  moment.tz.setDefault("Asia/Singapore");
   const timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
   const logMessage = `[${timestamp}] ${message}\n`;
 

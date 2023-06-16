@@ -4,7 +4,9 @@ on:
   push:
     branches: [ master ]
 
-uses: bervProject/railway-deploy@main
-with:
-  railway_token: ${{ secrets.RAILWAY_TOKEN }}
-  service: "my-service"
+jobs:
+  uses: bervProject/railway-deploy@main
+  with:
+    railway_token: ${{ secrets.RAILWAY_TOKEN }}
+    
+    service: "my-service"

@@ -1,0 +1,24 @@
+# .github/workflows/deploy.yml
+name: deploy to deta space
+
+on: 
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    name: GameRole
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Deploy
+      uses: lizheming/deta-action@master
+      with:
+        access_token: ${{ secrets.SPACE_ACCESS_TOKEN }}
+        id: ${{ secrets.space_id }}
+        version: "1.0.0"
+        notes: "Release automatically with GitHub deta action"
+        listed: False

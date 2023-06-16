@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       uses: bervProject/railway-deploy@main
-      with:
-        railway_token: ${{ secrets.RAILWAY_TOKEN }}
-        service: "GameRole"
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service: "GameRole"
+          detach: true

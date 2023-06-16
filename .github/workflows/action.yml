@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-name: deploy to deta space
+name: Deta.Space
 
 on: 
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: GameRole
+    name: Deta
     runs-on: ubuntu-latest
     steps:
     - name: Checkout

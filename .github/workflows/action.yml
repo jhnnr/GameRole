@@ -1,24 +1,15 @@
-# .github/workflows/deploy.yml
-name: Deta.Space
-
-on: 
-  push:
-    branches:
-    - main
+name: Push to Space
+on: push
 
 jobs:
-  deploy:
-    name: Deta
+  push-to-space:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Deploy
-      uses: lizheming/deta-action@master
-      with:
-        access_token: ${{ secrets.SPACE_ACCESS_TOKEN }}
-        id: ${{ secrets.space_id }}
-        version: "1.0.0"
-        notes: "Release automatically with GitHub deta action"
-        listed: False
+      - uses: actions/checkout@v3
+      - name: Deta Space Deployment Github Action
+        uses: neobrains/space-deployment-github-action@v0.5
+        with:
+          access_token: ${{ secrets.SPACE_ACCESS_TOKEN }}
+          project_id: ${{ secrets.SPACE_ID }}
+          space_push: true
+          list_on_discovery: false

@@ -5,7 +5,6 @@ jobs:
   push-to-space:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Github railway deploy
         uses: bervProject/railway-deploy@main
         with:

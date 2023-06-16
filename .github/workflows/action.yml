@@ -1,11 +1,13 @@
-name: Deploy on railway
-
-on:
-  push:
-    branches: [ master ]
+name: Push to Railyway
+on: push
 
 jobs:
-  uses: bervProject/railway-deploy@main
-  with:
-    railway_token: ${{ secrets.RAILWAY_TOKEN }}
-    service: "my-service"
+  push-to-space:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Github railway deploy
+        uses: bervProject/railway-deploy@main
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
+          service: "my-service"

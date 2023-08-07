@@ -1,8 +1,8 @@
 echo ------------------
-echo     SkinPeek
-echo    Author: Giorgio
+echo     GameRole
+echo    Author: sugoi
 echo ------------------
 npm install
-:SkinPeek
-node SkinPeek.js
+:GameRole
+node index.js
 goto SkinPeek

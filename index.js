@@ -94,6 +94,7 @@ bot.on('message', message=>{
         // --- DO COMMANDS ---
         case 'ping':
             message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`);
+            console.log(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`);
             break;
 
         case 'website':

@@ -202,7 +202,7 @@ bot.on('message', message=>{
             if (hasPerms){
                 var stringToSend = "-- Here is the whitelist of games (game : role) -- \n"
                 var whiteListedAppsLength = Object.keys(whiteListedApps).length
-
+                var i = 0;
                 for (i = 0; i < whiteListedAppsLength; i++) {
                     var key = Object.keys(whiteListedApps)[i]
                     var value = whiteListedApps[key]

@@ -117,7 +117,7 @@ bot.on('message', message=>{
                     var objectAdded = {'Game' : gameNameAdd, 'Role' :roleToAdd}
                     var previousAction = 'add'
                     // Save
-                    scheduleSave();
+                    save();
                 }
             }else{
                 message.reply("You do not have sufficient permissions to perform that command.")

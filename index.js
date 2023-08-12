@@ -98,7 +98,7 @@ bot.on('message', message=>{
             break;
 
         case 'website':
-            message.channel.send("https://github.com/JacobStenson1/GameRoles")
+            message.channel.send("https://github.com/sugoides")
             break;
 
         case 'add':
@@ -200,23 +200,28 @@ bot.on('message', message=>{
         case 'games':
             var hasPerms = message.member.roles.cache.find(role => role.name === 'sugoi')
             if (hasPerms){
-                var stringToSend = "-- Here is the whitelist of games (game : role) -- \n"
+                var stringToSend = "```"
                 var whiteListedAppsLength = Object.keys(whiteListedApps).length
-                var i = 0;
-                for (i = 0; i < whiteListedAppsLength; i++) {
+                
+                for (var i = 0; i < whiteListedAppsLength; i++) {
                     var key = Object.keys(whiteListedApps)[i]
                     var value = whiteListedApps[key]
                     var keyValueGames = (key +" : "+value)
                     stringToSend += (keyValueGames + "\n")
+                    if (i % 20 === 0) {
+                        var stringToSend = stringToSend + "```"
+                        message.channel.send(stringToSend)
+                        var stringToSend =  "```"
+                      }
                 }
-                message.channel.send(stringToSend)
+               
             }else{
                 message.reply("You do not have sufficient permissions to perform that command.")
             }
            break;
 
         case 'info':
-            message.channel.send("The author of this bot is Salazhar. See the GitHub for this bot here: https://github.com/JacobStenson1/GameRoles")
+            message.channel.send("The author of this bot is John Neri. See the GitHub for this bot here: https://github.com/sugoides")
             break;
 
         // --- DO COMMANDS ---

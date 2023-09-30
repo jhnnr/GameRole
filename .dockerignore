@@ -6,3 +6,4 @@
 **\.gitignore
 **\.gcloudignore
 fly.toml
+.env

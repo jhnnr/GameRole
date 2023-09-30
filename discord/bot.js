@@ -1562,8 +1562,9 @@ const handleError = async (e, interaction) => {
         console.error(e2);
     }
 }
-
+import dotenv from 'dotenv';
+dotenv.config();
 export const startBot = () => {
     console.log("Logging in...");
-    client.login(config.token);
+    client.login(process.env.DISCORD_TOKEN);
 }

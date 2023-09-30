@@ -4,3 +4,4 @@ logs.txt
 .git
 .gitignore
 .gcloudignore
+.env

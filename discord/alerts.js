@@ -10,13 +10,14 @@ import {
 import {authUser, deleteUserAuth, getUser, getUserList} from "../valorant/auth.js";
 import {getOffers} from "../valorant/shop.js";
 import {getSkin} from "../valorant/cache.js";
-import {alertsPageEmbed, authFailureMessage, basicEmbed, VAL_COLOR_1} from "./embed.js";
+import {alertsPageEmbed, authFailureMessage, basicEmbed, renderOffers, VAL_COLOR_1} from "./embed.js";
 import {client} from "./bot.js";
 import config from "../misc/config.js";
 import {l, s} from "../misc/languages.js";
 import {readUserJson, saveUser} from "../valorant/accountSwitcher.js";
 import {sendShardMessage} from "../misc/shardMessage.js";
 import {VPEmoji} from "./emoji.js";
+import {getSetting} from "../misc/settings.js";
 
 
 /* Alert format: {
@@ -108,7 +109,9 @@ export const checkAlerts = async () => {
                 for(let i = 1; i <= accountCount; i++) {
 
                     const rawUserAlerts = alertsForUser(id, i);
-                    if(!rawUserAlerts || !rawUserAlerts.length) continue;
+                    const dailyShopChannel = getSetting(id, "dailyShop");
+                    if(!rawUserAlerts?.length && !dailyShopChannel) continue;
+                    if(!rawUserAlerts?.length && dailyShopChannel && i !== userJson.currentAccount) continue;
 
                     if(shouldWait) {
                         await wait(config.delayBetweenAlerts); // to prevent being ratelimited
@@ -159,6 +162,8 @@ export const checkAlerts = async () => {
                     } while(!offers.success);
 
                     if(offers.success && offers.offers) {
+                        if(dailyShopChannel && i === userJson.currentAccount) await sendDailyShop(id, offers, dailyShopChannel, valorantUser);
+
                         const positiveAlerts = userAlerts.filter(alert => offers.offers.includes(alert.uuid));
                         if(positiveAlerts.length) await sendAlert(id, i, positiveAlerts, offers.expires);
                     }
@@ -211,18 +216,18 @@ export const sendAlert = async (id, account, alerts, expires, tryOnOtherShard=tr
         console.log(`Sending alert for user ${username}...`);
 
         const skin = await getSkin(alert.uuid);
-        console.log(`User ${valorantUser.username} has the skin ${l(skin.names)} in their shop!`);
+        console.log(`User ${valorantUser.username} has the skin ${l(skin.names, valorantUser)} in their shop!`);
 
         await channel.send({
             content: `<@${id}>`,
             embeds: [{
-                description: s(valorantUser.locale).info.ALERT_HAPPENED.f({i: id, u: valorantUser.username, s: await skinNameAndEmoji(skin, channel, valorantUser.locale), t: expires}, id),
+                description: s(valorantUser).info.ALERT_HAPPENED.f({i: id, u: valorantUser.username, s: await skinNameAndEmoji(skin, channel, valorantUser), t: expires}, id),
                 color: VAL_COLOR_1,
                 thumbnail: {
                     url: skin.icon
                 }
             }],
-            components: [removeAlertActionRow(id, alert.uuid, s(valorantUser.locale).info.REMOVE_ALERT_BUTTON)]
+            components: [removeAlertActionRow(id, alert.uuid, s(valorantUser).info.REMOVE_ALERT_BUTTON)]
         }).catch(async e => {
             console.error(`Could not send alert message in #${channel.name}! Do I have the right role?`);
 
@@ -263,7 +268,7 @@ export const sendCredentialsExpired = async (id, alert, tryOnOtherShard=true) =>
     await channel.send({
         content: `<@${id}>`,
         embeds: [{
-            description: s(valorantUser.locale).error.AUTH_ERROR_ALERTS_HAPPENED.f({u: id}),
+            description: s(valorantUser).error.AUTH_ERROR_ALERTS_HAPPENED.f({u: id}),
             color: VAL_COLOR_1,
         }]
     }).catch(async e => {
@@ -275,6 +280,32 @@ export const sendCredentialsExpired = async (id, alert, tryOnOtherShard=true) =>
         } catch(e) {}
 
         console.error(e);
+    });
+}
+
+export const sendDailyShop = async (id, shop, channelId, valorantUser, tryOnOtherShard=true) => {
+    const channel = await fetchChannel(channelId);
+    if(!channel) {
+        if(client.shard && tryOnOtherShard) {
+            sendShardMessage({
+                type: "dailyShop",
+                id, shop, channelId, valorantUser
+            });
+            return;
+        }
+
+        const user = await client.users.fetch(id).catch(() => {});
+        if(user) console.error(`Please tell ${user.tag} that the daily shop is out! (I can't find the channel where the alert was set up)`);
+        return;
+    }
+
+    const shouldPing = getSetting(id, "pingOnAutoDailyShop");
+    const content = shouldPing ? `<@${id}>` : null;
+
+    const rendered = await renderOffers(shop, id, valorantUser, await VPEmoji(id, channel));
+    await channel.send({
+        content,
+        ...rendered
     });
 }
 

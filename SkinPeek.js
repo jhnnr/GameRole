@@ -2,9 +2,6 @@ import {loadConfig} from "./misc/config.js";
 import {startBot} from "./discord/bot.js";
 import {loadLogger} from "./misc/logger.js";
 import {transferUserDataFromOldUsersJson} from "./valorant/auth.js";
-import { loadUserData } from "./valorant/accountSwitcher.js";
-
-
 
 /* TODO list:
  * (done) Balance
@@ -19,13 +16,11 @@ import { loadUserData } from "./valorant/accountSwitcher.js";
  * Simple analytics to see how many servers the bot is in
  * Admin commands (delete user, see/edit everyone's alerts, etc.)
  */
-
-const config = loadConfig();
-if(config) {
-    loadLogger();
-    transferUserDataFromOldUsersJson();
-    startBot();
-    loadUserData();
-
-
+export const skinpeek = () => {
+    const config = loadConfig();
+    if(config) {
+        loadLogger();
+        transferUserDataFromOldUsersJson();
+        startBot();
+    }
 }

@@ -5,24 +5,28 @@ import {
     extractTokensFromUri,
     tokenExpiry,
     decodeToken,
-    ensureUsersFolder
+    ensureUsersFolder, wait, getProxyManager
 } from "../misc/util.js";
 import config from "../misc/config.js";
 import fs from "fs";
 import {client} from "../discord/bot.js";
-import {addUser, deleteUser, getAccountWithPuuid, getUserJson, saveUser} from "./accountSwitcher.js";
+import {addUser, deleteUser, getAccountWithPuuid, getUserJson, readUserJson, saveUser} from "./accountSwitcher.js";
 import {checkRateLimit, isRateLimited} from "../misc/rateLimit.js";
+import {queueCookiesLogin, queueUsernamePasswordLogin} from "./authQueue.js";
+import {waitForAuthQueueResponse} from "../discord/authManager.js";
 
-class User {
-    constructor({id, puuid, auth, alerts=[], username, region, locale, authFailures}) {
+export class User {
+    constructor({id, puuid, auth, alerts=[], username, region, authFailures, lastFetchedData, lastNoticeSeen, lastSawEasterEgg}) {
         this.id = id;
         this.puuid = puuid;
         this.auth = auth;
         this.alerts = alerts || [];
         this.username = username;
         this.region = region;
-        this.locale = locale;
         this.authFailures = authFailures || 0;
+        this.lastFetchedData = lastFetchedData || 0;
+        this.lastNoticeSeen =  lastNoticeSeen || "";
+        this.lastSawEasterEgg = lastSawEasterEgg || 0;
     }
 }
 
@@ -51,8 +55,7 @@ export const transferUserDataFromOldUsersJson = () => {
             },
             alerts: alertsForUser(id).map(alert => {return {uuid: alert.uuid, channel_id: alert.channel_id}}),
             username: userData.username,
-            region: userData.region,
-            locale: userData.locale
+            region: userData.region
         });
         saveUser(user);
     }
@@ -60,6 +63,15 @@ export const transferUserDataFromOldUsersJson = () => {
 }
 
 export const getUser = (id, account=null) => {
+    if(id instanceof User) {
+        const user = id;
+        const userJson = readUserJson(user.id);
+        if(!userJson) return null;
+
+        const userData = userJson.accounts.find(a => a.puuid === user.puuid);
+        return userData && new User(userData);
+    }
+
     try {
         const userData = getUserJson(id, account);
         return userData && new User(userData);
@@ -72,12 +84,6 @@ const userFilenameRegex = /\d+\.json/
 export const getUserList = () => {
     ensureUsersFolder();
     return fs.readdirSync("data/users").filter(filename => userFilenameRegex.test(filename)).map(filename => filename.replace(".json", ""));
-}
-
-export const setUserLocale = (user, locale) => {
-    if(user.locale === locale) return;
-    user.locale = locale;
-    saveUser(user);
 }
 
 export const authUser = async (id, account=null) => {
@@ -96,6 +102,10 @@ export const redeemUsernamePassword = async (id, login, password) => {
     let rateLimit = isRateLimited("auth.riotgames.com");
     if(rateLimit) return {success: false, rateLimit: rateLimit};
 
+    const proxyManager = getProxyManager();
+    const proxy = await proxyManager.getProxy("auth.riotgames.com");
+    const agent = await proxy?.createAgent("auth.riotgames.com");
+
     // prepare cookies for auth request
     const req1 = await fetch("https://auth.riotgames.com/api/v1/authorization", {
         method: "POST",
@@ -104,17 +114,24 @@ export const redeemUsernamePassword = async (id, login, password) => {
             'user-agent': await getUserAgent()
         },
         body: JSON.stringify({
-            'client_id': 'play-valorant-web-prod',
-            'response_type': 'token id_token',
-            'redirect_uri': 'https://playvalorant.com/opt_in',
-            'scope': 'account openid',
-            'nonce': '1',
-        })
+            "client_id": "riot-client",
+            "code_challenge": "",
+            "code_challenge_method": "",
+            "acr_values": "",
+            "claims": "",
+            "nonce": "69420",
+            "redirect_uri": "http://localhost/redirect",
+            "response_type": "token id_token",
+            "scope": "openid link ban lol_region"
+        }),
+        proxy: agent
     });
     console.assert(req1.statusCode === 200, `Auth Request Cookies status code is ${req1.statusCode}!`, req1);
 
     rateLimit = checkRateLimit(req1, "auth.riotgames.com");
     if(rateLimit) return {success: false, rateLimit: rateLimit};
+
+    if(detectCloudflareBlock(req1)) return {success: false, rateLimit: "cloudflare"};
 
     let cookies = parseSetCookie(req1.headers["set-cookie"]);
 
@@ -131,12 +148,15 @@ export const redeemUsernamePassword = async (id, login, password) => {
             'username': login,
             'password': password,
             'remember': true
-        })
+        }),
+        proxy: agent
     });
     console.assert(req2.statusCode === 200, `Auth status code is ${req2.statusCode}!`, req2);
 
     rateLimit = checkRateLimit(req2, "auth.riotgames.com")
     if(rateLimit) return {success: false, rateLimit: rateLimit};
+
+    if(detectCloudflareBlock(req2)) return {success: false, rateLimit: "cloudflare"};
 
     cookies = {
         ...cookies,
@@ -251,10 +271,8 @@ const processAuthResponse = async (id, authData, redirect, user=null) => {
     }
 
     // get username
-    if(!user.username) {
-        const userInfo = await getUserInfo(user);
-        user.username = userInfo.username;
-    }
+    const userInfo = await getUserInfo(user);
+    user.username = userInfo.username;
 
     // get entitlements token
     if(!user.auth.ent) user.auth.ent = await getEntitlements(user);
@@ -262,11 +280,13 @@ const processAuthResponse = async (id, authData, redirect, user=null) => {
     // get region
     if(!user.region) user.region = await getRegion(user);
 
+    user.lastFetchedData = Date.now();
+
     user.authFailures = 0;
     return user;
 }
 
-const getUserInfo = async (user) => {
+export const getUserInfo = async (user) => {
     const req = await fetch("https://auth.riotgames.com/userinfo", {
         headers: {
             'Authorization': "Bearer " + user.auth.rso
@@ -295,7 +315,7 @@ const getEntitlements = async (user) => {
     return json.entitlements_token;
 }
 
-const getRegion = async (user) => {
+export const getRegion = async (user) => {
     const req = await fetch("https://riot-geo.pas.si.riotgames.com/pas/v1/product/valorant", {
         method: "PUT",
         headers: {
@@ -327,6 +347,8 @@ export const redeemCookies = async (id, cookies) => {
     rateLimit = checkRateLimit(req, "auth.riotgames.com");
     if(rateLimit) return {success: false, rateLimit: rateLimit};
 
+    if(detectCloudflareBlock(req)) return {success: false, rateLimit: "cloudflare"};
+
     if(req.headers.location.startsWith("/login")) return {success: false}; // invalid cookies
 
     cookies = {
@@ -341,35 +363,73 @@ export const redeemCookies = async (id, cookies) => {
 }
 
 export const refreshToken = async (id, account=null) => {
+    console.log(`Refreshing token for ${id}...`)
     let response = {success: false}
 
-    const user = getUser(id, account);
+    let user = getUser(id, account);
     if(!user) return response;
 
-    if(user.auth.cookies) response = await redeemCookies(id, stringifyCookies(user.auth.cookies));
-    if(!response.success && user.auth.login && user.auth.password) response = await redeemUsernamePassword(id, user.auth.login, atob(user.auth.password));
+    if(user.auth.cookies) {
+        response = await queueCookiesLogin(id, stringifyCookies(user.auth.cookies));
+        if(response.inQueue) response = await waitForAuthQueueResponse(response);
+    }
+    if(!response.success && user.auth.login && user.auth.password) {
+        response = await queueUsernamePasswordLogin(id, user.auth.login, atob(user.auth.password));
+        if(response.inQueue) response = await waitForAuthQueueResponse(response);
+    }
 
     if(!response.success && !response.mfa && !response.rateLimit) deleteUserAuth(user);
+
     return response;
 }
 
 let riotClientVersion;
 let userAgentFetchPromise;
-export const fetchRiotClientVersion = async () => {
+export const fetchRiotClientVersion = async (attempt=1) => {
     if(userAgentFetchPromise) return userAgentFetchPromise;
 
     let resolve;
-    if(userAgentFetchPromise !== null) {
+    if(!userAgentFetchPromise) {
         console.log("Fetching latest Riot user-agent..."); // only log it the first time
         userAgentFetchPromise = new Promise(r => resolve = r);
     }
 
-    const githubReq = await fetch("https://api.github.com/repos/Morilli/riot-manifests/contents/Riot%20Client/KeystoneFoundationLiveWin?ref=master", {
-        headers: {"User-Agent": "giorgi-o/skinpeek"}
-    });
-    const json = JSON.parse(githubReq.body);
+    const headers = {
+        "User-Agent": "giorgi-o/skinpeek",
+        "X-GitHub-Api-Version": "2022-11-28",
+    };
+    if(config.githubToken) headers["Authorization"] = `Bearer ${config.githubToken}`;
 
-    const versions = json.map(file => file.name.split('_')[0]);
+    const githubReq = await fetch("https://api.github.com/repos/Morilli/riot-manifests/contents/Riot%20Client/KeystoneFoundationLiveWin?ref=master", {
+        headers
+    });
+
+    let json, versions, error = false;
+    try {
+        if(githubReq.statusCode !== 200) error = true;
+        else {
+            json = JSON.parse(githubReq.body);
+            versions = json.map(file => file.name.split('_')[0]);
+        }
+    } catch(e) {
+        error = true
+    }
+
+    if(error) {
+        if(attempt === 3) {
+            console.error("Failed to fetch latest Riot user-agent! (tried 3 times)");
+
+            const fallbackVersion = "65.0.2.5073401";
+            console.error(`Using version number ${fallbackVersion} instead...`);
+        }
+
+        console.error(`Failed to fetch latest Riot user-agent! (try ${attempt}/3`);
+        console.error(githubReq);
+
+        await wait(1000);
+        return fetchRiotClientVersion(attempt + 1);
+    }
+
     const compareVersions = (a, b) => {
         const aSplit = a.split(".");
         const bSplit = b.split(".");
@@ -383,12 +443,25 @@ export const fetchRiotClientVersion = async () => {
 
     riotClientVersion = versions[0];
     userAgentFetchPromise = null;
-    resolve();
+    resolve?.();
 }
 
 const getUserAgent = async () => {
+    // temporary bypass for Riot adding hCaptcha (see github issue #93)
+    return "ShooterGame/11 Windows/10.0.22621.1.768.64bit";
+    
     if(!riotClientVersion) await fetchRiotClientVersion();
     return `RiotClient/${riotClientVersion}.1234567 rso-auth (Windows;10;;Professional, x64)`;
+}
+
+const detectCloudflareBlock = (req) => {
+    const blocked = req.statusCode === 403 && req.headers["x-frame-options"] === "SAMEORIGIN";
+
+    if(blocked) {
+        console.error("[ !!! ] Error 1020: Your bot might be rate limited, it's best to check if your IP address/your hosting service is blocked by Riot - try hosting on your own PC to see if it solves the issue?")
+    }
+
+    return blocked;
 }
 
 export const deleteUserAuth = (user) => {

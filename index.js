@@ -2,15 +2,17 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 
-const {Discord,Intents,Client, Activity} = require('discord.js');
+const {Client, GatewayIntentBits, Discord, ActivityType, Events} = require('discord.js');
 const jsonfile = require('jsonfile');
 
 
 const bot = new Client({
      intents: [
-         Intents.FLAGS.GUILDS,
-         Intents.FLAGS.GUILD_PRESENCES,
-         Intents.FLAGS.GUILD_MESSAGES
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers
         ]});
 
 // The minimum allowable time between saves (milliseconds)
@@ -42,50 +44,19 @@ function save(){
     console.log("Whitelist file saved.")
     saved = true;
 }
-//valorant skin peek
-import {startBot} from "./discord/bot.js";
-import {loadConfig} from "./misc/config.js";
-import { loadLogger } from "./misc/logger.js";
-import { loadUserData } from "./valorant/accountSwitcher.js";
-import { transferUserDataFromOldUsersJson } from "./valorant/auth.js";
-import {logs} from "./logs.js";
 
-/* TODO list:
- * (done) Balance
- * (done) Auto fetch skins on startup
- * (done) Skin notifier/reminder
- * (done) Auto check for new valorant version every 15 minutes
- * (done) See current bundles
- * Password encryptor
- * Inspect weapon skin (all 4 levels + videos + radianite upgrade price)
- * Option to send shop automatically every day
- * More options in config.json
- * Simple analytics to see how many servers the bot is in
- * Admin commands (delete user, see/edit everyone's alerts, etc.)
- */
-
-const config = loadConfig();
-if(config) {
-    loadLogger()
-    transferUserDataFromOldUsersJson()
-    startBot()
-    loadUserData()
-    logs()
-}
-
+import {skinpeek} from "./SkinPeek.js";
+skinpeek();
 
 //Calls when the bot first comes online
 bot.on('ready',function(){
     console.log('Bot is online.');
     
-    // Variable setup.
-    var previousAction = ''
-    var objectAdded = {}
-    
     bot.user.setActivity('with your server.', {type:'PLAYING'})
 })
 
-bot.on('message', message=>{
+
+bot.on('messageCreate', message=>{
     let args = message.content.slice(prefix.length).split(" ");
     let moveRole = message.guild.roles.cache.find(x => x.name == 'sugoi')
     if (!message.content.startsWith(prefix)) return;
@@ -256,88 +227,62 @@ bot.on('message', message=>{
     }
 })
 
-bot.on('presenceUpdate', async (oldMember,newMember) => {
-    
-    try{
-      //  console.log(newMember.activities[0])
-     var newActivity = newMember?.activities?.find(x=> x?.type === 'PLAYING')
-     var oldActivity = oldMember?.activities?.find(x=> x?.type === 'PLAYING')
-     //for(i=0;i < oldActivity.length || i < newActivity.length;i++){
-        //console.log(newActivity)
-        //console.log(newActivity?.type + '-' + newActivity?.name+ '----' +oldActivity?.type + '-' + oldActivity?.name)
+bot.on('presenceUpdate', async (oldPresence, newPresence) => {
 
-           // console.log(oldActivity?.type + " " + newActivity?.type)
-        //if (newActivity[i]?.type == "PLAYING" || oldActivity[i]?.type == "PLAYING"){
-       // console.log(oldActivity[i]?.name + " " + newActivity[i]?.name)
-     // If the game has changed...
-       // if(oldActivity.name !== newActivity.name){
-        var botsRole = newMember.guild.roles.cache.find(x => x.name == 'bot')
-        var hasBotsRole = false; 
-         //If found the bot role on the member (indicating they are a bot)
-         if (botsRole){
-            hasBotsRole = newMember.roles?.cache.has(botsRole.id)
+try{
+//console.log(oldPresence, newPresence);
+    var newActivity = newPresence?.activities?.find(x=> x?.type === 0)
+    var oldActivity = oldPresence?.activities?.find(x=> x?.type === 0)
+    var botsRole = newPresence.guild.roles.cache.find(x => x.name == 'bot')
+    var hasBotsRole = false; 
+        //If found the bot role on the member (indicating they are a bot)
+        if (botsRole){
+        hasBotsRole = newPresence.roles?.cache.has(botsRole.id)
+    }
+
+    if(oldActivity?.type == 'PLAYING'){
+    if(newActivity?.type == null ){
+        console.log('not playing')
+        var roleName="PLAYING " + oldActivity?.name
+        var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
+        
+        newPresence.member.roles?.remove(roleToDelete.id)
+    }
+    if(newActivity?.type == "PLAYING" && newActivity?.name !== oldActivity?.name){
+        console.log('change game')
+        var roleName="PLAYING " + oldActivity?.name
+        var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
+        newPresence.member.roles?.remove(roleToDelete.id)
+    }
+}
+    var memberGameString = newActivity?.name.toString();
+
+    
+        
+    
+    // See if the application the user is running is whitelisted.
+    if(memberGameString in whiteListedApps){
+        console.log("exist")
+        // Set roleName equal to the abreviated game name.
+        var roleName ="PLAYING " + whiteListedApps[memberGameString];
+        var role = newPresence.guild.roles.cache.find(x => x.name == roleName);
+        // Search could not find the role by the specific game name (game name could be abreviated).
+        if(!role) {
+            console.log(roleName+" does not exist in "+newPresence.guild.name+". creating it.")
+
+            var highpost = newPresence.guild.roles.highest.rawPosition
+
+            await newPresence.guild.roles.create({name:roleName, mentionable:true,position:highpost-2, hoist:true, color:"#ff0000"})
+            console.log("added role: "+roleName)
         }
-        // If the presence is nothing, return. Or if the member has the bot role.
-        //console.log(newActivity.type)
-        if(oldActivity?.type == 'PLAYING'){
-        if(newActivity?.type == null ){
-            console.log('not playing')
-            var roleName="PLAYING " + oldActivity?.name
-            //console.log(roleName)
-            var roleToDelete = newMember.guild.roles.cache.find(x => x.name == roleName);
-            
-            //console.log(roleToDelete) 
-            //console.log(roleToDelete.id)
-            newMember.member.roles?.remove(roleToDelete.id)
-        }
-        if(newActivity?.type == "PLAYING" && newActivity?.name !== oldActivity?.name){
-            console.log('change game')
-            var roleName="PLAYING " + oldActivity?.name
-            //console.log(roleName)
-            var roleToDelete = newMember.guild.roles.cache.find(x => x.name == roleName);
-            
-            //console.log(roleToDelete) 
-            //console.log(roleToDelete.id)
-            newMember.member.roles?.remove(roleToDelete.id)
+        var roleToAdd = newPresence.guild.roles.cache.find(x => x.name == roleName);
+        var hasRole = newPresence.roles?.cache.has(roleToAdd.id)
+        if(!hasRole){
+            newPresence.member.roles?.add(roleToAdd.id);
+            console.log("Gave "+ bot.users.cache.find(x=> x.id == newPresence.userId).username +" the "+roleToAdd.name+" role.")
         }
     }
-        var memberGameString = newActivity?.name.toString();
-        //console.log(newMember.displayName+" : "+ memberGameString)
-       
-          
-        
-        // See if the application the user is running is whitelisted.
-        if(memberGameString in whiteListedApps){
-            console.log("exist")
-            // Set roleName equal to the abreviated game name.
-            var roleName ="PLAYING " + whiteListedApps[memberGameString];
-            var role = newMember.guild.roles.cache.find(x => x.name == roleName);
-            // Search could not find the role by the specific game name (game name could be abreviated).
-            if(!role) {
-                console.log(roleName+" does not exist in "+newMember.guild.name+". creating it.")
-                // Waits till the role is created, then carries on.
-                var highpost = newMember.guild.roles.highest.rawPosition
-                //console.log(highpost)
-                await newMember.guild.roles.create({name:roleName, mentionable:true,position:highpost-2, hoist:true, color:"#ff0000"})
-                console.log("added role: "+roleName)
-            }
-            var roleToAdd = newMember.guild.roles.cache.find(x => x.name == roleName);
 
-            // Does the person have the role already?
-            var hasRole = newMember.roles?.cache.has(roleToAdd.id)
-            if(!hasRole){
-                // If they dont have the role...
-                //console.log(roleToAdd.id)
-                newMember.member.roles?.add(roleToAdd.id);
-                //console.log(newMember)
-                console.log("Gave "+ bot.users.cache.find(x=> x.id == newMember.userId).username +" the "+roleToAdd.name+" role.")
-            }
-        }
-    //}
-//};
-
-
-//;}
 ;
 }catch(error){
         //console.error(error);

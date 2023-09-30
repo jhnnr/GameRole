@@ -1,39 +1,15 @@
 import fs from "fs";
 import {ensureUsersFolder, removeDupeAlerts} from "../misc/util.js";
 import {defaultSettings} from "../misc/settings.js";
-import nfetch from "node-fetch";
-import { error } from "console";
 
 /** JSON format:
- * {9
+ * {
  *     accounts: [User objects],
  *     currentAccount: currently selected account, 1 for first account,
  *     settings: dictionary
  * }
  */
-let users;
-export const loadUserData = async (filename="data/usersdb.json") => {
-    if(!users) try {
-        if (!fs.existsSync("data/users")) fs.mkdirSync("data/users");
-        const userStore = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW')
-        var userjson = await userStore.json();
-        if (userjson === null){
-            var userjson = [];
-        };
-        fs.writeFileSync(filename, JSON.stringify(userjson, null, 2));
-        
-        users = JSON.parse(fs.readFileSync(filename, 'utf-8'));
-        
-        for (const [key, value] of Object.entries(users)) {
-            var userFile = "data/users/"+ key +".json";
-            fs.writeFileSync(userFile, JSON.stringify(value, null, 2));
-        
-        }
-        console.log("Loaded Users")
-    } catch(e) {
-        users = {};
-    }
-}
+
 export const readUserJson = (id) => {
     try {
         return JSON.parse(fs.readFileSync("data/users/" + id + ".json", "utf-8"));
@@ -61,28 +37,9 @@ export const getUserJson = (id, account=null) => {
     return user.accounts[account - 1];
 }
 
-export const saveUserJson = async (id, json) => {
-    var userFile = "data/users/" + id + ".json";
-    
+export const saveUserJson = (id, json) => {
     ensureUsersFolder();
-    fs.writeFileSync(userFile, JSON.stringify(json, null, 2));
-    const userJson = JSON.stringify(json,null, 2)
-    
-    const apires = await nfetch('https://gamerole-d66f7-default-rtdb.asia-southeast1.firebasedatabase.app/users/'+ id + '.json?auth=lzJxUjzgmrP7GMa9eqGssgWHydJCeYkihkC46aLW', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: userJson
-    
-    });
-    if (apires.ok){
-        console.log("Successful Posting")
-    }
-    else{
-        console.log("error posting",)
-    }
-
+    fs.writeFileSync("data/users/" + id + ".json", JSON.stringify(json, null, 2));
 }
 
 export const saveUser = (user, account=null) => {
@@ -94,7 +51,6 @@ export const saveUser = (user, account=null) => {
             accounts: [user],
             currentAccount: 1,
             settings: defaultSettings
-            
         }
         saveUserJson(user.id, objectToWrite);
     } else {
@@ -113,9 +69,18 @@ export const addUser = (user) => {
         let foundDuplicate = false;
         for(let i = 0; i < userJson.accounts.length; i++) {
             if(userJson.accounts[i].puuid === user.puuid) {
-                user.alerts = removeDupeAlerts(user.alerts.concat(userJson.accounts[i].alerts));
+                const oldUser = userJson.accounts[i];
+
+                // merge the accounts
                 userJson.accounts[i] = user;
                 userJson.currentAccount = i + 1;
+
+                // copy over data from old account
+                user.alerts = removeDupeAlerts(oldUser.alerts.concat(userJson.accounts[i].alerts));
+                user.lastFetchedData = oldUser.lastFetchedData;
+                user.lastNoticeSeen = oldUser.lastNoticeSeen;
+                user.lastSawEasterEgg = oldUser.lastSawEasterEgg;
+
                 foundDuplicate = true;
             }
         }
@@ -154,9 +119,19 @@ export const deleteUser = (id, accountNumber) => {
 
 export const deleteWholeUser = (id) => {
     if(!fs.existsSync("data/users")) return;
-    const userJson = null;
+
+    // get the user's PUUIDs to delete the shop cache
+    const data = readUserJson(id);
+    if(data) {
+        const puuids = data.accounts.map(a => a.puuid);
+        for(const puuid of puuids) {
+            try {
+                fs.unlinkSync(`data/shopCache/${puuid}.json`);
+            } catch(e) {}
+        }
+    }
+
     fs.unlinkSync("data/users/" + id + ".json");
-    saveUserJson(id, userJson);
 }
 
 export const getNumberOfAccounts = (id) => {

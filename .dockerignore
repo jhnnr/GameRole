@@ -1,0 +1,8 @@
+# flyctl launch added from .gitignore
+**\data\*
+**\node_modules
+**\logs.txt
+**\.git
+**\.gitignore
+**\.gcloudignore
+fly.toml

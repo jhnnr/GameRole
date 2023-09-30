@@ -47,7 +47,10 @@ function save(){
 }
 
 import {skinpeek} from "./SkinPeek.js";
+import { logs } from './logs.js';
 skinpeek();
+
+logs();
 
 //Calls when the bot first comes online
 bot.on('ready',function(){

@@ -1,4 +1,5 @@
 {
+  "token": "token goes here",
   "fetchSkinPrices": true,
   "fetchSkinRarities": true,
   "localiseText": true,

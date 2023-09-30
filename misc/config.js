@@ -23,8 +23,6 @@ export const loadConfig = (filename="config.json") => {
         loadedConfig = JSON.parse(loadedConfig);
     } catch (e) {return console.error(`Could not JSON parse ${filename}! Is it corrupt?`, e)}
 
-    if(!loadedConfig.token || loadedConfig.token === "token goes here")
-        return console.error("You forgot to put your bot token in config.json!");
 
     loadedConfig.fetchSkinPrices = loadedConfig.showSkinPrices;
     loadedConfig.fetchSkinRarities = loadedConfig.showSkinRarities;

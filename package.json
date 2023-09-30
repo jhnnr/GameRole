@@ -6,6 +6,9 @@
     "node": ">=16.9.0",
     "npm": ">=7.21.1"
   },
+  "scripts": {
+    "start": "node ."
+  },
   "dependencies": {
     "discord.js": "^14.11.0",
     "fuzzysort": "^2.0.4",

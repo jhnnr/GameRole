@@ -286,7 +286,7 @@ try{
 
 ;
 }catch(error){
-        //console.error(error);
+        console.error(error);
     }
 });
 bot.login(process.env.DISCORD_TOKEN);

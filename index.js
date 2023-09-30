@@ -1,6 +1,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 const {Client, GatewayIntentBits, Discord, ActivityType, Events} = require('discord.js');
 const jsonfile = require('jsonfile');
@@ -241,19 +242,19 @@ try{
     }
 
     if(oldActivity?.type == 'PLAYING'){
-    if(newActivity?.type == null ){
-        console.log('not playing')
-        var roleName="PLAYING " + oldActivity?.name
-        var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
-        
-        newPresence.member.roles?.remove(roleToDelete.id)
-    }
-    if(newActivity?.type == "PLAYING" && newActivity?.name !== oldActivity?.name){
-        console.log('change game')
-        var roleName="PLAYING " + oldActivity?.name
-        var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
-        newPresence.member.roles?.remove(roleToDelete.id)
-    }
+        if(newActivity?.type == null ){
+            console.log('not playing')
+            var roleName="PLAYING " + oldActivity?.name
+            var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
+            
+            newPresence.member.roles?.remove(roleToDelete.id)
+        }
+        if(newActivity?.type == "PLAYING" && newActivity?.name !== oldActivity?.name){
+            console.log('change game')
+            var roleName="PLAYING " + oldActivity?.name
+            var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
+            newPresence.member.roles?.remove(roleToDelete.id)
+        }
 }
     var memberGameString = newActivity?.name.toString();
 
@@ -288,4 +289,4 @@ try{
         //console.error(error);
     }
 });
-bot.login(tokenFile.token);
+bot.login(process.env.DISCORD_TOKEN);

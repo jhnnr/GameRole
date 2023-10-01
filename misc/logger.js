@@ -13,17 +13,20 @@ export const localLog = (...args) => oldLog(shardString(), ...args);
 export const localError = (...args) => oldError(shardString(), ...args);
 
 export const loadLogger = () => {
+    
     console.log = (...args) => {
         oldLog(shardString(), ...args);
         if(config.logToChannel) messagesToLog.push(shardString() + escapeMarkdown(args.join(" ")));
-        outputMessagesToLogToFile()
+        outputMessagesToLogToFile();
+        
     }
 
     console.error = (...args) => {
         oldError(shardString(), ...args);
         if(config.logToChannel) messagesToLog.push("> " + shardString() + escapeMarkdown(args.map(e => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString())).join(" ")));
-        outputMessagesToLogToFile()
+        outputMessagesToLogToFile();
     }
+    
 }
 
 export const addMessagesToLog = (messages) => {
@@ -38,6 +41,7 @@ export const addMessagesToLog = (messages) => {
     // localLog(`Adding ${messages.length} messages to log...`);
 
     messagesToLog.push(...messages);
+    
 }
 
 export const sendConsoleOutput = () => {
@@ -61,27 +65,26 @@ export const sendConsoleOutput = () => {
                 channel.send(s);
             }
         }
-
+        
         messagesToLog.length = 0;
     } catch(e) {
         localError("Error when trying to send the console output to the channel!");
         localError(e)
     }
+    
 }
 
 
 import fs from 'fs';
-
-// ... (your existing code)
+import moment from 'moment-timezone';
 
 const logsFilePath = 'logs.txt'; // Set your desired log file path here
 
 // Function to get the current date and time in a formatted string
 function getCurrentDateTime() {
-  const now = new Date();
-  const date = now.toISOString().slice(0, 10);
-  const time = now.toLocaleTimeString();
-  return `${date} ${time}`;
+  const serverTimezone = 'Asia/Manila'; // Set the desired timezone
+  const formattedTime = moment.tz(serverTimezone).format('YYYY-MM-DD hh:mm:ss A');
+  return formattedTime;
 }
 
 // Function to output messagesToLog to logs.txt

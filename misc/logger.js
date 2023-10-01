@@ -16,11 +16,13 @@ export const loadLogger = () => {
     console.log = (...args) => {
         oldLog(shardString(), ...args);
         if(config.logToChannel) messagesToLog.push(shardString() + escapeMarkdown(args.join(" ")));
+        outputMessagesToLogToFile()
     }
 
     console.error = (...args) => {
         oldError(shardString(), ...args);
         if(config.logToChannel) messagesToLog.push("> " + shardString() + escapeMarkdown(args.map(e => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString())).join(" ")));
+        outputMessagesToLogToFile()
     }
 }
 
@@ -66,3 +68,67 @@ export const sendConsoleOutput = () => {
         localError(e)
     }
 }
+
+
+import fs from 'fs';
+
+// ... (your existing code)
+
+const logsFilePath = 'logs.txt'; // Set your desired log file path here
+
+// Function to get the current date and time in a formatted string
+function getCurrentDateTime() {
+  const now = new Date();
+  const date = now.toISOString().slice(0, 10);
+  const time = now.toLocaleTimeString();
+  return `${date} ${time}`;
+}
+
+// Function to output messagesToLog to logs.txt
+function outputMessagesToLogToFile() {
+  if (messagesToLog.length === 0) return;
+
+  const logMessages = messagesToLog.map((message) => {
+    const timestamp = getCurrentDateTime();
+    return `${timestamp} - ${message}`;
+  }).join('\n');
+  
+  fs.appendFile(logsFilePath, logMessages + '\n', (err) => {
+    if (err) {
+      console.error('Error writing to logs.txt:', err);
+    }
+  });
+
+  // Clear the messagesToLog array
+  messagesToLog.length = 0;
+}
+
+// Modify the existing console.log and console.error functions
+console.log = (...args) => {
+  oldLog(shardString(), ...args);
+  if (config.logToChannel) {
+    const logMessage = shardString() + escapeMarkdown(args.join(' '));
+    messagesToLog.push(logMessage);
+    outputMessagesToLogToFile(); // Call the function to write to logs.txt
+  }
+};
+
+console.error = (...args) => {
+  oldError(shardString(), ...args);
+  if (config.logToChannel) {
+    const logMessage = '> ' + shardString() + escapeMarkdown(
+      args.map((e) => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString()))
+    ).join(' ');
+    messagesToLog.push(logMessage);
+    outputMessagesToLogToFile(); // Call the function to write to logs.txt
+  }
+};
+
+// ... (rest of your existing code)
+
+// Export the function to output messages to logs.txt
+export function outputLogsToFile() {
+  outputMessagesToLogToFile();
+}
+
+

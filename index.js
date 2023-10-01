@@ -45,11 +45,11 @@ function save(){
     console.log("Whitelist file saved.")
     saved = true;
 }
+import { logs } from './logs.js';
 
 import {skinpeek} from "./SkinPeek.js";
-import { logs } from './logs.js';
-skinpeek();
 
+skinpeek();
 logs();
 
 //Calls when the bot first comes online

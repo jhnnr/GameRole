@@ -14,23 +14,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const publicPath = path.join(__dirname, 'public');
-const logsFilePath = path.join(__dirname, 'log.txt'); // Changed to log.txt
-
-// Create a write stream to log to the file
-const logStream = fs.createWriteStream(logsFilePath, { flags: 'a' });
-
-// Redirect console.log and console.error to the log file
-console.log = function (message) {
-  logStream.write(`[LOG] ${new Date().toISOString()}: ${message}\n`);
-  // Optionally, you can also log to the console if needed
-  process.stdout.write(`[LOG] ${new Date().toISOString()}: ${message}\n`);
-};
-
-console.error = function (message) {
-  logStream.write(`[ERROR] ${new Date().toISOString()}: ${message}\n`);
-  // Optionally, you can also log to the console if needed
-  process.stderr.write(`[ERROR] ${new Date().toISOString()}: ${message}\n`);
-};
+const logsFilePath = path.join(__dirname, 'logs.txt');
 
 export const logs = () => {
   // Serve static files
@@ -71,6 +55,7 @@ export const logs = () => {
   });
 
   server.listen(PORT, function() {
-    console.log('Server is listening on port', PORT);
+    const serverAddress = server.address(); // Get the server address info
+    console.log('Server is listening on port',serverAddress.address, PORT);
   });
 };

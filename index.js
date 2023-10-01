@@ -244,7 +244,7 @@ try{
         hasBotsRole = newPresence.roles?.cache.has(botsRole.id)
     }
 
-    if(oldActivity?.type == 'PLAYING'){
+    if(oldActivity?.type == 0){
         if(newActivity?.type == null ){
             console.log('not playing')
             var roleName="PLAYING " + oldActivity?.name
@@ -252,7 +252,7 @@ try{
             
             newPresence.member.roles?.remove(roleToDelete.id)
         }
-        if(newActivity?.type == "PLAYING" && newActivity?.name !== oldActivity?.name){
+        if(newActivity?.type == 0 && newActivity?.name !== oldActivity?.name){
             console.log('change game')
             var roleName="PLAYING " + oldActivity?.name
             var roleToDelete = newPresence.guild.roles.cache.find(x => x.name == roleName);
@@ -260,8 +260,6 @@ try{
         }
 }
     var memberGameString = newActivity?.name.toString();
-
-    
         
     
     // See if the application the user is running is whitelisted.

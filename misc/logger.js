@@ -17,14 +17,14 @@ export const loadLogger = () => {
     console.log = (...args) => {
         oldLog(shardString(), ...args);
         if(config.logToChannel) messagesToLog.push(shardString() + escapeMarkdown(args.join(" ")));
-        outputMessagesToLogToFile();
+        
         
     }
 
     console.error = (...args) => {
         oldError(shardString(), ...args);
         if(config.logToChannel) messagesToLog.push("> " + shardString() + escapeMarkdown(args.map(e => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString())).join(" ")));
-        outputMessagesToLogToFile();
+        
     }
     
 }

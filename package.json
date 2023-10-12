@@ -7,7 +7,9 @@
     "npm": ">=7.21.1"
   },
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "build": "npm install"
+
   },
   "dependencies": {
     "discord.js": "^14.11.0",

@@ -13,6 +13,18 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+
+const filename = 'logs.txt';
+
+// Check if the file exists
+if (!fs.existsSync(filename)) {
+  // If it doesn't exist, create the file
+  fs.writeFileSync(filename, '', 'utf-8');
+  //console.log(`The ${filename} file has been created.`);
+} else {
+  //console.log(`The ${filename} file already exists.`);
+}
+
 const publicPath = path.join(__dirname, 'public');
 const logsFilePath = path.join(__dirname, 'logs.txt');
 

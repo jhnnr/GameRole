@@ -1,33 +1,78 @@
-import config from "./config.js";
-import {escapeMarkdown} from "discord.js";
-import {client} from "../discord/bot.js";
-import {sendShardMessage} from "./shardMessage.js";
+import fs from 'fs';
+import config from './config.js';
+import { escapeMarkdown } from 'discord.js';
+import { client } from '../discord/bot.js';
+import { sendShardMessage } from './shardMessage.js';
 
 const messagesToLog = [];
+const logFilename = 'logs.txt'; // Specify the log file name
+
+import moment from 'moment-timezone';
+
+const logsFilePath = 'logs.txt'; // Set your desired log file path here
+
+// Function to get the current date and time in a formatted string
+function getCurrentDateTime() {
+  const serverTimezone = 'Asia/Manila'; // Set the desired timezone
+  const formattedTime = moment.tz(serverTimezone).format('YYYY-MM-DD hh:mm:ss A');
+  return formattedTime;
+}
+// Function to append log messages to the log file
+const appendToLog = (message) => {
+  const timestamp = getCurrentDateTime()
+  fs.appendFile(logFilename,timestamp +' '+ message + '\n', (err) => {
+    if (err) {
+      console.error('Error writing to log file:', err);
+    }
+  });
+};
 
 const oldLog = console.log;
 const oldError = console.error;
 
-const shardString = () => client.shard ? `[${client.shard.ids[0]}] ` : "";
-export const localLog = (...args) => oldLog(shardString(), ...args);
-export const localError = (...args) => oldError(shardString(), ...args);
+const shardString = () => (client.shard ? `[${client.shard.ids[0]}] ` : '');
+export const localLog = (...args) => {
+  oldLog(shardString(), ...args);
+  if (config.logToChannel) messagesToLog.push(shardString() + escapeMarkdown(args.join(' ')));
+  appendToLog(shardString() + args.join(' ')); // Append to the log file
+};
+export const localError = (...args) => {
+  oldError(shardString(), ...args);
+  if (config.logToChannel)
+    messagesToLog.push(
+      '> ' +
+        shardString() +
+        escapeMarkdown(
+          args
+            .map((e) => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString()))
+            .join(' ')
+        )
+    );
+  appendToLog('> ' + shardString() + args.join(' ')); // Append to the log file
+};
 
 export const loadLogger = () => {
-    
-    console.log = (...args) => {
-        oldLog(shardString(), ...args);
-        if(config.logToChannel) messagesToLog.push(shardString() + escapeMarkdown(args.join(" ")));
-        
-        
-    }
+  console.log = (...args) => {
+    oldLog(shardString(), ...args);
+    if (config.logToChannel) messagesToLog.push(shardString() + escapeMarkdown(args.join(' ')));
+    appendToLog(shardString() + args.join(' ')); // Append to the log file
+  };
 
-    console.error = (...args) => {
-        oldError(shardString(), ...args);
-        if(config.logToChannel) messagesToLog.push("> " + shardString() + escapeMarkdown(args.map(e => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString())).join(" ")));
-        
-    }
-    
-}
+  console.error = (...args) => {
+    oldError(shardString(), ...args);
+    if (config.logToChannel)
+      messagesToLog.push(
+        '> ' +
+          shardString() +
+          escapeMarkdown(
+            args
+              .map((e) => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString()))
+              .join(' ')
+          )
+      );
+    appendToLog('> ' + shardString() + args.join(' ')); // Append to the log file
+  };
+};
 
 export const addMessagesToLog = (messages) => {
     if(!messages.length) return;
@@ -75,63 +120,6 @@ export const sendConsoleOutput = () => {
 }
 
 
-import fs from 'fs';
-import moment from 'moment-timezone';
 
-const logsFilePath = 'logs.txt'; // Set your desired log file path here
-
-// Function to get the current date and time in a formatted string
-function getCurrentDateTime() {
-  const serverTimezone = 'Asia/Manila'; // Set the desired timezone
-  const formattedTime = moment.tz(serverTimezone).format('YYYY-MM-DD hh:mm:ss A');
-  return formattedTime;
-}
-
-// Function to output messagesToLog to logs.txt
-function outputMessagesToLogToFile() {
-  if (messagesToLog.length === 0) return;
-
-  const logMessages = messagesToLog.map((message) => {
-    const timestamp = getCurrentDateTime();
-    return `${timestamp} - ${message}`;
-  }).join('\n');
-  
-  fs.appendFile(logsFilePath, logMessages + '\n', (err) => {
-    if (err) {
-      console.error('Error writing to logs.txt:', err);
-    }
-  });
-
-  // Clear the messagesToLog array
-  messagesToLog.length = 0;
-}
-
-// Modify the existing console.log and console.error functions
-console.log = (...args) => {
-  oldLog(shardString(), ...args);
-  if (config.logToChannel) {
-    const logMessage = shardString() + escapeMarkdown(args.join(' '));
-    messagesToLog.push(logMessage);
-    outputMessagesToLogToFile(); // Call the function to write to logs.txt
-  }
-};
-
-console.error = (...args) => {
-  oldError(shardString(), ...args);
-  if (config.logToChannel) {
-    const logMessage = '> ' + shardString() + escapeMarkdown(
-      args.map((e) => (e instanceof Error ? e.stack : e.toString()).split('\n').join('\n> ' + shardString()))
-    ).join(' ');
-    messagesToLog.push(logMessage);
-    outputMessagesToLogToFile(); // Call the function to write to logs.txt
-  }
-};
-
-// ... (rest of your existing code)
-
-// Export the function to output messages to logs.txt
-export function outputLogsToFile() {
-  outputMessagesToLogToFile();
-}
 
 

@@ -7,10 +7,3 @@
 **\.gcloudignore
 fly.toml
 .env
-**\data\*
-node_modules
-logs.txt
-.git
-.gitignore
-.gcloudignore
-.env

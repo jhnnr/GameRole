@@ -5,11 +5,11 @@ import { client } from '../discord/bot.js';
 import { sendShardMessage } from './shardMessage.js';
 
 const messagesToLog = [];
-const logFilename = 'logs.txt'; // Specify the log file name
+const logFilename = './temp/logs.txt'; // Specify the log file name
 
 import moment from 'moment-timezone';
 
-const logsFilePath = 'logs.txt'; // Set your desired log file path here
+
 
 // Function to get the current date and time in a formatted string
 function getCurrentDateTime() {

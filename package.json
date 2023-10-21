@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node .",
-    "build": "npm install"
+    "builbuid": "npm install"
 
   },
   "dependencies": {

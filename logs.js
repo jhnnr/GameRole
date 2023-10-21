@@ -14,19 +14,20 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 
-const filename = 'logs.txt';
+const filename = './temp/logs.txt';
+
 
 // Check if the file exists
 if (!fs.existsSync(filename)) {
   // If it doesn't exist, create the file
   fs.writeFileSync(filename, '', 'utf-8');
-  //console.log(`The ${filename} file has been created.`);
+  console.log(`The ${filename} file has been created.`);
 } else {
-  //console.log(`The ${filename} file already exists.`);
+  console.log(`The ${filename} file already exists.`);
 }
 
 const publicPath = path.join(__dirname, 'public');
-const logsFilePath = path.join(__dirname, 'logs.txt');
+const logsFilePath = path.join(__dirname, filename);
 
 export const logs = () => {
   // Serve static files

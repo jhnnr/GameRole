@@ -1,7 +1,7 @@
 **/data/*
 data/skins.json
 node_modules
-logs.txt
+
 .git
 .gitignore
 .gcloudignore

@@ -14,7 +14,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 
-const filename = './temp/logs.txt';
+const filename = 'logs.txt';
 
 
 // Check if the file exists

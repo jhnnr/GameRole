@@ -5,7 +5,7 @@ import { client } from '../discord/bot.js';
 import { sendShardMessage } from './shardMessage.js';
 
 const messagesToLog = [];
-const logFilename = './temp/logs.txt'; // Specify the log file name
+const logFilename = 'logs.txt'; // Specify the log file name
 
 import moment from 'moment-timezone';
 

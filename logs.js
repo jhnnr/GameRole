@@ -67,7 +67,7 @@ export const logs = () => {
     });
   });
 
-  server.listen(PORT,'0.0.0.0', function() {
+  server.listen(PORT, function() {
     const serverAddress = server.address(); // Get the server address info
     console.log('Server is listening on port',serverAddress.address, PORT);
   });

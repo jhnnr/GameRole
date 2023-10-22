@@ -7,7 +7,7 @@ import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PORT = 80;
+const PORT = 8080;
 
 const app = express();
 const server = http.createServer(app);
@@ -67,7 +67,7 @@ export const logs = () => {
     });
   });
 
-  server.listen(PORT, function() {
+  server.listen(PORT,'0.0.0.0', function() {
     const serverAddress = server.address(); // Get the server address info
     console.log('Server is listening on port',serverAddress.address, PORT);
   });

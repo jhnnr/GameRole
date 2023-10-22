@@ -10,14 +10,14 @@ primary_region = "sin"
   dockerfile = "dockerfile"
 
 [env]
-  PORT = "80"
+  PORT = "8080"
 
 [experimental]
-  allowed_public_ports = [80]
+  allowed_public_ports = [8080]
 
 
 [[services]]
   http_checks = []
-  internal_port = 80
+  internal_port = 8080
   processes = ["app"]
   protocol = "tcp"

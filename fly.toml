@@ -13,11 +13,11 @@ primary_region = "sin"
   PORT = "8080"
 
 [experimental]
-  allowed_public_ports = [8080]
+  allowed_public_ports = [80]
 
 
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 80
   processes = ["app"]
   protocol = "tcp"

@@ -7,7 +7,7 @@ import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PORT = 8080;
+const PORT = 80;
 
 const app = express();
 const server = http.createServer(app);
@@ -23,7 +23,7 @@ if (!fs.existsSync(filename)) {
   fs.writeFileSync(filename, '', 'utf-8');
   console.log(`The ${filename} file has been created.`);
 } else {
-  console.log(`The ${filename} file already exists.`);
+  //console.log(`The ${filename} file already exists.`);
 }
 
 const publicPath = path.join(__dirname, 'public');

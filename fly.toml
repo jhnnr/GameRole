@@ -7,8 +7,9 @@ app = "gamerole"
 primary_region = "sin"
 
 [build]
-  dockerfile = "dockerfile"
-
+  builder = "paketobuildpacks/builder:base"
+  buildpacks = ["gcr.io/paketo-buildpacks/nodejs"]
+  
 [env]
   PORT = "8080"
 

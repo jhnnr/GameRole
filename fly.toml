@@ -13,12 +13,11 @@ primary_region = "sin"
   PORT = "80"
 
 [experimental]
-  allowed_public_ports = []
-  auto_rollback = true
+  allowed_public_ports = [80]
+
 
 [[services]]
   http_checks = []
   internal_port = 80
   processes = ["app"]
   protocol = "tcp"
-  script_checks = []

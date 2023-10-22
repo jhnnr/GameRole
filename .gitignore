@@ -6,4 +6,3 @@ logs.txt
 .gitignore
 .gcloudignore
 .env
-fly.toml

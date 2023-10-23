@@ -8,7 +8,9 @@ primary_region = "sin"
 
 [build]
   dockerfile = "dockerfile"
-
+  
+[deploy]
+strategy = "bluegreen"
 
 [experimental]
   allowed_public_ports = [80]

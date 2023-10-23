@@ -15,22 +15,14 @@ primary_region = "sin"
   auto_rollback = true
 
 [[services]]
-  http_checks = []
-  internal_port = 4000
-  processes = ["app"]
-  protocol = "tcp"
-  script_checks = []
-
-  [services.concurrency]
-    hard_limit = 2500
-    soft_limit = 2000
-    type = "connections"
-
+  internal_port = 80
+  protocol = "udp"
   [[services.ports]]
-    handlers = ["http"]
     port = 80
 
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
   [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
-
+    port = 80
+    

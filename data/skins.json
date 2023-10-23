@@ -2619,7 +2619,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/RoboMecha/Chromas/Standard/HMG_RoboMecha_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "15a5516d-412f-2db0-6bb3-3cbe40a2355f": {
       "uuid": "15a5516d-412f-2db0-6bb3-3cbe40a2355f",
@@ -13844,7 +13845,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/AK/Mythic/Chromas/Standard/AK_Mythic_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1775
     },
     "a8c10620-46a8-794e-be55-a0a13edb8d44": {
       "uuid": "a8c10620-46a8-794e-be55-a0a13edb8d44",
@@ -14837,7 +14839,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/AK/RoboMecha/Chromas/Standard/AK_RoboMecha_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "968efd06-4549-65f4-9fb1-3f90d612e428": {
       "uuid": "968efd06-4549-65f4-9fb1-3f90d612e428",
@@ -29066,7 +29069,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/Carbine/RoboMecha/Chromas/Standard/Carbine_RoboMecha_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "00eb5b5b-4697-44b5-a926-7e86b730e812": {
       "uuid": "00eb5b5b-4697-44b5-a926-7e86b730e812",
@@ -43040,7 +43044,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Sidearms/AutoPistol/RoboMecha/Chromas/Standard/AutoPistol_RoboMecha_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "47ee5cb6-4059-df8b-6d40-5daaa01ff49f": {
       "uuid": "47ee5cb6-4059-df8b-6d40-5daaa01ff49f",
@@ -58041,7 +58046,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.08/31cc089e-4bdd-2f5c-0073-e187667d1024_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/Sidearms/Revolver/SOL/Chromas/v3/Revolver_SOL_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2175
     },
     "c8652efa-462f-d455-20b0-699dd00a9e2a": {
       "uuid": "c8652efa-462f-d455-20b0-699dd00a9e2a",
@@ -98551,7 +98557,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Melee/RoboMecha/Chromas/Standard/Melee_RoboMecha_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2550
     },
     "315e8e49-4dc4-9769-2382-3ba5f7af87da": {
       "uuid": "315e8e49-4dc4-9769-2382-3ba5f7af87da",
@@ -107583,10 +107590,51 @@
       "subNames": null,
       "descriptions": null,
       "icon": "https://media.valorant-api.com/bundles/e4c7da33-4e16-8eb5-ad4d-388753a0e179/displayicon.png",
-      "items": null,
-      "price": null,
-      "basePrice": null,
-      "expires": null,
+      "items": [
+        {
+          "uuid": "10b34c7e-42cb-45bb-ec20-63b8b8332e6e",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "c871822c-431b-c8fd-2c3f-9c8cc79ee186",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "b737c20d-43f8-16ff-c2fd-07a45fa7beaf",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "c58a2e59-4b5a-87a9-c8c4-2e92640bae4d",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "dcb0b818-4db1-c3f8-6055-d1ab2a0ae55a",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 0,
+          "basePrice": 2550,
+          "discount": 1,
+          "amount": 1
+        }
+      ],
+      "price": 5100,
+      "basePrice": 7650,
+      "expires": 1698785997,
       "last_seen": null
     },
     "9d801e67-4b33-4d99-04b8-aab317819a4e": {

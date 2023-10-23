@@ -11,8 +11,25 @@ primary_region = "sin"
 
 [env]
   PORT = "80"
-[[services.ports]]
-  handlers = ["http"]
-  port = 80
-  force_https = true
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  internal_port = 80
+  protocol = "udp"
+
+  [[services.ports]]
+    handlers = ["https"]
+    port = 80
+    
+
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["https"]
+    port = 80
     

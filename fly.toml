@@ -10,16 +10,16 @@ primary_region = "sin"
   dockerfile = "dockerfile"
 
 [env]
-  PORT = "443"
+  PORT = "80"
 
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
 
 [[services]]
-  internal_port = 443
+  internal_port = 80
   protocol = "https"
 
   [[services.ports]]
-    port = "443"
+    port = "80"
 

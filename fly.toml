@@ -11,7 +11,7 @@ primary_region = "sin"
 
 
 [experimental]
-  allowed_public_ports = []
+  allowed_public_ports = [80]
   auto_rollback = true
 
 [[services]]

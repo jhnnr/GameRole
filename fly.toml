@@ -4,7 +4,7 @@
 #
 
 app = "gamerole"
-primary_region = "sin"
+primary_region = "atl"
 
 [build]
   dockerfile = "dockerfile"

@@ -4,7 +4,7 @@
 #
 
 app = "gamerole"
-primary_region = "atl"
+primary_region = "sin"
 
 [build]
   dockerfile = "dockerfile"
@@ -18,8 +18,14 @@ primary_region = "atl"
 
 [[services]]
   internal_port = 80
-  protocol = "https"
+  protocol = "udp"
 
   [[services.ports]]
     port = "80"
 
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = "80"

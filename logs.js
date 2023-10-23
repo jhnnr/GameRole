@@ -71,5 +71,11 @@ export const logs = () => {
     const serverAddress = server.address(); // Get the server address info
     console.log('Server is listening on port',serverAddress.address, PORT);
   });
-  
+  app.use (function (req, res, next){
+    if(req.get("X-Forwared-Proto")=="http"){
+      res.redirect('https://' + req.headers.host + req.url);
+    } else {
+        next();
+    }
+  })
 };

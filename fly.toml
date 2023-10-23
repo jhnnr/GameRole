@@ -21,11 +21,15 @@ primary_region = "sin"
   protocol = "udp"
 
   [[services.ports]]
-    port = "80"
+    handlers = ["http"]
+    port = 80
+    force_https = true
 
 [[services]]
   internal_port = 80
   protocol = "tcp"
 
   [[services.ports]]
-    port = "80"
+    handlers = ["http"]
+    port = 80
+    force_https = true

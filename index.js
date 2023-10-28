@@ -50,7 +50,7 @@ import {skinpeek} from "./SkinPeek.js";
 import { putDataToFirebase, getDataFromFirebase } from "./firebase.js";
 skinpeek();
 logs();
-getDataFromFirebase();
+putDataToFirebase();
 
 
 //Calls when the bot first comes online

@@ -21,7 +21,6 @@ const minumumSaveInterval = 10000;
 // Whether or not the whitelist is saved
 var saved = true;
 
-var tokenFile = require('./config.json');
 const prefix = '<';
 
 var whiteListedApps = require("./whitelist.json");
@@ -48,9 +47,11 @@ function save(){
 import { logs } from './logs.js';
 
 import {skinpeek} from "./SkinPeek.js";
-
+import { putDataToFirebase, getDataFromFirebase } from "./firebase.js";
 skinpeek();
 logs();
+getDataFromFirebase();
+
 
 //Calls when the bot first comes online
 bot.on('ready',function(){

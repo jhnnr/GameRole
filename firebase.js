@@ -56,7 +56,6 @@ export const getDataFromFirebase = async () => {
     try {
       createDirectoryIfNotExists(folderPath);
       const snapshot = await dbRef.once('value');
-      const data = snapshot.val();
   
       // Iterate through the keys and store each key in a JSON file
       snapshot.forEach((childSnapshot) => {

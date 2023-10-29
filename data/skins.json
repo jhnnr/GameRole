@@ -16643,7 +16643,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/AK/Winter/Chromas/Standard/AK_Winter_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "45e51d17-480a-6e28-cdd2-459d7758bea8": {
       "uuid": "45e51d17-480a-6e28-cdd2-459d7758bea8",
@@ -53549,7 +53550,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Sidearms/Luger/Unstoppable/Chromas/v3/Luger_Unstoppable_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1775
     },
     "4526a891-4754-da6c-7ada-95a8a259952e": {
       "uuid": "4526a891-4754-da6c-7ada-95a8a259952e",
@@ -107634,7 +107636,7 @@
       ],
       "price": 5100,
       "basePrice": 7650,
-      "expires": 1698785997,
+      "expires": 1698785999,
       "last_seen": null
     },
     "9d801e67-4b33-4d99-04b8-aab317819a4e": {

@@ -63,10 +63,9 @@ export const getDataFromFirebase = async () => {
         const key = childSnapshot.key;
         const value = childSnapshot.val();
         const filename = `./data/users/${key}.json`;
-        const jsonData = { [key]: value };
   
         // Write the JSON object to a file with the key as the filename
-        fs.writeFileSync(filename, JSON.stringify(jsonData, null, 2));
+        fs.writeFileSync(filename, JSON.stringify(value, null, 2));
   
         console.log(`Data retrieved and stored in ${filename}`);
       });

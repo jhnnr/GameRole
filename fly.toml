@@ -9,6 +9,8 @@ primary_region = "sin"
 [build]
   dockerfile = "dockerfile"
 
+[env]
+TZ="Asia/Singapore"
 
 [experimental]
   allowed_public_ports = [80]

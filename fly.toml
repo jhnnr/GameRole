@@ -5,7 +5,7 @@
 
 app = "gamerole"
 primary_region = "sin"
-
+fly_region = "sin"
 [build]
   dockerfile = "dockerfile"
 

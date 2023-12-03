@@ -40,7 +40,7 @@ export const getUserJson = (id, account=null) => {
 export const saveUserJson = (id, json) => {
     ensureUsersFolder();
     fs.writeFileSync("data/users/" + id + ".json", JSON.stringify(json, null, 2));
-    mongoDB()
+    mongoDB();
 }
 
 export const saveUser = (user, account=null) => {

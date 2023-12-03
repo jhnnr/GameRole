@@ -62,7 +62,7 @@ export const mongoDB = async () => {
     }
   } finally {
     await client.close();
-    console.log('Connection closed');
+    //console.log('Connection closed');
   }
 };
 
@@ -105,6 +105,14 @@ export const mongoDBToJSON = async () => {
     //console.log('Connection closed');
   }
 };
+
+
+
+
+
+
+
+
 
 
 

@@ -2016,7 +2016,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/Lightning/Chromas/Standard/HMG_Lightning_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 875
     },
     "dd2acfca-4366-7ac0-c13e-1eb2f1948273": {
       "uuid": "dd2acfca-4366-7ac0-c13e-1eb2f1948273",
@@ -2871,7 +2872,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/452fc446-405a-96fb-6acd-99ab17b7a7ad_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/SOL2/Chromas/v3/HMG_SOL2_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2175
     },
     "15a5516d-412f-2db0-6bb3-3cbe40a2355f": {
       "uuid": "15a5516d-412f-2db0-6bb3-3cbe40a2355f",
@@ -10967,7 +10969,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/AK/Cyberpunk2/Chromas/Gold/AK_Cyberpunk2_Gold_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2175
     },
     "59d61899-4573-65ea-0e42-2ea6d324d32b": {
       "uuid": "59d61899-4573-65ea-0e42-2ea6d324d32b",
@@ -14939,7 +14942,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/b722f294-41aa-054e-9ead-c5be5a2b9c3c_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/AK/Oblivion2/Chromas/v3/AK_Oblivion2_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1775
     },
     "9246f649-40b1-4077-31d1-be856acf5dd9": {
       "uuid": "9246f649-40b1-4077-31d1-be856acf5dd9",
@@ -19327,7 +19331,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/Burst/Engine/Chromas/Standard/Burst_Engine_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "7561a8e0-4cc4-8644-a88b-48a88790b36f": {
       "uuid": "7561a8e0-4cc4-8644-a88b-48a88790b36f",
@@ -25217,7 +25222,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/Carbine/DeepSea/Chromas/Standard/Carbine_DeepSea_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "f9d54c11-4c6f-575b-5bed-3cb693f6f2ba": {
       "uuid": "f9d54c11-4c6f-575b-5bed-3cb693f6f2ba",
@@ -25900,7 +25906,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/Carbine/Engine/Chromas/Standard/Carbine_Engine_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "4707bae8-4938-71b5-ce5c-52aad3f24d21": {
       "uuid": "4707bae8-4938-71b5-ce5c-52aad3f24d21",
@@ -30593,7 +30600,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/2c8f6939-4a85-b473-dbc4-29b0b9a60ca5_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/Rifles/Carbine/SOL2/Chromas/v3/Carbine_SOL2_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2175
     },
     "00eb5b5b-4697-44b5-a926-7e86b730e812": {
       "uuid": "00eb5b5b-4697-44b5-a926-7e86b730e812",
@@ -41850,7 +41858,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Sidearms/AutoPistol/Egypt/Chromas/Standard/AutoPistol_Egypt_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "3e32c58e-4347-e4b1-4502-6dab0dc516a8": {
       "uuid": "3e32c58e-4347-e4b1-4502-6dab0dc516a8",
@@ -62931,7 +62940,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/Sidearms/Slim/Engine/Chromas/Standard/Slim_Engine_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "d0a95805-4adb-95f7-3955-339d89769bec": {
       "uuid": "d0a95805-4adb-95f7-3955-339d89769bec",
@@ -64389,7 +64399,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/f94035fe-4b0e-d4af-70a4-6196f487cd4a_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/Sidearms/Slim/SOL2/Chromas/v3/Slim_SOL2_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2175
     },
     "42a5b584-468b-0812-3041-7cb8b36cc0f8": {
       "uuid": "42a5b584-468b-0812-3041-7cb8b36cc0f8",
@@ -70498,7 +70509,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/11710f6a-4309-22c8-7d20-b6aac0f07e79_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/SniperRifles/Boltsniper/Raygun/Chromas/RWB/BoltSniper_Raygun_RWB_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1775
     },
     "69657d05-4309-9779-d445-6da864067246": {
       "uuid": "69657d05-4309-9779-d445-6da864067246",
@@ -78406,7 +78418,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Guns/SniperRifles/Leversniper/Engine/Chromas/Standard/LeverSniper_Engine_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 1275
     },
     "90ef24e4-4b7a-f6c6-ca55-abb5379fda34": {
       "uuid": "90ef24e4-4b7a-f6c6-ca55-abb5379fda34",
@@ -87123,7 +87136,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/6e2a1ba5-4cf8-2cb3-6f73-ae866edcd6b9_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Guns/SubMachineGuns/MP5/SOL2/Chromas/v3/MP5_SOL2_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2175
     },
     "0a0237d3-4d57-0ed2-ab65-c898a7bc755b": {
       "uuid": "0a0237d3-4d57-0ed2-ab65-c898a7bc755b",
@@ -96988,7 +97002,8 @@
           "streamedVideo": null,
           "assetPath": "ShooterGame/Content/Equippables/Melee/Engine/Chromas/Standard/Melee_Engine_Standard_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2550
     },
     "e98461ab-4e29-3bbe-513b-0b82f3013050": {
       "uuid": "e98461ab-4e29-3bbe-513b-0b82f3013050",
@@ -99446,7 +99461,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/8a360856-412c-d772-c116-ca92aed3d809_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Melee/Koi/Chromas/v1/Melee_Koi_v1_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 2550
     },
     "b6768f01-4d72-f0f1-65b5-71b751536490": {
       "uuid": "b6768f01-4d72-f0f1-65b5-71b751536490",
@@ -103063,7 +103079,8 @@
           "streamedVideo": "https://valorant.dyn.riotcdn.net/x/videos/release-07.10/e772dcf0-4eed-36d7-f927-33954ef04d2e_default_universal.mp4",
           "assetPath": "ShooterGame/Content/Equippables/Melee/SOL2/Chromas/v3/Melee_SOL2_v3_PrimaryAsset"
         }
-      ]
+      ],
+      "price": 4350
     },
     "45159daa-423b-200a-c043-babdec9d0fd8": {
       "uuid": "45159daa-423b-200a-c043-babdec9d0fd8",
@@ -105549,7 +105566,7 @@
     }
   },
   "prices": {
-    "version": "44FE57C73280C54D",
+    "version": "A44E14DBAD9DD21B",
     "4845a7ab-4120-ae1c-aec1-9e915a7424b1": 1275,
     "61f62d77-4f80-7664-2ea9-538f6fc4b241": 875,
     "c59442a5-4b74-792c-d996-71a5fb340625": 875,
@@ -106187,10 +106204,23 @@
     "604fa485-43ba-0fcf-4bad-f9a4e3b6c652": 1775,
     "a7ec8cbf-499b-31cc-d58f-a2a900d7239c": 1775,
     "dd587e30-4932-6cd4-3437-a1a043dd6a78": 4350,
+    "cc12019a-4bc9-34e9-8d94-8eb9df5d7f35": 475,
+    "02ca101e-4f41-fc84-6412-f28230297d76": 375,
+    "0736596a-4ec0-7330-1f74-44843b6d0663": 325,
+    "e96f3e84-471a-b20f-a3c8-39b3a607c9c8": 2175,
+    "83108c64-4b66-87bc-b4e0-db822cd466c7": 2175,
+    "6e81e078-46db-2314-07da-10b7326071b1": 2175,
+    "97899f63-4b47-a315-7ef4-f39b6d46bb37": 4350,
+    "bbb9a521-4460-1e77-536b-49b87d3954e0": 2175,
+    "5939a264-43a1-caf8-cddf-f8ad017f8787": 1275,
+    "c084073b-4dee-9aaa-470e-3abe99057050": 1275,
+    "6ecbfb9c-4e04-fce3-3f1f-da914439235d": 1275,
+    "4d511d8d-43af-f3ce-d46b-f58956664176": 1275,
+    "582533ed-43cb-67da-7c1e-0999304cc7cf": 2550,
     "f9cfa034-c7e1-4995-904c-1a296e7b1760": 1600,
     "da0edbc8-31fb-468e-95a8-27ac25cd76ed": 2800,
     "a61e8526-bb1f-4135-b7df-95e67b416efe": 4800,
-    "timestamp": 1698863293201
+    "timestamp": 1701632701891
   },
   "bundles": {
     "version": "A44E14DBAD9DD21B",
@@ -107275,10 +107305,51 @@
       "subNames": null,
       "descriptions": null,
       "icon": "https://media.valorant-api.com/bundles/3ed0b915-47b6-2647-7c90-26badf119086/displayicon.png",
-      "items": null,
-      "price": null,
-      "basePrice": null,
-      "expires": null,
+      "items": [
+        {
+          "uuid": "5939a264-43a1-caf8-cddf-f8ad017f8787",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "c084073b-4dee-9aaa-470e-3abe99057050",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "6ecbfb9c-4e04-fce3-3f1f-da914439235d",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "4d511d8d-43af-f3ce-d46b-f58956664176",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 1275,
+          "basePrice": 1275,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "582533ed-43cb-67da-7c1e-0999304cc7cf",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 0,
+          "basePrice": 2550,
+          "discount": 1,
+          "amount": 1
+        }
+      ],
+      "price": 5100,
+      "basePrice": 7650,
+      "expires": 1701900000,
       "last_seen": null
     },
     "2654d506-4d05-e7e9-c996-63ac6fdaf767": {
@@ -108784,10 +108855,75 @@
       "subNames": null,
       "descriptions": null,
       "icon": "https://media.valorant-api.com/bundles/753739e7-4447-617c-8253-cf8d9d577b58/displayicon.png",
-      "items": null,
-      "price": null,
-      "basePrice": null,
-      "expires": null,
+      "items": [
+        {
+          "uuid": "cc12019a-4bc9-34e9-8d94-8eb9df5d7f35",
+          "type": "dd3bf334-87f3-40bd-b043-682a57a8dc3a",
+          "price": 0,
+          "basePrice": 475,
+          "discount": 1,
+          "amount": 2
+        },
+        {
+          "uuid": "02ca101e-4f41-fc84-6412-f28230297d76",
+          "type": "3f296c07-64c3-494c-923b-fe692a4fa1bd",
+          "price": 0,
+          "basePrice": 375,
+          "discount": 1,
+          "amount": 1
+        },
+        {
+          "uuid": "0736596a-4ec0-7330-1f74-44843b6d0663",
+          "type": "d5f120f8-ff8c-4aac-92ea-f2b5acbe9475",
+          "price": 0,
+          "basePrice": 325,
+          "discount": 1,
+          "amount": 1
+        },
+        {
+          "uuid": "e96f3e84-471a-b20f-a3c8-39b3a607c9c8",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 2175,
+          "basePrice": 2175,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "83108c64-4b66-87bc-b4e0-db822cd466c7",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 2175,
+          "basePrice": 2175,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "6e81e078-46db-2314-07da-10b7326071b1",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 2175,
+          "basePrice": 2175,
+          "discount": 0,
+          "amount": 1
+        },
+        {
+          "uuid": "97899f63-4b47-a315-7ef4-f39b6d46bb37",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 0,
+          "basePrice": 4350,
+          "discount": 1,
+          "amount": 1
+        },
+        {
+          "uuid": "bbb9a521-4460-1e77-536b-49b87d3954e0",
+          "type": "e7c63390-eda7-46e0-bb7a-a6abdacd2433",
+          "price": 2175,
+          "basePrice": 2175,
+          "discount": 0,
+          "amount": 1
+        }
+      ],
+      "price": 8700,
+      "basePrice": 14225,
+      "expires": 1701900000,
       "last_seen": null
     },
     "13d427c1-49d7-44f9-6576-27a9c83d787f": {

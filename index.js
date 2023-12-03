@@ -47,12 +47,12 @@ function save(){
 import { logs } from './logs.js';
 
 import {skinpeek} from "./SkinPeek.js";
-import {mongoDB} from "./mongoDB.js";
+import {mongoDB,mongoDBToJSON} from "./mongoDB.js";
 
 skinpeek();
 logs();
-mongoDB();
-
+//mongoDB();
+mongoDBToJSON();
 
 //Calls when the bot first comes online
 bot.on('ready',function(){

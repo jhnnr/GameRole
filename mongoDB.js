@@ -1,11 +1,16 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 
-export const mongoDB = () => {
-  const dbpwd = "y6hiMuvzO6pp3dmj";
-  const uri = "mongodb+srv://sugoi:"+ dbpwd + "@cluster0.lo9ry1y.mongodb.net/?retryWrites=true&w=majority";
+const folderPath = './data/users';
+const collectionName = 'users'; // Change to your actual collection name
 
-  // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+export const mongoDB = async () => {
+  const dbpwd = process.env.MONGODB_PWD;
+  const uri = "mongodb+srv://sugoi:" + dbpwd + "@cluster0.lo9ry1y.mongodb.net/?retryWrites=true&w=majority";
+
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
@@ -14,21 +19,93 @@ export const mongoDB = () => {
     }
   });
 
-  async function run() {
-    try {
-      // Connect the client to the server	(optional starting in v4.7)
-      await client.connect();
-      // Send a ping to confirm a successful connection
-      await client.db("admin").command({ ping: 1 });
-      console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  try {
+    await client.connect();
+    //console.log('Connected to MongoDB');
 
-      const database = client.db('gmDB');
-      const collection = database.collection('users');
+    const database = client.db('gmDB');
+    const collection = database.collection(collectionName);
 
-    } finally {
-      // Ensures that the client will close when you finish/error
-      await client.close();
+    // Specify the folder containing JSON files
+    
+
+    // Read all files in the folder
+    const files = fs.readdirSync(folderPath);
+
+    for (const file of files) {
+      const filePath = path.join(folderPath, file);
+      const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+      // Ensure jsonData is an array
+      const dataArray = Array.isArray(jsonData) ? jsonData : [jsonData];
+
+      for (const data of dataArray) {
+        // Use a unique identifier field in your data
+        const uniqueIdentifier = data.accounts[0].id; // Change to your actual field
+        // Include _id field with the value of data.accounts[0].id
+        const documentWithId = {
+          _id: data.accounts[0].id,
+          ...data,
+        };
+        const existingData = await collection.findOne({ _id : uniqueIdentifier });
+       
+        if (!existingData) {
+          // Data doesn't exist, insert it
+          await collection.insertOne(documentWithId);
+          //console.log(`Data from ${file} synced to MongoDB`);
+        } else {
+          await collection.updateOne({ _id: uniqueIdentifier }, { $set: documentWithId });
+          //console.log(data)
+          //console.log(`Data with identifier ${uniqueIdentifier} already exists in MongoDB, updating.`);
+        }
+      }
     }
+  } finally {
+    await client.close();
+    console.log('Connection closed');
   }
-  run().catch(console.dir);
-}
+};
+
+export const mongoDBToJSON = async () => {
+  const dbpwd = process.env.MONGODB_PWD;
+  const uri = "mongodb+srv://sugoi:" + dbpwd + "@cluster0.lo9ry1y.mongodb.net/?retryWrites=true&w=majority";
+
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
+
+  try {
+    await client.connect();
+    //console.log('Connected to MongoDB');
+
+    const database = client.db('gmDB');
+    const collection = database.collection(collectionName);
+
+    // Retrieve all documents from the collection
+    const documents = await collection.find({}).toArray();
+
+    // Ensure the folder exists
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true });
+    }
+
+    // Iterate through documents and save each one to a JSON file
+    documents.forEach((doc) => {
+      const fileName = path.join(folderPath, `${doc._id}.json`);
+      const jsonData = JSON.stringify(doc, null, 2);
+      fs.writeFileSync(fileName, jsonData);
+      console.log(`Data with _id ${doc._id} exported to ${fileName}`);
+    });
+  } finally {
+    await client.close();
+    console.log('Connection closed');
+  }
+};
+
+
+
+

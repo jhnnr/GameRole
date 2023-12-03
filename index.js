@@ -47,11 +47,12 @@ function save(){
 import { logs } from './logs.js';
 
 import {skinpeek} from "./SkinPeek.js";
-import { putDataToFirebase, getDataFromFirebase } from "./firebase.js";
+import {mongoDB} from "./mongoDB.js";
+
 skinpeek();
 logs();
+mongoDB();
 
-//getDataFromFirebase();
 
 //Calls when the bot first comes online
 bot.on('ready',function(){

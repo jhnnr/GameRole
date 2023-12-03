@@ -16,7 +16,7 @@
   "emojiCacheExpiration": 10000,
   "loadoutCacheExpiration": 600000,
   "useShopCache": true,
-  "useLoginQueue": false,
+  "useLoginQueue": true,
   "loginQueueInterval": 3000,
   "loginQueuePollRate": 2000,
   "loginRetryTimeout": 600000,

@@ -1,7 +1,7 @@
 import fs from "fs";
 import {ensureUsersFolder, removeDupeAlerts} from "../misc/util.js";
 import {defaultSettings} from "../misc/settings.js";
-
+import {mongoDB} from "../mongoDB.js";
 /** JSON format:
  * {
  *     accounts: [User objects],
@@ -40,6 +40,7 @@ export const getUserJson = (id, account=null) => {
 export const saveUserJson = (id, json) => {
     ensureUsersFolder();
     fs.writeFileSync("data/users/" + id + ".json", JSON.stringify(json, null, 2));
+    mongoDB()
 }
 
 export const saveUser = (user, account=null) => {

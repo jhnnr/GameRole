@@ -108,6 +108,8 @@ export const checkAlerts = async () => {
                 const accountCount = userJson.accounts.length;
                 for(let i = 1; i <= accountCount; i++) {
 
+                    //refresh token daily
+                    await refreshToken(id, account);
                     const rawUserAlerts = alertsForUser(id, i);
                     const dailyShopChannel = getSetting(id, "dailyShop");
                     if(!rawUserAlerts?.length && !dailyShopChannel) continue;

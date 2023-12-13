@@ -141,7 +141,7 @@ export const scheduleTasks = () => {
 
     // check alerts every day at 00:00:10 GMT
     if (config.refreshSkins) cronTasks.push(cron.schedule(config.refreshSkins, checkAlerts, { timezone: "GMT" }));
-
+    
     // check for new valorant version every 15mins
     if (config.checkGameVersion) cronTasks.push(cron.schedule(config.checkGameVersion, () => fetchData(null, true)));
 

@@ -6,11 +6,10 @@ dotenv.config();
 
 const folderPath = './data/users';
 const collectionName = 'users'; // Change to your actual collection name
+const dbpwd = process.env.MONGODB_PWD;
+const uri = `mongodb+srv://sugoi:${dbpwd}@cluster0.lo9ry1y.mongodb.net/?retryWrites=true&w=majority`;
 
-export const mongoDB = async () => {
-  const dbpwd = process.env.MONGODB_PWD;
-  const uri = "mongodb+srv://sugoi:" + dbpwd + "@cluster0.lo9ry1y.mongodb.net/?retryWrites=true&w=majority";
-
+const connectToMongo = async () => {
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
@@ -21,36 +20,42 @@ export const mongoDB = async () => {
 
   try {
     await client.connect();
-    //console.log('Connected to MongoDB');
-
     const database = client.db('gmDB');
     const collection = database.collection(collectionName);
+    return { client, collection };
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw error;
+  }
+};
 
-    // Specify the folder containing JSON files
+const closeMongoConnection = async (client) => {
+  try {
+    await client.close();
+    //console.log('Connection closed');
+  } catch (error) {
+    console.error('Error closing MongoDB connection:', error);
+    throw error;
+  }
+};
+
+export const mongoDB = async () => {
+  const { client, collection } = await connectToMongo();
+  try {
     
 
-    // Read all files in the folder
     const files = fs.readdirSync(folderPath);
-
     for (const file of files) {
       const filePath = path.join(folderPath, file);
       const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-
-      // Ensure jsonData is an array
       const dataArray = Array.isArray(jsonData) ? jsonData : [jsonData];
 
       for (const data of dataArray) {
-        // Use a unique identifier field in your data
-        const uniqueIdentifier = data.accounts[0].id; // Change to your actual field
-        // Include _id field with the value of data.accounts[0].id
-        const documentWithId = {
-          _id: data.accounts[0].id,
-          ...data,
-        };
-        const existingData = await collection.findOne({ _id : uniqueIdentifier });
-       
+        const uniqueIdentifier = data.accounts[0].id; //to be checked if updating accounts correctly
+        const documentWithId = { _id: uniqueIdentifier, ...data };
+        const existingData = await collection.findOne({ _id: uniqueIdentifier });
+
         if (!existingData) {
-          // Data doesn't exist, insert it
           await collection.insertOne(documentWithId);
           //console.log(`Data from ${file} synced to MongoDB`);
         } else {
@@ -61,59 +66,29 @@ export const mongoDB = async () => {
       }
     }
   } finally {
-    await client.close();
-    //console.log('Connection closed');
+    await closeMongoConnection(client);
   }
 };
 
 export const mongoDBToJSON = async () => {
-  const dbpwd = process.env.MONGODB_PWD;
-  const uri = "mongodb+srv://sugoi:" + dbpwd + "@cluster0.lo9ry1y.mongodb.net/?retryWrites=true&w=majority";
-
-  const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
-  });
-
+  const { client, collection } = await connectToMongo();
   try {
-    await client.connect();
-    //console.log('Connected to MongoDB');
+    
 
-    const database = client.db('gmDB');
-    const collection = database.collection(collectionName);
-
-    // Retrieve all documents from the collection
     const documents = await collection.find({}).toArray();
 
-    // Ensure the folder exists
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });
     }
 
-    // Iterate through documents and save each one to a JSON file
     documents.forEach((doc) => {
       const fileName = path.join(folderPath, `${doc._id}.json`);
       const jsonData = JSON.stringify(doc, null, 2);
       fs.writeFileSync(fileName, jsonData);
-      console.log(`Data with _id ${doc._id} exported to ${fileName}`);
+      //console.log(`Data with _id ${doc._id} imported to ${fileName}`);
     });
   } finally {
-    await client.close();
-    //console.log('Connection closed');
+    console.log(`UserData Loaded`);
+    await closeMongoConnection(client);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-

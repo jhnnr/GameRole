@@ -3,6 +3,11 @@ const require = createRequire(import.meta.url);
 import dotenv from 'dotenv';
 dotenv.config();
 
+import { logs } from './logs.js';
+
+import {skinpeek} from "./SkinPeek.js";
+import {mongoDBToJSON} from "./mongoDB/users.js";
+import {mongoDBPullWhitelist, mongoDBPushWhitelist} from "./mongoDB/whitelist.js";
 const {Client, GatewayIntentBits, Discord, ActivityType, Events} = require('discord.js');
 const jsonfile = require('jsonfile');
 
@@ -21,33 +26,24 @@ const minumumSaveInterval = 10000;
 // Whether or not the whitelist is saved
 var saved = true;
 
-const prefix = '<';
-
+const prefix = '@';
+await mongoDBPullWhitelist();
 var whiteListedApps = require("./whitelist.json");
 
-/**
- * Limits how often saves can happen to avoid abuse
- */
-function scheduleSave(){
-    if(saved){
-        setTimeout(save, minumumSaveInterval);
-        saved = false;
-    }
-}
+
 /**
  * Saves the whitelist
  */
 function save(){
     jsonfile.writeFile("./whitelist.json", whiteListedApps, { spaces: 2, EOL: '\r\n' }, function(err){
         if (err) throw(err);
+        
     })
+    mongoDBPushWhitelist();
     console.log("Whitelist file saved.")
+    
     saved = true;
 }
-import { logs } from './logs.js';
-
-import {skinpeek} from "./SkinPeek.js";
-import {mongoDBToJSON} from "./mongoDB.js";
 
 
 skinpeek();
@@ -71,28 +67,28 @@ bot.on('messageCreate', message=>{
     switch(args[0]){
         // --- DO COMMANDS ---
         case 'ping':
-            message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`);
+            message.reply(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`);
             //console.log(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ws.ping)}ms`);
             break;
 
         case 'website':
-            message.channel.send("https://github.com/sugoides")
+            message.reply("https://github.com/sugoides")
             break;
 
         case 'add':
             var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (hasPerms){
-                var roleToAdd = args.slice(1,args.length).join(" ")
-                var gameNameAdd = args.slice(1,args.length).join(" ")
-                if ((!gameNameAdd) && (!roleToAdd)){
-                    message.reply("Please enter the correct command (/add [gameName] [role name]")
+                
+                var gameNameAdd = args.slice(1).join(" ");
+                if ((!gameNameAdd)){
+                    message.reply("Please enter the correct command (/add [gameName]")
                 }else{
                     // Apply changes
-                    whiteListedApps[gameNameAdd] = roleToAdd;
+                    whiteListedApps[gameNameAdd] = gameNameAdd;
                     //var gameJustAdded = gameName
-                    console.log("Added game: "+gameNameAdd+" with role name: "+roleToAdd)
-                    message.reply("Added game: `"+gameNameAdd+"` with role name: `"+roleToAdd + "`")
-                    var objectAdded = {'Game' : gameNameAdd, 'Role' :roleToAdd}
+                    console.log("Added game: "+gameNameAdd)
+                    message.reply("Added game: `"+gameNameAdd+"`")
+                    var objectAdded = {'Game' : gameNameAdd, 'Role' :gameNameAdd}
                     var previousAction = 'add'
                     // Save
                     save();
@@ -104,27 +100,22 @@ bot.on('messageCreate', message=>{
 
         case 'addmygame':
             var hasPerms = message.member.roles.cache.has(moveRole.id)
-            if (!args[1]){
-                message.reply("Please provide a role name after the command.")
-                break;
-            }
             if (hasPerms){
-                var roleToAdd = args.pop()
                 // Get the game the user is playing
-                gameNameAdd = message.member.presence.game.toString();
-
-                if ((!gameNameAdd) && (!roleToAdd)){
-                    message.reply("Please enter the correct command (/add [gameName] [role name]")
+                gameNameAdd = message.member.presence.activities.find(activity => activity?.type === 0).name;
+                console.log(gameNameAdd)
+                if ((!gameNameAdd)){
+                    message.reply("not playing")
                 }else{
                     // Apply changes
-                    whiteListedApps[gameNameAdd] = roleToAdd;
+                    whiteListedApps[gameNameAdd] = gameNameAdd;
                     //var gameJustAdded = gameName
-                    console.log("Added game: "+gameNameAdd+" with role name: "+roleToAdd)
-                    message.reply("Added game: "+gameNameAdd+" with role name: "+roleToAdd)
-                    objectAdded = {'Game' : gameNameAdd, 'Role' :roleToAdd}
+                    console.log("Added game: "+gameNameAdd)
+                    message.reply("Added game: "+gameNameAdd)
+                    objectAdded = {'Game' : gameNameAdd, 'Role' :gameNameAdd}
                     previousAction = 'addmygame'
                     // Save
-                    scheduleSave();
+                    save();
                 }
             }else{
                 message.reply("You do not have sufficient permissions to perform that command.")
@@ -134,14 +125,22 @@ bot.on('messageCreate', message=>{
         case 'delete':
             var hasPerms = message.member.roles.cache.has(moveRole.id)
             if (hasPerms){
-                var roleToDelete = args.pop()
-                var gameNameDelete = args.slice(1,args.length).join(" ")
-                delete whiteListedApps[gameNameDelete]
-                console.log("The "+gameNameDelete+" game and "+roleToDelete+" role, has been deleted from the whitelist.")
-                message.reply("The "+gameNameDelete+" game and "+roleToDelete+" role, has been deleted from the whitelist.")
-                // Save
-                scheduleSave();
-                previousAction = 'delete'
+                var gameNameDelete = args.slice(1).join(" ");
+                 // Check if the game exists in the whitelist
+                if (whiteListedApps.hasOwnProperty(gameNameDelete)) {
+                    // Delete the game
+                    delete whiteListedApps[gameNameDelete];
+                    console.log("The `" + gameNameDelete + "` game has been deleted from the whitelist.");
+                    message.reply("The `" + gameNameDelete + "` game has been deleted from the whitelist.");
+                    
+                    // Save
+                    save();
+                    previousAction = 'delete';
+                } else {
+                    // The specified game doesn't exist in the whitelist
+                    console.log("The `" + gameNameDelete + "` game does not exist in the whitelist.");
+                    message.reply("The `" + gameNameDelete + "` game does not exist in the whitelist.");
+                }
             }else{
                 message.reply("You do not have sufficient permissions to perform that command.")
             }
@@ -156,7 +155,7 @@ bot.on('messageCreate', message=>{
                         // Delete the game that has just been added.
                         delete whiteListedApps[objectAdded['Game']]
                         message.reply(objectAdded['Game'] +": "+objectAdded['Role']+" - has been deleted.")
-                        scheduleSave()
+                        save();
         
                     }else if (previousAction == 'delete'){
                         console.log("placeholder, deleted...")

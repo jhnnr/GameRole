@@ -1,7 +1,7 @@
 import fs from "fs";
 import {ensureUsersFolder, removeDupeAlerts} from "../misc/util.js";
 import {defaultSettings} from "../misc/settings.js";
-import {mongoDB} from "../mongoDB.js";
+import {mongoDB} from "../mongoDB/users.js";
 /** JSON format:
  * {
  *     accounts: [User objects],

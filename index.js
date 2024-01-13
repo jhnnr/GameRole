@@ -26,7 +26,7 @@ const minumumSaveInterval = 10000;
 // Whether or not the whitelist is saved
 var saved = true;
 
-const prefix = '@';
+const prefix = '!';
 await mongoDBPullWhitelist();
 var whiteListedApps = require("./whitelist.json");
 
@@ -59,7 +59,7 @@ bot.on('ready',function(){
 })
 
 
-bot.on('messageCreate', message=>{
+bot.on('messageCreate', async (message)=>{
     let args = message.content.slice(prefix.length).split(" ");
     let moveRole = message.guild.roles.cache.find(x => x.name == 'sugoi')
     if (!message.content.startsWith(prefix)) return;
@@ -175,27 +175,38 @@ bot.on('messageCreate', message=>{
             break;
             
         case 'games':
-            var hasPerms = message.member.roles.cache.find(role => role.name === 'sugoi')
-            if (hasPerms){
-                var stringToSend = "```"
-                var whiteListedAppsLength = Object.keys(whiteListedApps).length
-                
+            var hasPerms = message.member.roles.cache.find(role => role.name === 'sugoi');
+            if (hasPerms) {
+                var whiteListedAppsLength = Object.keys(whiteListedApps).length;
+                var messageChunks = [];
+                var chunkSize = 20;
+                var stringToSend = "```";
+
                 for (var i = 0; i < whiteListedAppsLength; i++) {
-                    var key = Object.keys(whiteListedApps)[i]
-                    var value = whiteListedApps[key]
-                    var keyValueGames = (key +" : "+value)
-                    stringToSend += (keyValueGames + "\n")
-                    if (i % 20 === 0) {
-                        var stringToSend = stringToSend + "```"
-                        message.channel.send(stringToSend)
-                        var stringToSend =  "```"
-                      }
+                    var key = Object.keys(whiteListedApps)[i];
+                    var value = whiteListedApps[key];
+                    var keyValueGames = (key + " : " + value);
+                    stringToSend += (keyValueGames + "\n");
+
+                    if ((i + 1) % chunkSize === 0 || i === whiteListedAppsLength - 1) {
+                        stringToSend += "```";
+                        messageChunks.push(stringToSend);
+                        stringToSend = "```";
+                    }
                 }
-               
-            }else{
-                message.reply("You do not have sufficient permissions to perform that command.")
+
+                for (let i = 0; i < messageChunks.length; i++) {
+                    if (i === 0) {
+                        await message.reply(messageChunks[i]);
+                    } else {
+                        await message.channel.send(messageChunks[i]);
+                    }
+                }
+            
+            } else {
+                message.reply("You do not have sufficient permissions to perform that command.");
             }
-           break;
+            break;
 
         case 'info':
             message.channel.send("The author of this bot is John Neri. See the GitHub for this bot here: https://github.com/sugoides")

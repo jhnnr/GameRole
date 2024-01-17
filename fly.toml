@@ -15,14 +15,28 @@ primary_region = "sin"
   auto_rollback = true
 
 [[services]]
-  internal_port = 80
-  protocol = "udp"
-  [[services.ports]]
-    port = 80
-
-[[services]]
-  internal_port = 80
+  http_checks = []
+  internal_port = 8043
+  processes = ["app"]
   protocol = "tcp"
+  script_checks = []
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
   [[services.ports]]
+    handlers = ["http"]
     port = 80
-    
+    force_https = true
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"

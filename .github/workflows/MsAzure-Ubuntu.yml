@@ -21,8 +21,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           cd /home/jhnnr/gamerole
-          git clone https://sugoides:${{ secrets.GH_TOKEN }}@github.com/sugoides/GameRole.git .
+          sudo docker push sugoi13/gamerole:latest
           sudo docker build -t gamerole:latest .
-          sudo docker stop gamerole || true
-          sudo docker rm gamerole || true
-          sudo docker run -d --name gamerole -p 80:80 gamerole:latest
+          sudo docker-compose up -d

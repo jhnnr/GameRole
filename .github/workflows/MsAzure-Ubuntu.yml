@@ -34,5 +34,5 @@ jobs:
           sudo docker images
           # Build the Docker image
           sudo docker build -t sugoi13/gamerole .
-          sudo docker run gamerole -d
+          sudo docker run sugoi13/gamerole -d
 

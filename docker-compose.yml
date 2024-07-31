@@ -9,3 +9,6 @@ services:
     volumes:
       - .:/gamerole
     command: ["node", "index.js"]
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - MONGODB_PWD=${MONGODB_PWD}

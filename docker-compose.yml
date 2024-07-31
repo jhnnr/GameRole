@@ -2,13 +2,16 @@ version: '3.8'
 
 services:
   app:
+    environment:
+    - DISCORD_TOKEN=${DISCORD_TOKEN}
+    - MONGODB_PWD=${MONGODB_PWD}
     build:
       context: .
+      dockerfile: Dockerfile
+    image: sugoi13/gamerole
     ports:
       - "80:80"
     volumes:
       - .:/gamerole
     command: ["node", "index.js"]
-    environment:
-      - DISCORD_TOKEN=${DISCORD_TOKEN}
-      - MONGODB_PWD=${MONGODB_PWD}
+

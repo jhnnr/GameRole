@@ -20,7 +20,17 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-        
+
+          sudo docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PWD }}
+
+          # Pull the latest image from Docker Hub
           sudo docker pull sugoi13/gamerole:latest
+
+          # Stop and remove the existing container if it exists
+          sudo docker stop gamerole || true
+          sudo docker rm gamerole || true
+
+          # Build the Docker image
           sudo docker build -t gamerole:latest .
-          sudo docker-compose up -d
+          sudo docker run gamerole -d
+

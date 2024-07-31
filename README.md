@@ -1,1 +1,1 @@
-A Discord bot that gives role to users based on user's PLAYING presence
+A Discord bot that gives role to users based on user's PLAYING presence.

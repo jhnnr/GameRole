@@ -30,6 +30,7 @@ jobs:
           sudo docker stop gamerole || true
           sudo docker rm gamerole || true
 
+          sudo docker images
           # Build the Docker image
           sudo docker build -t sugoi13/gamerole:latest .
           sudo docker run gamerole -d

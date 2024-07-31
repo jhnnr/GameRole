@@ -21,6 +21,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
         
-          sudo docker push sugoi13/gamerole:latest
+          sudo docker pull sugoi13/gamerole:latest
           sudo docker build -t gamerole:latest .
           sudo docker-compose up -d

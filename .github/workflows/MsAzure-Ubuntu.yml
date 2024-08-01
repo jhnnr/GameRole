@@ -22,8 +22,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        apt-get update
-        apt-get install ./docker-desktop-<arch>.deb
+        sudo apt-get update
+        sudo apt-get install ./docker-desktop-<arch>.deb
         docker-compose build
 
     - name: Push Docker image to Docker Hub

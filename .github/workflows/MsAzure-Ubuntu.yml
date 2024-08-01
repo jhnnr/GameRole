@@ -51,7 +51,8 @@ jobs:
           sudo docker pull sugoi13/gamerole:latest
 
           # remove existing image
-          sudo docker images sugoi13/gamerole --format '{{.ID}}' | grep -v "$(sudo docker images sugoi13/gamerole:latest --format '{{.ID}}')" | xargs -r sudo docker rmi
+          
+          sudo docker images sugoi13/gamerole --format '{{.ID}}' | grep -v "$(sudo docker images sugoi13/gamerole:latest --format '{{.ID}}')" | xargs -r sudo docker rmi --force
 
           sudo docker images
 

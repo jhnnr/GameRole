@@ -20,9 +20,13 @@ jobs:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PWD }}
 
-    - name: Build Docker image
+    - name: Download Docker Compose
       run: |
         sudo curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+
+    - name: Build Docker image
+      run: |
+
         sudo docker-compose build
 
     - name: Push Docker image to Docker Hub
@@ -52,5 +56,4 @@ jobs:
           sudo docker images
 
           sudo docker run -d -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} -e MONGODB_PWD=${{ secrets.MONGODB_PWD }} --name gamerole sugoi13/gamerole
-
-
+  

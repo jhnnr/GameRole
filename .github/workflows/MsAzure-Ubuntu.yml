@@ -6,12 +6,29 @@ on:
       - main
 
 jobs:
-  deploy:
+
+  build and deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+    - name: Build Docker image
+      run: |
+        docker-compose build
+
+    - name: Push Docker image to Docker Hub
+      run: |
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gamerole:latest
+
+
 
     - name: Deploy to Server
       uses: appleboy/ssh-action@v0.1.6
@@ -29,10 +46,11 @@ jobs:
 
           # Pull the latest image from Docker Hub
           sudo docker pull sugoi13/gamerole:latest
+          sudo docker images sugoi13/gamerole --format '{{.ID}}' | grep -v "$(sudo docker images sugoi13/gamerole:latest --format '{{.ID}}')" | xargs -r sudo docker rmi
 
 
           sudo docker images
 
 
           sudo docker run -d -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} -e MONGODB_PWD=${{ secrets.MONGODB_PWD }} --name gamerole sugoi13/gamerole
-
+  

@@ -37,7 +37,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
 
-          sudo docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PWD }}
+          echo ${{ secrets.DOCKER_PWD }} | sudo docker login -u ${{ secrets.DOCKER_USER }} -p --password-stdin
 
           # Stop and remove the existing container if it exists
           sudo docker stop gamerole || true

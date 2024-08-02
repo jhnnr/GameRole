@@ -20,10 +20,6 @@ jobs:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PWD }}
 
-    - name: Download Docker Compose
-      run: |
-        sudo curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
-        sleep 5
     - name: Build Docker image
       run: |
 
@@ -51,12 +47,10 @@ jobs:
           sudo docker pull sugoi13/gamerole:latest
 
           # remove existing image
-          
           sudo docker images sugoi13/gamerole --format '{{.ID}}' | grep -v "$(sudo docker images sugoi13/gamerole:latest --format '{{.ID}}')" | xargs -r sudo docker rmi --force
-
 
           sudo docker run -d -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} -e MONGODB_PWD=${{ secrets.MONGODB_PWD }} --name gamerole sugoi13/gamerole
   
 
-          
+
           

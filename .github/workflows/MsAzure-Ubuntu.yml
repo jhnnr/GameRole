@@ -57,3 +57,4 @@ jobs:
 
           sudo docker run -d -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} -e MONGODB_PWD=${{ secrets.MONGODB_PWD }} --name gamerole sugoi13/gamerole
   
+          

@@ -54,7 +54,6 @@ jobs:
           
           sudo docker images sugoi13/gamerole --format '{{.ID}}' | grep -v "$(sudo docker images sugoi13/gamerole:latest --format '{{.ID}}')" | xargs -r sudo docker rmi --force
 
-          sudo docker images
 
           sudo docker run -d -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} -e MONGODB_PWD=${{ secrets.MONGODB_PWD }} --name gamerole sugoi13/gamerole
   

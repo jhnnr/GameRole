@@ -1,9 +1,7 @@
 name: MsAzure-Ubuntu
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
 

@@ -1,10 +1,8 @@
 # Use Node.js 18 Alpine image
 FROM node:18-alpine
 
-# Install Python, make, and g++ for building native modules
-RUN apk add --no-cache python3 make g++ && \
-    python3 -m ensurepip && \
-    pip3 install --no-cache --upgrade pip
+# Install Python, make, g++, and pip for building native modules
+RUN apk add --no-cache python3 py3-pip make g++
 
 # Define build arguments
 ARG DISCORD_TOKEN

@@ -5,7 +5,7 @@ dotenv.config();
 
 import { logs } from './logs.js';
 
-import {skinpeek} from "./SkinPeek.js";
+//import {skinpeek} from "./SkinPeek.js";
 import {mongoDBToJSON} from "./mongoDB/users.js";
 import {mongoDBPullWhitelist, mongoDBPushWhitelist} from "./mongoDB/whitelist.js";
 const {Client, GatewayIntentBits, Discord, ActivityType, Events} = require('discord.js');
@@ -46,7 +46,7 @@ function save(){
 }
 
 
-skinpeek();
+//skinpeek();
 logs();
 
 mongoDBToJSON();

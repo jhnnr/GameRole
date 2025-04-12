@@ -12,6 +12,6 @@ services:
     ports:
       - "80:80"
     volumes:
-      - .:/gamerole
+      - /home/DATA/AppData/gamerole:/gamerole
     restart: unless-stopped
 

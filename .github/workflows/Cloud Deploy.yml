@@ -1,4 +1,4 @@
-name: MsAzure-Ubuntu
+name: Cloud Docker Deploy
 
 on:
   workflow_dispatch:

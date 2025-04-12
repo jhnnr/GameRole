@@ -1,4 +1,5 @@
-FROM node:18-alpine3.17
+# Ensure this Dockerfile supports multi-architecture builds with Docker Buildx
+FROM node:20-alpine3
 
 # Define build arguments
 ARG DISCORD_TOKEN

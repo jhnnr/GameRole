@@ -5,9 +5,7 @@ dotenv.config();
 
 import { logs } from './logs.js';
 
-//import {skinpeek} from "./SkinPeek.js";
-import {mongoDBToJSON} from "./mongoDB/users.js";
-import {mongoDBPullWhitelist, mongoDBPushWhitelist} from "./mongoDB/whitelist.js";
+
 const {Client, GatewayIntentBits, Discord, ActivityType, Events} = require('discord.js');
 const jsonfile = require('jsonfile');
 
@@ -27,7 +25,6 @@ const minumumSaveInterval = 10000;
 var saved = true;
 
 const prefix = '!';
-await mongoDBPullWhitelist();
 var whiteListedApps = require("./whitelist.json");
 
 
@@ -39,7 +36,6 @@ function save(){
         if (err) throw(err);
         
     })
-    mongoDBPushWhitelist();
     console.log("Whitelist file saved.")
     
     saved = true;
@@ -49,7 +45,7 @@ function save(){
 //skinpeek();
 logs();
 
-mongoDBToJSON();
+//mongoDBToJSON();
 
 //Calls when the bot first comes online
 bot.on('ready',function(){
